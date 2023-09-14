@@ -13,6 +13,8 @@
 
   $loader = new FilesystemLoader('template');
   $twig = new Twig\Environment($loader);
+
+  $twig->addGlobal('discord_auth', $_ENV['DISCORD_OAUTH']);
   
   $discord = new Discord(
     $_ENV['DISCORD_CLIENT'], 
