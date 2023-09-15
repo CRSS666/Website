@@ -1,0 +1,35 @@
+{% include 'includes/head.twig' with {'pageTitle': 'Home'} %}
+
+<div class="pageHero" id="hero">
+  <div class="blurFiler">
+    <div class="container">
+      <h1>Clyde's Real Survival SMP</h1>
+    
+      <div class="serverInfo">
+        Online: <label>0</label> / <label>20</label>
+      </div>
+    </div>
+  </div>
+</div>
+
+{% include 'includes/nav.twig' with {'page': 'home',} %}
+    
+<main class="pageContent" id="content">
+  <div class="container">
+    <h2>Rules</h2>
+
+    <ol>
+      <li>
+        The usage of modified clients that gives unfair advantage to players is not permitted. <b>TL;DR Do not cheat.</b>
+      </li>
+      <li>
+        Do not modify (or destroy) other players' constructions, or take their items, without their permission. <b>TL;DR Do not grief or steal.</b>
+      </li>
+    </ol>
+
+    <b>Failing to follow these basic rules will result in a ban.</b>
+  </div>
+</main>
+
+{% include 'includes/footer.twig' %}
+{% include 'includes/foot.twig' %}

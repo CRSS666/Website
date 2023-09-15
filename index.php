@@ -25,7 +25,19 @@
   $router->get('/nations', function() {
     global $twig;
     
-    echo $twig->render('index.twig');
+    echo $twig->render('nations.twig');
+  });
+
+  $router->get('/rules', function() {
+    global $twig;
+  
+    echo $twig->render('rules.twig');
+  });
+
+  $router->get('/map', function() {
+    global $twig;
+  
+    echo $twig->render('map.twig');
   });
 
   $router->set404(function() {
