@@ -1,4 +1,4 @@
-name: ️💾 Upload Website
+name: ️Upload Website
 
 on: [ push ]
 
@@ -6,10 +6,10 @@ jobs:
   sftp:
     runs-on: ubuntu-latest
     steps:
-      - name: 🚚 Checkout the repository
+      - name: Checkout the repository
         uses: actions/checkout@v2
 
-      - name: 📂 Upload files via SFTP
+      - name: Upload files via SFTP
         uses: https://github.com/wangyucode/sftp-upload-action@v2.0.2
         with:
           host: ${{ secrets.HOST }}
@@ -24,7 +24,7 @@ jobs:
     runs-on: ubuntu-latest
     timeout-minutes: 5
     steps:
-      - name: 📃 Install dependencies on the server
+      - name: Install dependencies on the server
         uses: https://github.com/appleboy/ssh-action@v0.1.10
         with:
           host: ${{ secrets.HOST }}
