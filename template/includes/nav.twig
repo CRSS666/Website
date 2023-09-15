@@ -1,0 +1,41 @@
+<nav class="pageNav" id="navigation">
+  <div class="container">
+    <ul class="navLeft">
+      <li>
+        <a {% if page == 'home' %} class="active" href="#" {% else %} href="/" {% endif %}>
+          Home
+        </a>
+      </li>
+      <li>
+        <a {% if page == 'nations' %} class="active" href="#" {% else %} href="/nations" {% endif %}>
+          Nations
+        </a>
+      </li>
+      <li>
+        <a {% if page == 'rules' %} class="active" href="#" {% else %} href="/rules" {% endif %}>
+          Rules
+        </a>
+      </li>
+      <li>
+        <a {% if page == 'map' %} class="active" href="#" {% else %} href="/map" {% endif %}>
+          Map
+        </a>
+      </li>
+    </ul>
+    <ul class="navRight">
+      {% if user %}
+      <li>
+        <a class="userButton">
+          {{ user.global_name }}
+        </a>
+      </li>
+      {% else %}
+      <li>
+        <a class="buttonPrimary" href="{{ discord_auth }}">
+          Login
+        </a>
+      </li>
+      {% endif %}
+    </ul>
+  </div>
+</nav>
