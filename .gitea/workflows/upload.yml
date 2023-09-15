@@ -15,7 +15,7 @@ jobs:
           host: ${{ secrets.HOST }}
           username: ${{ secrets.USER }}
           password: ${{ secrets.PASSWORD }}
-          forceUpload: true
+          forceUpload: false
           localDir: '.'
           remoteDir: '/var/www/crss'
           exclude: '.git,.git*,.env.*,LICENSE,README.md'
