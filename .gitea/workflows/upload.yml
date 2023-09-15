@@ -21,7 +21,7 @@ jobs:
           exclude: '.*,.git*,.gitea*,LICENSE,README.md'
       
       - name: Install dependencies over SSH
-        uses: nekiro/ssh-job@main
+        uses: https://github.com/nekiro/ssh-job@main
         with:
           host: ${{ secrets.HOST }}
           user: ${{ secrets.USER }}
