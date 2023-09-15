@@ -1,5 +1,9 @@
 <?php
+  global $twig;
+
   require_once '_config.php';
+
+  session_start();
   
   switch ($_SERVER['REQUEST_URI']) {
     case "/":
