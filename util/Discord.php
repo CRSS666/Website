@@ -67,7 +67,7 @@
     }
 
     function getUser($token): array {
-      $res = $this->curl->newRequest('get', '/users/@me')
+      $res = $this->curl->newRequest('get', 'https://discord.com/api/v10/users/@me')
         ->setHeader('Authorization', 'Bearer ' . $token)
         ->send();
       
@@ -75,7 +75,7 @@
     }
     
     function getGuilds($token): array {
-      $res = $this->curl->newRequest('get', '/users/@me/guilds')
+      $res = $this->curl->newRequest('get', 'https://discord.com/api/v10/users/@me/guilds')
         ->setHeader('Authorization', 'Bearer ' . $token)
         ->send();
 
