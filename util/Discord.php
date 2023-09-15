@@ -26,7 +26,7 @@
       
       $json = json_decode($res->body, true);
       
-      if($json['error']) {
+      if(isset($json['error'])) {
         return array(
           'error' => true,
           'error_description' => $json['error_description']
@@ -51,7 +51,7 @@
 
       $json = json_decode($res->body, true);
 
-      if($json['error']) {
+      if(isset($json['error'])) {
         return array(
           'error' => true,
           'error_description' => $json['error_description']
