@@ -2,6 +2,7 @@
   "require": {
     "twig/twig": "^3.0",
     "anlutro/curl": "^1.5",
-    "vlucas/phpdotenv": "^5.5"
+    "vlucas/phpdotenv": "^5.5",
+    "bramus/router": "1.6"
   }
 }

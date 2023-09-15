@@ -3,20 +3,31 @@
 
   require_once '_config.php';
 
+  use Bramus\Router\Router;
+  
+  $router = new Router();
+
   session_start();
   
   if(isset($_SESSION['user']))
     $twig->addGlobal('user', $_SESSION['user']);
-  
-  switch ($_SERVER['REQUEST_URI']) {
-    case "/":
-      echo $twig->render('index.twig');
-      break;
-    case "/nations":
-      echo $twig->render('nations.twig');
-      break;
-    default:
-      http_response_code(404);
-      echo $twig->render('404.twig');
-      break;
-  }
+
+  $router->get('/u/([a-z0-9_\.]+)', function($name) {
+    echo 'Hello ' . htmlentities($name);
+  });
+
+  $router->get('/', function() {
+    echo $twig->render('index.twig');
+  });
+
+  $router->get('/nations', function() {
+    echo $twig->render('index.twig');
+  });
+
+  $router->set404(function() {
+    http_response_code(404);
+    
+    echo $twig->render('404.twig');
+  });
+
+  $router->run();

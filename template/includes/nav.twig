@@ -25,7 +25,7 @@
     <ul class="navRight">
       {% if user %}
       <li>
-        <a class="userButton">
+        <a class="userButton" href="/u/{{ user.username }}">
           {{ user.global_name }}
         </a>
       </li>
