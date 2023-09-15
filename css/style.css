@@ -90,5 +90,21 @@ ul, ol {
   display: flex;
   flex-direction: column;
 }
+.pageFooter > .right {
+  list-style: none;
+  display: flex;
+}
+.pageFooter > .right > li {
+  padding: 8px;
+}
+.pageFooter > .right > li > a {
+  display: block;
+  width: 24px;
+  height: 24px;
+  color: rgba(0, 0, 0, 0.7);
+}
+.pageFooter > .right > li > a:hover {
+  color: rgb(0, 0, 0);
+}
 
 /*# sourceMappingURL=style.css.map */

@@ -1,10 +1,10 @@
-{% include 'includes/head.twig' with {'pageTitle': 'Nations'} %}
+{% include 'includes/head.twig' with {'pageTitle': username} %}
 
 <div class="pageHero" id="hero">
   <div class="blurFiler">
     <div class="container">
       <h1>Clyde's Real Survival SMP</h1>
-
+    
       <div class="serverInfo">
         Online: <label>0</label> / <label>20</label>
       </div>
@@ -12,16 +12,11 @@
   </div>
 </div>
 
-{% include 'includes/nav.twig' with {'page': 'nations'} %}
-
+{% include 'includes/nav.twig' with {'page': 'user',} %}
+    
 <main class="pageContent" id="content">
   <div class="container">
-    <h2>Nations</h2>
-    <ul>
-      <li>
-        <a href="/nation/rop">Republic of Panorama</a>
-      </li>
-    </ul>
+    {{ db_user.display_name }} is {% if db_user.is_admin == 1 %} an admin! {% else %} not an admin! {% endif %}
   </div>
 </main>
 

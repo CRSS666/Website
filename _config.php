@@ -4,6 +4,7 @@
   error_reporting(E_ALL);
 
   require __DIR__ . '/vendor/autoload.php';
+  require __DIR__ . '/util/Database.php';
   require __DIR__ . '/util/Discord.php';
 
   use Twig\Loader\FilesystemLoader;
@@ -20,4 +21,11 @@
     $_ENV['DISCORD_CLIENT'], 
     $_ENV['DISCORD_SECRET'],
     $_ENV['DISCORD_REDIRECT']
+  );
+  
+  $mysql = new Database(
+    $_ENV['MYSQL_HOST'],
+    $_ENV['MYSQL_USER'],
+    $_ENV['MYSQL_PASS'],
+    $_ENV['MYSQL_DB']
   );

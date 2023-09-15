@@ -1,5 +1,5 @@
 <?php
-  global $discord;
+  global $discord, $mysql;
   
   require_once "_config.php";
   
@@ -28,6 +28,8 @@
         ));
       } else {
         $_SESSION['user'] = $discord->getUser($res['access_token']);
+        
+        $mysql->createUserRecord($_SESSION['user']);
         
         header('Location: /');
       }

@@ -24,17 +24,17 @@
     </ul>
     <ul class="navRight">
       {% if user %}
-      <li>
-        <a class="userButton" href="/u/{{ user.username }}">
-          {{ user.global_name }}
-        </a>
-      </li>
+        <li>
+          <a class="userButton {% if page == 'profile' %}active{% endif %}" href="{% if page == 'profile' %}#{% else %}/profile{% endif %}">
+            {{ user.global_name }}
+          </a>
+        </li>
       {% else %}
-      <li>
-        <a class="buttonPrimary" href="{{ discord_auth }}">
-          Login
-        </a>
-      </li>
+        <li>
+          <a class="buttonPrimary" href="{{ discord_auth }}">
+            Login
+          </a>
+        </li>
       {% endif %}
     </ul>
   </div>
