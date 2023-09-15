@@ -20,18 +20,3 @@ jobs:
           localDir: '.'
           remoteDir: '/var/www/crss'
           exclude: '.git,.git*,.env.*,LICENSE,README.md'
-  ssh:
-    runs-on: ubuntu-latest
-    timeout-minutes: 5
-    steps:
-      - name: Install dependencies on the server
-        uses: https://github.com/appleboy/ssh-action@v0.1.10
-        with:
-          host: ${{ secrets.HOST }}
-          username: ${{ secrets.USERNAME }}
-          password: ${{ secrets.PASSWORD }}
-          port: ${{ secrets.PORT }}
-          command_timeout: 30m
-          script: |
-            cd /var/www/crss
-            composer install
