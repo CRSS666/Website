@@ -19,3 +19,13 @@ jobs:
           localDir: '.'
           remoteDir: '/var/www/crss'
           exclude: '.*,.git*,.gitea*,LICENSE,README.md'
+      
+      - name: Install dependencies over SSH
+        uses: nekiro/ssh-job@main
+        with:
+          host: ${{ secrets.HOST }}
+          user: ${{ secrets.USER }}
+          password: ${{ secrets.PASSWORD }}
+          command: |
+            cd /var/www/crss
+            composer install --no-dev --optimize-autoloader
