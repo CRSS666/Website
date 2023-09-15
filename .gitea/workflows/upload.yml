@@ -18,4 +18,4 @@ jobs:
           forceUpload: false
           localDir: '.'
           remoteDir: '/var/www/crss'
-          exclude: '.*,.*/**,LICENSE,README.md'
+          exclude: '.*,.git/,.gitea/,LICENSE,README.md'
