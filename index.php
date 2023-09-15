@@ -17,14 +17,20 @@
   });
 
   $router->get('/', function() {
+    global $twig;
+    
     echo $twig->render('index.twig');
   });
 
   $router->get('/nations', function() {
+    global $twig;
+    
     echo $twig->render('index.twig');
   });
 
   $router->set404(function() {
+    global $twig;
+    
     http_response_code(404);
     
     echo $twig->render('404.twig');
