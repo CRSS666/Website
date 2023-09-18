@@ -22,30 +22,40 @@
 
   $router->get('/', function() {
     global $twig;
+
+    $twig->addGlobal('pageUri', '/');
     
     echo $twig->render('index.twig');
   });
 
   $router->get('/nations', function() {
     global $twig;
+
+    $twig->addGlobal('pageUri', '/nations');
     
     echo $twig->render('nations.twig');
   });
 
   $router->get('/rules', function() {
     global $twig;
+
+    $twig->addGlobal('pageUri', '/rules');
   
     echo $twig->render('rules.twig');
   });
 
   $router->get('/map', function() {
     global $twig;
+
+    $twig->addGlobal('pageUri', '/map');
   
     echo $twig->render('map.twig');
   });
 
   $router->get('/profile', function() {
     global $twig, $mysql;
+
+    $twig->addGlobal('pageUri', '/profile');
     
     $user = $mysql->getUserRecordFromId($_SESSION['user']['id']);
 
@@ -60,6 +70,8 @@
 
   $router->get('/u/([a-z0-9_\.]+)', function($name) {
     global $twig, $mysql, $discord;
+
+    $twig->addGlobal('pageUri', '/u/' . $name);
     
     $user = $mysql->getUserRecordFromUsername($name);
     
@@ -74,6 +86,8 @@
 
   $router->set404(function() {
     global $twig;
+
+    $twig->addGlobal('pageUri', '404');
     
     http_response_code(404);
     

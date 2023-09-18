@@ -4,21 +4,38 @@
 <a id="homeLink" href="/">Go Home</a>
 
 <script>
-  let map = L.map('map', { 
-      zoomControl: false, 
-      scrollWheelZoom: false,
-      doubleClickZoom: false,
-  }).setView([-36.3, -41.3], 4);
-
-  L.tileLayer('https://cdn.theclashfruit.me/crss/map/tile_{x}x{y}y.png', {
+  let mapLayer = L.tileLayer('https://cdn.theclashfruit.me/crss/map/tile_{x}x{y}y.png', {
     attribution: '&copy; <a href="https://crss.blurryface.xyz/">CRSS</a> players',
     noWrap: true
-  }).addTo(map);
+  });
 
-
-  L.marker([-36.3, -41.3])
-   .addTo(map)
+  let spawnTown = L.marker([-36.3, -41.3])
    .bindPopup('Spawn Town in Republic of Panorama');
+
+  let notchTemple = L.marker([-71, -51.8])
+      .bindPopup('The Temple of Notch (<a href="https://www.planetminecraft.com/project/the-shrine-of-notch/">Original Map</a>)');
+
+  let markers = L.layerGroup([ 
+      spawnTown, 
+      notchTemple 
+  ]);
+
+  let map = L.map('map', {
+      zoomControl: false,
+      scrollWheelZoom: false,
+      doubleClickZoom: false,
+      layers: [mapLayer, markers]
+  }).setView([-36.3, -41.3], 4);
+
+  let baseMaps = {
+      "Overworld": mapLayer
+  };
+
+  let overlayMaps = {
+      "Markers": markers
+  };
+
+  let layerControl = L.control.layers(baseMaps, overlayMaps).addTo(map);
 </script>
 
 {% include 'includes/foot.twig' %}
