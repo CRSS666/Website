@@ -6,7 +6,9 @@
 <script>
   let mapLayer = L.tileLayer('https://cdn.theclashfruit.me/crss/map/tile_{x}x{y}y.png', {
     attribution: '&copy; <a href="https://crss.blurryface.xyz/">CRSS</a> players',
-    noWrap: true
+    noWrap: true,
+    maxNativeZoom: 4, 
+    minNativeZoom: 4,
   });
 
   let spawnTown = L.marker([-36.3, -41.3])
@@ -21,9 +23,6 @@
   ]);
 
   let map = L.map('map', {
-      zoomControl: false,
-      scrollWheelZoom: false,
-      doubleClickZoom: false,
       layers: [mapLayer, markers]
   }).setView([-36.3, -41.3], 4);
 
