@@ -24,7 +24,7 @@
       $stmt->execute();
     }
     
-    function getUserRecordFromUsername($username): bool|array|null {
+    function getUserRecordFromUsername($username): array | null {
       $sql = 'SELECT * FROM users WHERE username = ?';
       
       $stmt = $this->conn->prepare($sql);
@@ -41,7 +41,7 @@
       }
     }
     
-    function getUserRecordFromId($id): bool|array|null {
+    function getUserRecordFromId($id): array | null {
       $sql = 'SELECT * FROM users WHERE id = ?';
       
       $stmt = $this->conn->prepare($sql);

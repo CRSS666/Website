@@ -6,6 +6,29 @@
     <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
   
     <title>Clyde's Real Survival SMP &bull; {{ pageTitle }}</title>
+    
+    {% if pageTitle == 'Map' %}
+      <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"/>
+      <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+
+      <style>
+        #map { height: 100vh; }
+
+        #homeLink {
+          position: absolute;
+          top: 16px;
+          left: 16px;
+          padding: 8px 16px;
+          z-index: 400;
+            
+          background-color: #fff;
+          border-radius: 32px;
+            
+          text-decoration: none;
+          color: #000;
+        }
+      </style>
+    {% endif %}
   
     <link rel="icon"       href="/favicon.ico">
     <link rel="stylesheet" href="/css/style.min.css">

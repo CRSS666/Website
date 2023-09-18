@@ -1,24 +1,24 @@
 {% include 'includes/head.twig' with {'pageTitle': 'Map'} %}
 
-<div class="pageHero" id="hero">
-  <div class="blurFiler">
-    <div class="container">
-      <h1>Clyde's Real Survival SMP</h1>
-    
-      <div class="serverInfo">
-        Online: <label>0</label> / <label>20</label>
-      </div>
-    </div>
-  </div>
-</div>
+<div id="map"></div>
+<a id="homeLink" href="/">Go Home</a>
 
-{% include 'includes/nav.twig' with {'page': 'map',} %}
-    
-<main class="pageContent" id="content">
-  <div class="container">
-    <p>⚒️ Under Construction</p>
-  </div>
-</main>
+<script>
+  let map = L.map('map', { 
+      zoomControl: false, 
+      scrollWheelZoom: false,
+      doubleClickZoom: false,
+  }).setView([-36.3, -41.3], 4);
 
-{% include 'includes/footer.twig' %}
+  L.tileLayer('https://cdn.theclashfruit.me/crss/map/tile_{x}x{y}y.png', {
+    attribution: '&copy; <a href="https://crss.blurryface.xyz/">CRSS</a> players',
+    noWrap: true
+  }).addTo(map);
+
+
+  L.marker([-36.3, -41.3])
+   .addTo(map)
+   .bindPopup('Spawn Town in Republic of Panorama');
+</script>
+
 {% include 'includes/foot.twig' %}
