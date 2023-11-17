@@ -31,6 +31,7 @@
     {% if pageTitle == 'Map' %}
       <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"/>
       <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+      <script src="https://cdn.jsdelivr.net/npm/leaflet-mouse-position@1.2.0/src/L.Control.MousePosition.min.js"></script>
 
       <style>
         #map { height: 100vh; }
@@ -51,6 +52,17 @@
 
         img.leaflet-tile {
           image-rendering: pixelated;
+        }
+
+        .leaflet-control-mouseposition {
+          background: rgba(255, 255, 255, 0.8);
+
+          margin: 0 !important;
+          padding: 6px;
+
+          width: calc(100% - 2 * 6px);
+
+          text-align: end;
         }
       </style>
     {% endif %}

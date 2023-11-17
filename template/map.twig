@@ -51,7 +51,7 @@
   let map = L.map('map', {
     layers: [mapLayer, markers],
     crs: L.CRS.Simple,
-  }).setView([0, 0], 4);
+  }).setView([0, 0], 2);
 
   let baseMaps = {
     "Overworld": mapLayer
@@ -62,6 +62,11 @@
   };
 
   let layerControl = L.control.layers(baseMaps, overlayMaps).addTo(map);
+
+  L.control.mousePosition({
+    position: 'bottomright',
+    separator: '; '
+  }).addTo(map);
 </script>
 
 {% include 'includes/foot.twig' %}
