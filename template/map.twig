@@ -41,24 +41,37 @@
 
   const worldMaxZoomFactor = Math.pow(2, 0);
 
-  let spawnTown = L.marker([0, 0])
+  let zeroZero = L.marker([0.5, 0.5])
     .bindPopup('0; 0');
 
-  let markers = L.layerGroup([
-    spawnTown
+  let infoCentre = L.marker([75.5, 49.5])
+    .bindPopup('Info Centre');
+
+  let ropMarkers = L.layerGroup([
+    infoCentre
+  ]);
+
+  let rorMarkers = L.layerGroup([
+
+  ]);
+
+  let miscMarkers = L.layerGroup([
+    zeroZero
   ]);
 
   let map = L.map('map', {
-    layers: [mapLayer, markers],
+    layers: [mapLayer, ropMarkers],
     crs: L.CRS.Simple,
-  }).setView([0, 0], 2);
+  }).setView([0.5, 0.5], 2);
 
   let baseMaps = {
     "Overworld": mapLayer
   };
 
   let overlayMaps = {
-    "Markers": markers
+    "Miscellaneous Markers": miscMarkers,
+    "Markers in RoP": ropMarkers,
+    "Markers in DRoR": rorMarkers,
   };
 
   let layerControl = L.control.layers(baseMaps, overlayMaps).addTo(map);

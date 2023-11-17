@@ -38,13 +38,16 @@
 
         #homeLink {
           position: absolute;
-          bottom: 16px;
-          left: 16px;
-          padding: 8px 16px;
+          bottom: 10px;
+          left: 10px;
+          padding: 5px 10px;
           z-index: 400;
             
           background-color: #fff;
-          border-radius: 32px;
+          background-clip: padding-box;
+
+          border: 2px solid rgba(0,0,0,0.2);
+          border-radius: 5px;
             
           text-decoration: none;
           color: #000;
@@ -63,6 +66,8 @@
           width: calc(100% - 2 * 6px);
 
           text-align: end;
+
+          border-top-left-radius: 5px;
         }
       </style>
     {% endif %}
