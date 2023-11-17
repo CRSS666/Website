@@ -86,6 +86,7 @@
   };
 
   let overlayMaps = {
+    "Players": playerMarkers,
     "Miscellaneous Markers": miscMarkers,
     "Markers in RoP": ropMarkers,
     "Markers in DRoR": rorMarkers,
@@ -119,9 +120,10 @@
         mappedPlayers[player.uniqueId] = playerMarker;
       } else {
         const playerIcon = L.icon({
-          iconUrl: `https://mc-heads.net/avatar/${player.displayName}/24`,
-          iconSize: [24, 24],
-          iconAnchor: [12, 0]
+          iconUrl: `https://mc-heads.net/avatar/${player.displayName}`,
+          iconSize: [28, 28],
+          iconAnchor: [14, 14],
+          popupAnchor: [0, -14]
         });
 
 
@@ -131,6 +133,14 @@
         playerMarkers.addLayer(marker);
 
         mappedPlayers[player.uniqueId] = marker;
+      }
+    }
+
+    for (const [uniqueId, playerMarker] of Object.entries(mappedPlayers)) {
+      if(!players.find(p => p.uniqueId === uniqueId)) {
+        playerMarkers.removeLayer(playerMarker);
+
+        delete mappedPlayers[uniqueId];
       }
     }
   }
