@@ -4,34 +4,61 @@
 <a id="homeLink" href="/">Go Home</a>
 
 <script>
-  let mapLayer = L.tileLayer('https://cdn.theclashfruit.me/crss/map/tile_{x}x{y}y.png', {
-    attribution: '&copy; <a href="https://crss.blurryface.xyz/">CRSS</a> players',
-    noWrap: true,
-    maxNativeZoom: 4, 
-    minNativeZoom: 4,
+  L.TileLayer.CRSSLayer = L.TileLayer.extend({
+    getTileUrl: function(coordinate) {
+      const tileX = coordinate.x;
+      const tileY = coordinate.y;
+
+      const url = ('https://cdn.theclashfruit.me/crss/map_new/{xd}/{yd}/tile.{x}.{y}.png')
+        .replace('{yd}', Math.floor(tileY / 10))
+        .replace('{xd}', Math.floor(tileX / 10))
+        .replace('{y}', tileY)
+        .replace('{x}', tileX);
+
+      return url;
+    }
   });
 
-  let spawnTown = L.marker([-36.3, -41.3])
-   .bindPopup('Spawn Town in Republic of Panorama');
+  L.tileLayer.crssLayer = function(templateUrl, options) {
+    return new L.TileLayer.CRSSLayer(templateUrl, options);
+  }
 
-  let notchTemple = L.marker([-71, -51.8])
-      .bindPopup('The Temple of Notch (<a href="https://www.planetminecraft.com/project/the-shrine-of-notch/">Original Map</a>)');
+  let mapLayer = L.tileLayer.crssLayer('https://cdn.theclashfruit.me/crss/map_new/{x}/{y}/tile.{x}.{y}.png', {
+    attribution: '&copy; <a href="https://crss.blurryface.xyz/">CRSS</a> players',
+    noWrap: true,
+    maxNativeZoom: 0,
+    minNativeZoom: 0,
+    origin: [0, 0],
 
-  let markers = L.layerGroup([ 
-      spawnTown, 
-      notchTemple 
+  });
+
+  const worldMinX = -3 * 512;
+  const worldMinY = -7 * 512;
+  const worldWidth = (8 + 1 - (-3)) * 512;
+  const worldHeight = (4 + 1 - (-7)) * 512;
+
+  const worldTileSize = 256;
+
+  const worldMaxZoomFactor = Math.pow(2, 0);
+
+  let spawnTown = L.marker([0, 0])
+    .bindPopup('0; 0');
+
+  let markers = L.layerGroup([
+    spawnTown
   ]);
 
   let map = L.map('map', {
-      layers: [mapLayer, markers]
-  }).setView([-36.3, -41.3], 4);
+    layers: [mapLayer, markers],
+    crs: L.CRS.Simple,
+  }).setView([0, 0], 4);
 
   let baseMaps = {
-      "Overworld": mapLayer
+    "Overworld": mapLayer
   };
 
   let overlayMaps = {
-      "Markers": markers
+    "Markers": markers
   };
 
   let layerControl = L.control.layers(baseMaps, overlayMaps).addTo(map);
