@@ -78,7 +78,13 @@
 
   L.control.mousePosition({
     position: 'bottomright',
-    separator: '; '
+    separator: '; ',
+    lngFormatter: (x) => {
+      return x.toFixed(3)
+    },
+    latFormatter: (y) => {
+      return y.toFixed(3)
+    }
   }).addTo(map);
 </script>
 
