@@ -66,10 +66,14 @@
       .bindPopup('The Dropper'),
   ]);
 
+  let playerMarkers = L.layerGroup([
+
+  ]);
+
   console.log(L.CRS.Simple.infinite)
 
   let map = L.map('map', {
-    layers: [mapLayer, miscMarkers, ropMarkers, rorMarkers],
+    layers: [mapLayer, miscMarkers, ropMarkers, rorMarkers, playerMarkers],
     preferCanvas: true,
     crs: L.Util.extend(L.CRS.Simple, {
       transformation: new L.Transformation(1, 0, 1, 0),
@@ -101,6 +105,49 @@
     wrapLng: false,
     lngFirst: true
   }).addTo(map);
+
+  const mappedPlayers = {}
+
+  const updatePlayerPos = (players) =>{
+    for (const player of players) {
+      const playerMarker = mappedPlayers[player.uniqueId];
+
+      if(playerMarker) {
+        playerMarker.setLatLng([player.location.z, player.location.x]);
+        playerMarker.setPopupContent(`${player.displayName} (${Math.floor(player.location.x)}; ${Math.floor(player.location.y)}; ${Math.floor(player.location.z)})`);
+
+        mappedPlayers[player.uniqueId] = playerMarker;
+      } else {
+        const playerIcon = L.icon({
+          iconUrl: `https://mc-heads.net/avatar/${player.displayName}/24`,
+          iconSize: [24, 24],
+          iconAnchor: [12, 0]
+        });
+
+
+        const marker = L.marker([player.location.z, player.location.x], { icon: playerIcon })
+          .bindPopup(`${player.displayName} (${Math.floor(player.location.x)}; ${Math.floor(player.location.y)}; ${Math.floor(player.location.z)})`);
+
+        playerMarkers.addLayer(marker);
+
+        mappedPlayers[player.uniqueId] = marker;
+      }
+    }
+  }
+
+  fetch('https://crss.blurryface.xyz/api/v1/players')
+    .then(r => r.json())
+    .then(p => {
+      updatePlayerPos(p);
+    });
+
+  setInterval(() => {
+    fetch('https://crss.blurryface.xyz/api/v1/players')
+      .then(r => r.json())
+      .then(p => {
+        updatePlayerPos(p);
+      });
+  }, 1000)
 </script>
 
 {% include 'includes/foot.twig' %}
