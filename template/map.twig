@@ -6,6 +6,8 @@
 <script>
   L.TileLayer.CRSSLayer = L.TileLayer.extend({
     getTileUrl: function(coordinate) {
+      console.log(coordinate);
+
       const tileX = coordinate.x;
       const tileY = coordinate.y;
 
@@ -23,13 +25,20 @@
     return new L.TileLayer.CRSSLayer(templateUrl, options);
   }
 
-  let mapLayer = L.tileLayer.crssLayer('https://cdn.theclashfruit.me/crss/map_new/{x}/{y}/tile.{x}.{y}.png', {
+  let mapLayer = L.tileLayer.crssLayer('https://cdn.theclashfruit.me/crss/map_new/{xd}/{yd}/tile.{x}.{y}.png', {
     attribution: '&copy; <a href="https://crss.blurryface.xyz/">CRSS</a> players',
+
+    tileSize: 256,
+
     noWrap: true,
+
     maxNativeZoom: 0,
     minNativeZoom: 0,
-    origin: [0, 0],
 
+    minZoom: -2,
+    maxZoom: -2 + 12,
+
+    zoomOffset: -12
   });
 
   const worldMinX = -3 * 512;
@@ -41,14 +50,9 @@
 
   const worldMaxZoomFactor = Math.pow(2, 0);
 
-  let zeroZero = L.marker([0.5, 0.5])
-    .bindPopup('0; 0');
-
-  let infoCentre = L.marker([75.5, 49.5])
-    .bindPopup('Info Centre');
-
   let ropMarkers = L.layerGroup([
-    infoCentre
+    L.marker([-75.5, 49.5])
+      .bindPopup('Info Centre')
   ]);
 
   let rorMarkers = L.layerGroup([
@@ -56,13 +60,22 @@
   ]);
 
   let miscMarkers = L.layerGroup([
-    zeroZero
+    L.marker([0.5, 0.5])
+      .bindPopup('0; 0'),
+    L.marker([1302.5, -661.5])
+      .bindPopup('The Dropper'),
   ]);
 
+  console.log(L.CRS.Simple.infinite)
+
   let map = L.map('map', {
-    layers: [mapLayer, ropMarkers],
-    crs: L.CRS.Simple,
-  }).setView([0.5, 0.5], 2);
+    layers: [mapLayer, miscMarkers, ropMarkers, rorMarkers],
+    preferCanvas: true,
+    crs: L.Util.extend(L.CRS.Simple, {
+      transformation: new L.Transformation(1, 0, 1, 0),
+      projection: L.Projection.LonLat
+    }),
+  }).setView([0, 0], 2);
 
   let baseMaps = {
     "Overworld": mapLayer
@@ -80,11 +93,13 @@
     position: 'bottomright',
     separator: '; ',
     lngFormatter: (x) => {
-      return x.toFixed(3)
+      return Math.floor(x)
     },
     latFormatter: (y) => {
-      return y.toFixed(3)
-    }
+      return Math.floor(y)
+    },
+    wrapLng: false,
+    lngFirst: true
   }).addTo(map);
 </script>
 
