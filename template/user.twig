@@ -1,16 +1,6 @@
 {% include 'includes/head.twig' with {'pageTitle': username} %}
 
-<div class="pageHero" id="hero">
-  <div class="blurFiler">
-    <div class="container">
-      <h1>Clyde's Real Survival SMP</h1>
-    
-      <div class="serverInfo">
-        Online: <label>0</label> / <label>20</label>
-      </div>
-    </div>
-  </div>
-</div>
+{% include 'includes/hero.twig' %}
 
 {% include 'includes/nav.twig' with {'page': 'user',} %}
     

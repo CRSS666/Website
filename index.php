@@ -4,7 +4,9 @@
   require_once '_config.php';
 
   use Bramus\Router\Router;
-  
+
+  $curl = new anlutro\cURL\cURL;
+
   $router = new Router();
 
   session_start();
@@ -19,6 +21,12 @@
   
   if(isset($_SESSION['user']))
     $twig->addGlobal('user', $_SESSION['user']);
+
+  $res = $curl->get('https://crss.blurryface.xyz/api/v1/players');
+
+  $json = json_decode($res->body, true);
+
+  $twig->addGlobal('playerCount', count($json));
 
   $router->get('/', function() {
     global $twig;
