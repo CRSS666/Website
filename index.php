@@ -52,12 +52,12 @@
     echo $twig->render('rules.twig');
   });
 
-  $router->get('/map', function() {
+  $router->get('/map.js', function() {
     global $twig;
 
-    $twig->addGlobal('pageUri', '/map');
+    $twig->addGlobal('pageUri', '/map.js');
   
-    echo $twig->render('map.twig');
+    echo $twig->render('map.js.twig');
   });
 
   $router->get('/profile', function() {
