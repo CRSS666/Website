@@ -5,11 +5,14 @@ L.TileLayer.CRSSLayer = L.TileLayer.extend({
     const tileX = coordinate.x;
     const tileY = coordinate.y;
 
-    const url = ('https://cdn.theclashfruit.me/crss/map_new/{xd}/{yd}/tile.{x}.{y}.png')
+    const tileZ = coordinate.z;
+
+    const url = ('https://cdn.theclashfruit.me/crss/map/{z}/{xd}/{yd}/tile.{x}.{y}.png')
       .replace('{yd}', Math.floor(tileY / 10))
       .replace('{xd}', Math.floor(tileX / 10))
       .replace('{y}', tileY)
-      .replace('{x}', tileX);
+      .replace('{x}', tileX)
+      .replace('{z}', tileZ);
 
     return url;
   }
@@ -27,12 +30,12 @@ let mapLayer = L.tileLayer.crssLayer('https://cdn.theclashfruit.me/crss/map_new/
   noWrap: true,
 
   maxNativeZoom: 0,
-  minNativeZoom: 0,
+  minNativeZoom: -4,
 
-  minZoom: -2,
-  maxZoom: -2 + 12,
+  minZoom: -4,
+  maxZoom: -4 + 8,
 
-  zoomOffset: -12
+  zoomOffset: -8
 });
 
 let ropMarkers = L.layerGroup([
