@@ -18,14 +18,14 @@
   $twig->addGlobal('discord_auth', $_ENV['DISCORD_OAUTH']);
   
   $discord = new Discord(
-    $_ENV['DISCORD_CLIENT'], 
+    $_ENV['DISCORD_CLIENT'],
     $_ENV['DISCORD_SECRET'],
     $_ENV['DISCORD_REDIRECT']
   );
-  
+
   $mysql = new Database(
     $_ENV['MYSQL_HOST'],
     $_ENV['MYSQL_USER'],
     $_ENV['MYSQL_PASS'],
     $_ENV['MYSQL_DB']
-  );
+   );
