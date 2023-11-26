@@ -1,41 +1,35 @@
-<nav class="pageNav" id="navigation">
+<script src="/js/nav.js" type="module"></script>
+<div class="Nav-Toggle">Menu</div>
+<nav class="pageNav">
   <div class="container">
-    <ul class="navLeft">
-      <li>
-        <a {% if page == 'home' %} class="active" href="#" {% else %} href="/" {% endif %}>
-          Home
-        </a>
-      </li>
-      <li>
-        <a {% if page == 'nations' %} class="active" href="#" {% else %} href="/nations" {% endif %}>
-          Nations
-        </a>
-      </li>
-      <li>
-        <a {% if page == 'rules' %} class="active" href="#" {% else %} href="/rules" {% endif %}>
-          Rules
-        </a>
-      </li>
-      <li>
-        <a {% if page == 'map.js' %} class="active" href="#" {% else %} href="/map" {% endif %}>
-          Map
-        </a>
-      </li>
-    </ul>
-    <ul class="navRight">
+    <div class="navLeft">
+      <a {% if page == 'home' %} class="active" {% else %} href="/" {% endif %}>
+        Home
+      </a>
+      <a href="https://youtube.com/@CRSS666">Videos</a>
+      <a {% if page == 'gallery' %} class="active" {% else %} href="/gallery" {% endif %}>
+        Gallery
+      </a>
+      <a {% if page == 'nations' %} class="active" {% else %} href="/nations" {% endif %}>
+        Nations
+      </a>
+      <!--<a {% if page == 'rules' %} class="active" {% else %} href="/rules" {% endif %}>
+        Rules
+      </a>-->
+      <a {% if page == 'map.js' %} class="active" {% else %} href="/map" {% endif %}>
+        Map
+      </a>
+    </div>
+    <div class="navRight" style="display: none;">
       {% if user %}
-        <li>
-          <a class="userButton {% if page == 'profile' %}active{% endif %}" href="{% if page == 'profile' %}#{% else %}/profile{% endif %}">
-            {{ user.global_name }}
-          </a>
-        </li>
+        <a class="userButton {% if page == 'profile' %}active{% endif %}" href="{% if page == 'profile' %}#{% else %}/profile{% endif %}">
+          {{ user.global_name }}
+        </a>
       {% else %}
-        <li>
-          <a class="buttonPrimary" href="{{ discord_auth }}">
-            Login
-          </a>
-        </li>
+        <a class="buttonPrimary" href="{{ discord_auth }}">
+          Login
+        </a>
       {% endif %}
-    </ul>
+    </div>
   </div>
 </nav>

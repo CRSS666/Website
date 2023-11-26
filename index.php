@@ -44,12 +44,12 @@
     echo $twig->render('nations.twig');
   });
 
-  $router->get('/rules', function() {
+  $router->get('/gallery', function() {
     global $twig;
 
-    $twig->addGlobal('pageUri', '/rules');
+    $twig->addGlobal('pageUri', '/gallery');
   
-    echo $twig->render('rules.twig');
+    echo $twig->render('gallery.twig');
   });
 
   $router->get('/map', function() {
