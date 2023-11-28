@@ -28,4 +28,4 @@
     $_ENV['MYSQL_USER'],
     $_ENV['MYSQL_PASS'],
     $_ENV['MYSQL_DB']
-   );
+  );

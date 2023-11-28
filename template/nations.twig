@@ -8,9 +8,11 @@
   <div class="container">
     <h1>Nations</h1>
     <ul>
-      <li>
-        <a href="/nation/rop">Republic of Panorama</a>
-      </li>
+      {% for nation in nations %}
+        <li>
+          <a href="/nation/{{ nation.short }}">{{ nation.name }}</a>
+        </li>
+      {% endfor %}
     </ul>
   </div>
 </main>

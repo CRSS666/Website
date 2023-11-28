@@ -32,6 +32,7 @@
   $json = json_decode($res->body, true);
 
   $twig->addGlobal('playerCount', count($json));
+  $twig->addGlobal('nations', $nations);
 
   $router->get('/', function() {
     global $twig;
@@ -91,7 +92,7 @@
 
       echo $twig->render('404.twig');
     } else {
-      echo $twig->render('nation.twig', array('nation' => $nation));
+      echo $twig->render('nation.twig', array('nation' => $nations[$nation]));
     }
   });
 
