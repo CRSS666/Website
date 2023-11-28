@@ -14,8 +14,13 @@
   $nations = array(
     'rop' => array(
       'name' => 'Republic of Panorama',
-      'flag' => 'https://git.theclashfruit.me/CRSS/CRSS/raw/branch/main/Nations/Republic%20of%20Panorama/Flag.svg',
+      'flag' => 'https://raw.theclashfruit.me/CRSS/CRSS/main/Nations/Republic%20of%20Panorama/Flag.svg',
       'short' => 'rop',
+    ),
+    'drr' => array(
+      'name' => 'Democratic Republic of Rayland',
+      'flag' => 'https://raw.theclashfruit.me/CRSS/CRSS/main/Nations/Democratic%20Republic%20of%20Rayland/bannre.png',
+      'short' => 'drr'
     )
   );
   
@@ -73,6 +78,20 @@
       echo $twig->render('404.twig');
     } else {
       echo $twig->render('profile.twig', array('db_data' => $user));
+    }
+  });
+
+  $router->get('/nation/([a-z]+)', function ($nation) {
+    global $twig, $mysql, $nations;
+
+    $twig->addGlobal('pageUri', '/nation/' . $nation);
+
+    if(!$nations[$nation]) {
+      http_response_code(404);
+
+      echo $twig->render('404.twig');
+    } else {
+
     }
   });
 
