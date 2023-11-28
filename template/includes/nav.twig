@@ -20,7 +20,7 @@
         Map
       </a>
     </div>
-    <div class="navRight" style="display: none;">
+    <div class="navRight">
       {% if user %}
         <a class="userButton {% if page == 'profile' %}active{% endif %}" href="{% if page == 'profile' %}#{% else %}/profile{% endif %}">
           {{ user.global_name }}
