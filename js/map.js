@@ -67,7 +67,7 @@ let map = L.map('map', {
     transformation: new L.Transformation(1, 0, 1, 0),
     projection: L.Projection.LonLat
   }),
-}).setView([0, 0], 2);
+}).setView([ parseInt(center.split(';')[1]), parseInt(center.split(';')[0])], 2);
 
 let baseMaps = {
   "Overworld": mapLayer

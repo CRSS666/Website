@@ -62,6 +62,11 @@
     global $twig;
 
     $twig->addGlobal('pageUri', '/map');
+
+    if(isset($_GET['center']))
+      $twig->addGlobal('center', $_GET['center']);
+    else
+      $twig->addGlobal('center', '0;0');
   
     echo $twig->render('map.twig');
   });
