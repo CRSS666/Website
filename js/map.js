@@ -1,7 +1,5 @@
 L.TileLayer.CRSSLayer = L.TileLayer.extend({
   getTileUrl: function(coordinate) {
-    console.log(coordinate);
-
     const tileX = coordinate.x;
     const tileY = coordinate.y;
 
@@ -23,7 +21,7 @@ L.tileLayer.crssLayer = function(templateUrl, options) {
 }
 
 let mapLayer = L.tileLayer.crssLayer('https://cdn.theclashfruit.me/crss/map_new/{xd}/{yd}/tile.{x}.{y}.png', {
-  attribution: '&copy; <a href="https://crss.blurryface.xyz/">CRSS</a> players',
+  attribution: '&copy; <a href="https://crss.blurryface.xyz/">CRSS</a> Players | Tiles With <a href="https://unmined.net/">uNmINeD</a>.',
 
   tileSize: 256,
 
@@ -43,7 +41,7 @@ let ropMarkers = L.layerGroup([
     .bindPopup('Info Centre')
 ]);
 
-let rorMarkers = L.layerGroup([
+let drrMarkers = L.layerGroup([
 
 ]);
 
@@ -61,13 +59,25 @@ let playerMarkers = L.layerGroup([
 console.log(L.CRS.Simple.infinite)
 
 let map = L.map('map', {
-  layers: [mapLayer, miscMarkers, ropMarkers, rorMarkers, playerMarkers],
+  layers: [ 
+    mapLayer,
+
+    miscMarkers,
+
+    ropMarkers,
+    drrMarkers,
+    
+    playerMarkers
+  ],
   preferCanvas: true,
   crs: L.Util.extend(L.CRS.Simple, {
     transformation: new L.Transformation(1, 0, 1, 0),
     projection: L.Projection.LonLat
   }),
-}).setView([ parseInt(center.split(';')[1]), parseInt(center.split(';')[0])], 2);
+}).setView([ 
+  parseInt(center.split(';')[1]),
+  parseInt(center.split(';')[0]) 
+], 2);
 
 let baseMaps = {
   "Overworld": mapLayer
@@ -77,7 +87,7 @@ let overlayMaps = {
   "Players": playerMarkers,
   "Miscellaneous Markers": miscMarkers,
   "Markers in RoP": ropMarkers,
-  "Markers in DRoR": rorMarkers,
+  "Markers in DRR": drrMarkers,
 };
 
 let layerControl = L.control.layers(baseMaps, overlayMaps).addTo(map);
@@ -113,7 +123,6 @@ const updatePlayerPos = (players) =>{
         iconAnchor: [14, 14],
         popupAnchor: [0, -14]
       });
-
 
       const marker = L.marker([player.location.z, player.location.x], { icon: playerIcon })
         .bindPopup(`${player.displayName} (${Math.floor(player.location.x)}; ${Math.floor(player.location.y)}; ${Math.floor(player.location.z)})`);
