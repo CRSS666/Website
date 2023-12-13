@@ -31,7 +31,10 @@
 
   $json = json_decode($res->body, true);
 
-  $twig->addGlobal('playerCount', count($json));
+  if($json != null) {
+    $twig->addGlobal('playerCount', count($json));
+  }
+
   $twig->addGlobal('nations', $nations);
 
   $router->get('/', function() {
