@@ -3,20 +3,17 @@
 <nav class="pageNav">
   <div class="container">
     <div class="navLeft">
-      <a {% if page == 'home' %} class="active" {% else %} href="/" {% endif %}>
+      <a class="TransitionEnabled {% if page == 'home' %} active {% endif %}" href="/">
         Home
       </a>
-      <a {% if page == 'gallery' %} class="active" {% else %} href="/gallery" {% endif %}>
+      <a class="TransitionEnabled {% if page == 'gallery' %} active {% endif %}" href="/gallery">
         Gallery
       </a>
-      <a {% if page == 'nations' %} class="active" {% else %} href="/nations" {% endif %}>
+      <a class="TransitionEnabled {% if page == 'nations' %} active {% endif %}" href="/nations">
         Nations
       </a>
-      <!--<a {% if page == 'rules' %} class="active" {% else %} href="/rules" {% endif %}>
-        Rules
-      </a>-->
-      <a {% if page == 'map.js' %} class="active" {% else %} href="/map" {% endif %}>
-        Map
+      <a class="{% if page == 'map.js' %} active {% endif %}" href="/map">
+        Map & Rails
       </a>
     </div>
     <div class="navRight">

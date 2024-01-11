@@ -4,17 +4,15 @@
 
 {% include 'includes/nav.twig' with {'page': 'nations'} %}
 
-<main class="pageContent" id="content">
-  <div class="container">
-    <h1>Nations</h1>
-    <ul>
-      {% for nation in nations %}
-        <li>
-          <a href="/nation/{{ nation.short }}">{{ nation.name }}</a>
-        </li>
-      {% endfor %}
-    </ul>
-  </div>
+<main class="pageContent container">
+  <h1>Nations</h1>
+  <ul>
+    {% for nation in nations %}
+      <li>
+        <a href="/nation/{{ nation.short }}">{{ nation.name }}</a>
+      </li>
+    {% endfor %}
+  </ul>
 </main>
 
 {% include 'includes/footer.twig' %}

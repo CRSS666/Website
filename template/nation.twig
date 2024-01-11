@@ -4,20 +4,18 @@
 
 {% include 'includes/nav.twig' with {'page': 'nation'} %}
     
-<main class="pageContent" id="content">
-  <div class="container">
-    <ul>
-      <li>
-        code: {{ nation.short }}
-      </li>
-      <li>
-        full_name: {{ nation.name }}
-      </li>
-      <li>
-        flag: <img height="32px" src="{{ nation.flag }}"  alt="{{ nation.name }}'s flag." />
-      </li>
-    </ul>
-  </div>
+<main class="pageContent container">
+  <ul>
+    <li>
+      code: {{ nation.short }}
+    </li>
+    <li>
+      full_name: {{ nation.name }}
+    </li>
+    <li>
+      flag: <img height="32px" src="{{ nation.flag }}"  alt="{{ nation.name }}'s flag." />
+    </li>
+  </ul>
 </main>
 
 {% include 'includes/footer.twig' %}
