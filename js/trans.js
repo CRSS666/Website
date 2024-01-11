@@ -5,55 +5,62 @@
  *  Licensed under the Apache License. Please refer to the LICENSE file.
  */
 
+const transitionBufferingEvent = new Event("transitionBuffering");
+const transitionStartEvent = new Event("transitionStart");
+const transitionEndEvent = new Event("transitionEnd");
 const $ = selector => document.querySelector(selector);
-const Parser = new DOMParser();
-const MainElement = $("main");
+const parser = new DOMParser();
+const mainElement = $("main");
 
-export function EnableTransition( HyperlinkElement ) {
-	HyperlinkElement.addEventListener("click", Event => {
-		Event.preventDefault(); // Browser won't load the page when the hyperlink is pressed.
+export function enableTransition( hyperlinkElement ) {
+  hyperlinkElement.addEventListener("click", event => {
+    event.preventDefault(); // Browser won't load the page when the hyperlink is pressed.
 
-		const TargettedURL = HyperlinkElement.href;
-		const ActiveHyperlink = $(".pageNav .active");
+    loadURL(hyperlinkElement.href, true, hyperlinkElement);
+  });
+}
 
-		MainElement.classList.add("Loading");
+function loadURL( targettedURL, updateURL, hyperlinkElement ) {
+  const activeHyperlink = $(".pageNav .active");
 
-		fetch(TargettedURL)
-			.catch(Error => {
-				console.log(Error);
-				MainElement.classList.remove("Loading");
-			})
-			.then(Response => Response.text().then( FetchedPage => {
-				FetchedPage = Parser.parseFromString(FetchedPage, "text/html");
-				FetchedPage = {
-					Content: FetchedPage.querySelector("main").innerHTML,
-					Title: FetchedPage.querySelector("title").innerHTML,
-				}
+  mainElement.classList.add("buffering");
+  window.dispatchEvent(transitionBufferingEvent);
 
+  fetch(targettedURL + "?reduced")
+    .catch(error => {
+      console.log(error);
+      alert(error);
+      mainElement.classList.remove("buffering");
+    })
+    .then(response => response.text().then( fetchedPage => {
+      fetchedPage = parser.parseFromString(fetchedPage, "text/html");
+      fetchedPage = {
+        content: fetchedPage.querySelector("main").innerHTML,
+        title: fetchedPage.querySelector("title").innerHTML,
+      }
 
-				if (ActiveHyperlink) ActiveHyperlink.classList.remove("active");
-				HyperlinkElement.classList.add("active");
+      if (activeHyperlink) activeHyperlink.classList.remove("active");
+      if (hyperlinkElement) hyperlinkElement.classList.add("active");
 
-				history.pushState({}, FetchedPage.Title, TargettedURL);
-				$("title").innerHTML = FetchedPage.Title;
+      if (updateURL) history.pushState({}, fetchedPage.title, targettedURL);
+      $("title").innerHTML = fetchedPage.title;
 
-				MainElement.classList.remove("Loading");
-				MainElement.classList.add("InTransition");
+      mainElement.classList.remove("buffering");
+      mainElement.classList.add("transition");
 
-				let TransitionDuration = getComputedStyle(MainElement).transitionDuration;
-				TransitionDuration = parseFloat(TransitionDuration) * 1000;
+      let transitionDuration = getComputedStyle(mainElement).transitionDuration;
+      transitionDuration = parseFloat(transitionDuration) * 1000;
+      
+      window.dispatchEvent(transitionStartEvent);
 
-				console.log(TransitionDuration);
-
-				setTimeout(() => {
-					MainElement.innerHTML = FetchedPage.Content;
-					MainElement.classList.remove("InTransition");
-				}, TransitionDuration);
-
-			}));
-	});
+      setTimeout(() => {
+        mainElement.innerHTML = fetchedPage.content;
+        mainElement.classList.remove("transition");
+        window.dispatchEvent(transitionEndEvent);
+      }, transitionDuration);
+    }));
 }
 
 window.addEventListener("popstate", Event => {
-	window.location.href = window.location.href; // Lazy.
+  loadURL(window.location.href, false)
 });

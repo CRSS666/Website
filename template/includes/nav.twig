@@ -1,15 +1,16 @@
+{% if not reduced %}
 <script src="/js/nav.js" type="module"></script>
-<div class="Nav-Toggle">Menu</div>
+<div class="navToggle">Menu</div>
 <nav class="pageNav">
   <div class="container">
     <div class="navLeft">
-      <a class="TransitionEnabled {% if page == 'home' %} active {% endif %}" href="/">
+      <a class="transitionEnabled {% if page == 'home' %} active {% endif %}" href="/">
         Home
       </a>
-      <a class="TransitionEnabled {% if page == 'gallery' %} active {% endif %}" href="/gallery">
+      <a class="transitionEnabled {% if page == 'gallery' %} active {% endif %}" href="/gallery">
         Gallery
       </a>
-      <a class="TransitionEnabled {% if page == 'nations' %} active {% endif %}" href="/nations">
+      <a class="transitionEnabled {% if page == 'nations' %} active {% endif %}" href="/nations">
         Nations
       </a>
       <a class="{% if page == 'map.js' %} active {% endif %}" href="/map">
@@ -29,3 +30,4 @@
     </div>
   </div>
 </nav>
+{% endif %}

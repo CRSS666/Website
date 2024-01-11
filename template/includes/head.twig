@@ -1,3 +1,5 @@
+{% if reduced %} <title>{{ pageTitle }} &nbsp;&bull;&nbsp; Clyde's Real Survival SMP</title> {% endif %}
+{% if not reduced %}
 <!doctype html>
 <html lang="en">
   <head>
@@ -5,7 +7,7 @@
   
     <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
   
-    <title>Clyde's Real Survival SMP &bull; {{ pageTitle }}</title>
+    <title>{{ pageTitle }} &nbsp;&bull;&nbsp; Clyde's Real Survival SMP</title> 
 
     <meta name="name" content="Clyde's Real Survival SMP &bull; {{ pageTitle }}" />
     <meta name="description" content="A very cool minecraft SMP that updates to every version starting from b1.0." />
@@ -84,4 +86,4 @@
     <link rel="icon"       href="/favicon.ico">
     <link rel="stylesheet" href="/css/style.min.css">
   </head>
-  <body>
+  <body> {% endif %}

@@ -1,0 +1,28 @@
+// Dark Theme
+
+$pageBG: #202120;
+$pageFG: white;
+
+$accent: #527D52;
+$linkColor: #d0dfd0;
+
+$btnNormalBG: $accent;
+$btnNormalFG: white;
+$btnActiveBG: $accent;
+$btnActiveFG: white;
+
+$navBG: #272f27;
+$navBorder: #575f57;
+
+$cardNormalBG: #272727;
+$cardNormalFG: $pageFG;
+$cardNormalBorder: #575757;
+$cardActiveBG: $navBG;
+$cardActiveFG: $linkColor;
+$cardActiveBorder: $navBorder;
+
+$navLinkOutlineColor: #707f70;
+$navLinkNormalColor: #7E9E7E;
+$navLinkActiveColor: #DEFEDE;
+
+$headerOverlay: #101610;

@@ -1,5 +1,13 @@
-import { EnableTransition } from "/js/trans.js";
+import { enableTransition } from "/js/trans.js";
 
-document.querySelectorAll(".TransitionEnabled").forEach( HyperlinkElement => {
-	EnableTransition(HyperlinkElement);
-});
+function enableLinks() {
+	document.querySelectorAll(".transitionEnabled").forEach( hyperlinkElement => {
+		enableTransition(hyperlinkElement);
+		hyperlinkElement.classList.remove("transitionEnabled");
+	});
+}
+
+enableLinks();
+
+window.addEventListener("transitionEnd", enableLinks);
+

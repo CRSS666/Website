@@ -6,13 +6,16 @@
 
 <main class="pageContent container">
   <h1>Nations</h1>
-  <ul>
+  <div class="cards">
     {% for nation in nations %}
-      <li>
-        <a href="/nation/{{ nation.short }}">{{ nation.name }}</a>
-      </li>
+      <a class="card transitionEnabled" href="/nation/{{ nation.short }}">
+        <h1>{{ nation.name }}</h1>
+        <p>{{ nation.description }}</p>
+        <img class="icon" src="{{ nation.flag }}">
+      </a>
     {% endfor %}
-  </ul>
+  </div>
+
 </main>
 
 {% include 'includes/footer.twig' %}
