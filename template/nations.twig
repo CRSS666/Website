@@ -4,17 +4,18 @@
 
 {% include 'includes/nav.twig' with {'page': 'nations'} %}
 
-<main class="pageContent" id="content">
-  <div class="container">
-    <h1>Nations</h1>
-    <ul>
-      {% for nation in nations %}
-        <li>
-          <a href="/nation/{{ nation.short }}">{{ nation.name }}</a>
-        </li>
-      {% endfor %}
-    </ul>
+<main class="pageContent container">
+  <h1>Nations</h1>
+  <div class="cards">
+    {% for nation in nations %}
+      <a class="card transitionEnabled" href="/nation/{{ nation.short }}">
+        <h1>{{ nation.name }}</h1>
+        <p>{{ nation.description }}</p>
+        <img class="icon" src="{{ nation.flag }}">
+      </a>
+    {% endfor %}
   </div>
+
 </main>
 
 {% include 'includes/footer.twig' %}

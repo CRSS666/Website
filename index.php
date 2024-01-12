@@ -16,11 +16,13 @@
       'name' => 'Republic of Panorama',
       'flag' => 'https://raw.theclashfruit.me/CRSS/CRSS/main/Nations/Republic%20of%20Panorama/Flag.svg',
       'short' => 'rop',
+      'description' => 'Short description of R.O.P.',
     ),
     'drr' => array(
       'name' => 'Democratic Republic of Rayland',
       'flag' => 'https://raw.theclashfruit.me/CRSS/CRSS/main/Nations/Democratic%20Republic%20of%20Rayland/bannre.png',
-      'short' => 'drr'
+      'short' => 'drr',
+      'description' => 'Short description of D.R.R.',
     )
   );
   
@@ -36,6 +38,8 @@
   }
 
   $twig->addGlobal('nations', $nations);
+
+  $twig->addGlobal('reduced', isset($_GET['reduced']));
 
   $router->get('/', function() {
     global $twig;
