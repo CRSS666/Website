@@ -137,13 +137,13 @@ const updatePlayerPos = (players) =>{
       mappedPlayers[player.uniqueId] = playerMarker;
     } else {
       const playerIcon = L.icon({
-        iconUrl: `https://mc-heads.net/avatar/${player.displayName}`,
+        iconUrl: `https://mc-heads.net/avatar/${player.displayName}/16`,
         iconSize: [28, 28],
         iconAnchor: [14, 14],
         popupAnchor: [0, -14]
       });
 
-      const marker = L.marker([player.location.z, player.location.x], { icon: playerIcon })
+      const marker = L.marker([player.location.z, player.location.x], { icon: playerIcon, alt: player.displayName })
         .bindPopup(`${player.displayName} (${Math.floor(player.location.x)}; ${Math.floor(player.location.y)}; ${Math.floor(player.location.z)})`);
 
       playerMarkers.addLayer(marker);

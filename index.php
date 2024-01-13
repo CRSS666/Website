@@ -84,15 +84,21 @@
     global $twig, $mysql;
 
     $twig->addGlobal('pageUri', '/profile');
-    
-    $user = $mysql->getUserRecordFromId($_SESSION['user']['id']);
 
-    if($user == null) {
+    if (isset($_SESSION['user'])) {
+      $user = $mysql->getUserRecordFromId($_SESSION['user']['id']);
+
+      if ($user == null && $user['admin'] == 0) {
+        http_response_code(404);
+
+        echo $twig->render('404.twig');
+      } else {
+        echo $twig->render('profile.twig', array('db_data' => $user));
+      }
+    } else {
       http_response_code(404);
 
       echo $twig->render('404.twig');
-    } else {
-      echo $twig->render('profile.twig', array('db_data' => $user));
     }
   });
 
@@ -114,12 +120,12 @@
     global $twig, $mysql, $discord;
 
     $twig->addGlobal('pageUri', '/u/' . $name);
-    
+
     $user = $mysql->getUserRecordFromUsername($name);
-    
+
     if($user == null) {
       http_response_code(404);
-      
+
       echo $twig->render('404.twig');
     } else {
       echo $twig->render('user.twig', array('db_user' => $user));
@@ -133,16 +139,31 @@
 
     $twig->addGlobal('pageUri', '/admin');
 
-    $user = $mysql->getUserRecordFromId($_SESSION['user']['id']);
+    if (isset($_SESSION['user'])) {
+      $user  = $mysql->getUserRecordFromId($_SESSION['user']['id']);
 
-    if($user == null && $user['admin'] == 0) {
+      $users   = $mysql->getUsers();
+      $markers = $mysql->getMarkers();
+
+      if ($user == null && $user['admin'] == 0) {
+        http_response_code(404);
+
+        echo $twig->render('404.twig');
+      } else {
+        echo $twig->render('admin/index.twig', array('users' => $users, 'markers' => $markers));
+      }
+    } else {
       http_response_code(404);
 
       echo $twig->render('404.twig');
-    } else {
-      echo $twig->render('admin/index.twig', array('db_data' => $user));
     }
   });
+
+  // ---------------- Admin API ---------------- //
+
+  $adminApi = new Admin($router);
+
+  $adminApi->registerApiRoutes();
 
   // ----------------- 404 ----------------- //
 

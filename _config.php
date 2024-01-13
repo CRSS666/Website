@@ -6,6 +6,7 @@
   require __DIR__ . '/vendor/autoload.php';
   require __DIR__ . '/util/Database.php';
   require __DIR__ . '/util/Discord.php';
+  require __DIR__ . '/util/Admin.php';
 
   use Twig\Loader\FilesystemLoader;
 

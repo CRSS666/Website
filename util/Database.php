@@ -58,7 +58,23 @@
       }
     }
 
-    function getMarkers() {
+    function getUsers(): array | null {
+      $sql = 'SELECT * FROM users';
+
+      $stmt = $this->conn->prepare($sql);
+
+      $stmt->execute();
+
+      $res = $stmt->get_result();
+
+      if($res->num_rows > 0) {
+        return $res->fetch_all(MYSQLI_ASSOC);
+      } else {
+        return null;
+      }
+    }
+
+    function getMarkers(): array | null {
       $sql = 'SELECT * FROM markers';
 
       $stmt = $this->conn->prepare($sql);
