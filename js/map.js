@@ -36,21 +36,40 @@ let mapLayer = L.tileLayer.crssLayer('https://cdn.theclashfruit.me/crss/map_new/
   zoomOffset: -8
 });
 
-let ropMarkers = L.layerGroup([
-  L.marker([-75.5, 49.5])
-    .bindPopup('Info Centre')
-]);
+let ropMarkers = L.layerGroup([]);
 
-let drrMarkers = L.layerGroup([
+let drrMarkers = L.layerGroup([]);
 
-]);
+let miscMarkers = L.layerGroup([]);
 
-let miscMarkers = L.layerGroup([
-  L.marker([0.5, 0.5])
-    .bindPopup('0; 0'),
-  L.marker([1302.5, -661.5])
-    .bindPopup('The Dropper'),
-]);
+markers.forEach(marker => {
+  const coords = marker.data.split(';');
+
+  switch (marker.category) {
+    case 'rop':
+      ropMarkers
+        .addLayer(
+          L.marker([
+            parseInt(coords[0]), parseInt(coords[1])
+          ]).bindPopup(marker.name)
+        );
+      break;
+    case 'drr':
+      drrMarkers.addLayer(
+        L.marker([
+          parseInt(coords[0]), parseInt(coords[1])
+        ]).bindPopup(marker.name)
+      );
+      break;
+    default:
+      miscMarkers.addLayer(
+        L.marker([
+          parseInt(coords[0]), parseInt(coords[1])
+        ]).bindPopup(marker.name)
+      );
+      break;
+  }
+});
 
 let playerMarkers = L.layerGroup([
 

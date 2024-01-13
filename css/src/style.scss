@@ -314,7 +314,7 @@ a {
       
       &, > * { transition: 0.16s }
 
-      &:not(.openned) {
+      &:not(.opened) {
         opacity: 0;
         pointer-events: none;
 

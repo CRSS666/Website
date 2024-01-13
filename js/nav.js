@@ -4,15 +4,15 @@ const navToggle = $(".navToggle");
 const menu = $(".pageNav > .container");
 
 navToggle.onclick = () => {
-  const menuToggled = menu.classList.contains("openned");
+  const menuToggled = menu.classList.contains("opened");
 
   if (menuToggled) {
-    menu.classList.remove("openned");
+    menu.classList.remove("opened");
   } else {
-    menu.classList.add("openned");
+    menu.classList.add("opened");
   }
 
   navToggle.innerHTML = menuToggled ? "Menu" : "Close";
 }
 
-window.addEventListener("transitionBuffering", () => menu.classList.remove("openned"));
+window.addEventListener("transitionBuffering", () => menu.classList.remove("opened"));

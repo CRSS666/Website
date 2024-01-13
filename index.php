@@ -33,9 +33,10 @@
 
   $json = json_decode($res->body, true);
 
-  if($json != null) {
+  if($json != null)
     $twig->addGlobal('playerCount', count($json));
-  }
+  else
+    $twig->addGlobal('playerCount', $json);
 
   $twig->addGlobal('nations', $nations);
 
@@ -66,9 +67,10 @@
   });
 
   $router->get('/map', function() {
-    global $twig;
+    global $twig, $mysql;
 
     $twig->addGlobal('pageUri', '/map');
+    $twig->addGlobal('markers', json_encode($mysql->getMarkers()));
 
     if(isset($_GET['center']))
       $twig->addGlobal('center', $_GET['center']);
@@ -123,6 +125,26 @@
       echo $twig->render('user.twig', array('db_user' => $user));
     }
   });
+
+  // ---------------- Admin ---------------- //
+
+  $router->get('/admin', function() {
+    global $twig, $mysql;
+
+    $twig->addGlobal('pageUri', '/admin');
+
+    $user = $mysql->getUserRecordFromId($_SESSION['user']['id']);
+
+    if($user == null && $user['admin'] == 0) {
+      http_response_code(404);
+
+      echo $twig->render('404.twig');
+    } else {
+      echo $twig->render('admin/index.twig', array('db_data' => $user));
+    }
+  });
+
+  // ----------------- 404 ----------------- //
 
   $router->set404(function() {
     global $twig;

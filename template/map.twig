@@ -1,9 +1,13 @@
 {% include 'includes/head.twig' with {'pageTitle': 'Map'} %}
 
 <div id="map"></div>
-<a id="homeLink" href="/">Go Home</a>
 
-<script>const center = "{{ center }}";</script>
+<script>
+  const center = "{{ center }}";
+
+  const markers = {{ markers|raw }};
+</script>
+
 <script src="js/map.js"></script>
 
 {% include 'includes/foot.twig' %}
