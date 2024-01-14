@@ -26,7 +26,7 @@
     ),
     'cnk' => array(
       'name' => 'Chunkia',
-      'flag' => 'https://media.discordapp.net/attachments/1130734223398027384/1195826298665312306/chunkia512.png?ex=65b56706&is=65a2f206&hm=853b0a204eea69fda145d3e66021a7035501b34f89de1f798fc3701de8fbe09b&=&format=webp&quality=lossless',
+      'flag' => 'https://raw.theclashfruit.me/CRSS/CRSS/main/Nations/Chunkia/chunkia512.png',
       'short' => 'cnk',
       'description' => 'In the chaos of Minecraft, chunk errors are inevitable. Chunkia is based in one.',
     )
