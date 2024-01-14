@@ -23,6 +23,12 @@
       'flag' => 'https://raw.theclashfruit.me/CRSS/CRSS/main/Nations/Democratic%20Republic%20of%20Rayland/bannre.png',
       'short' => 'drr',
       'description' => 'Short description of D.R.R.',
+    ),
+    'cnk' => array(
+      'name' => 'Chunkia',
+      'flag' => 'https://media.discordapp.net/attachments/1130734223398027384/1195826298665312306/chunkia512.png?ex=65b56706&is=65a2f206&hm=853b0a204eea69fda145d3e66021a7035501b34f89de1f798fc3701de8fbe09b&=&format=webp&quality=lossless',
+      'short' => 'cnk',
+      'description' => 'In the chaos of Minecraft, chunk errors are inevitible. Chunkia is based in one.',
     )
   );
   
