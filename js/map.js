@@ -5,7 +5,7 @@ L.TileLayer.CRSSLayer = L.TileLayer.extend({
 
     const tileZ = coordinate.z;
 
-    const url = ('https://cdn.theclashfruit.me/crss/map/{z}/{xd}/{yd}/tile.{x}.{y}.png')
+    const url = ('https://cdn-new.theclashfruit.me/crss/tiles/zoom.{z}/{xd}/{yd}/tile.{x}.{y}.png')
       .replace('{yd}', Math.floor(tileY / 10))
       .replace('{xd}', Math.floor(tileX / 10))
       .replace('{y}', tileY)
@@ -20,7 +20,7 @@ L.tileLayer.crssLayer = function(templateUrl, options) {
   return new L.TileLayer.CRSSLayer(templateUrl, options);
 }
 
-let mapLayer = L.tileLayer.crssLayer('https://cdn.theclashfruit.me/crss/map_new/{xd}/{yd}/tile.{x}.{y}.png', {
+let mapLayer = L.tileLayer.crssLayer('https://cdn-new.theclashfruit.me/crss/tiles/zoom.{z}/{xd}/{yd}/tile.{x}.{y}.png', {
   attribution: '&copy; <a href="https://crss.blurryface.xyz/">CRSS</a> Players | Tiles With <a href="https://unmined.net/">uNmINeD</a>.',
 
   tileSize: 256,
