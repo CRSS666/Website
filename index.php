@@ -12,11 +12,11 @@
   session_start();
 
   $nations = array(
-    'rop' => array(
-      'name' => 'Republic of Panorama',
+    'psf' => array(
+      'name' => 'Panorama Socialist Federation',
       'flag' => 'https://raw.theclashfruit.me/CRSS/CRSS/main/Nations/Republic%20of%20Panorama/Flag.svg',
-      'short' => 'rop',
-      'description' => 'Short description of R.O.P.',
+      'short' => 'psf',
+      'description' => 'The first nation on CRSS, previously known as ROP.',
     ),
     'drr' => array(
       'name' => 'Democratic Republic of Rayland',
