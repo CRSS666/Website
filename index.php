@@ -1,5 +1,5 @@
 <?php
-  global $twig;
+  global $twig, $mysql;
 
   require_once '_config.php';
 
@@ -32,8 +32,15 @@
     )
   );
   
-  if(isset($_SESSION['user']))
-    $twig->addGlobal('user', $_SESSION['user']);
+  if(isset($_SESSION['user'])) {
+    $dbUser = $mysql->getUserRecordFromId($_SESSION['user']['id']);
+
+    $user = $_SESSION['user'];
+
+    $user['is_admin'] = $dbUser['is_admin'];
+
+    $twig->addGlobal('user', $user);
+  }
 
   $res = $curl->get('https://crss.blurryface.xyz/api/v1/players');
 
@@ -45,6 +52,7 @@
     $twig->addGlobal('playerCount', $json);
 
   $twig->addGlobal('nations', $nations);
+  $twig->addGlobal('dc_uri', 'https://discord.com/api/oauth2/authorize?client_id=1144248396467683338&redirect_uri=' . urlencode($_ENV['DISCORD_REDIRECT']) . '&response_type=code&scope=identify%20guilds&state=' . urlencode($_SERVER['REQUEST_URI']));
 
   $twig->addGlobal('reduced', isset($_GET['reduced']));
 
@@ -152,16 +160,45 @@
       $markers = $mysql->getMarkers();
 
       if ($user == null && $user['admin'] == 0) {
-        http_response_code(404);
+        http_response_code(401);
 
-        echo $twig->render('404.twig');
+        echo '<style>body { overflow: hidden; height: 100svh; background: black; display: flex; justify-content: center; align-items: center; }</style><img src="https://http.cat/401" alt="401 Unauthorized" />';
       } else {
         echo $twig->render('admin/index.twig', array('users' => $users, 'markers' => $markers));
       }
     } else {
-      http_response_code(404);
+      http_response_code(401);
 
-      echo $twig->render('404.twig');
+      echo '<style>body { overflow: hidden; height: 100svh; background: black; display: flex; justify-content: center; align-items: center; }</style><img src="https://http.cat/401" alt="401 Unauthorized" />';
+    }
+  });
+
+  $router->get('/admin/__data/page/([a-z]+)', function($page) {
+    global $twig, $mysql;
+
+    if (isset($_SESSION['user'])) {
+      $user  = $mysql->getUserRecordFromId($_SESSION['user']['id']);
+
+      $users   = $mysql->getUsers();
+      $markers = $mysql->getMarkers();
+
+      if ($user == null && $user['admin'] == 0) {
+        http_response_code(401);
+
+        echo '<style>body { overflow: hidden; height: 100svh; background: black; display: flex; justify-content: center; align-items: center; }</style><img src="https://http.cat/401" alt="401 Unauthorized" />';
+      } else {
+        try {
+          echo $twig->render('admin/pages/' . urlencode($page) . '.twig', array('users' => $users, 'markers' => $markers));
+        } catch (Exception $e) {
+          http_response_code(404);
+
+          echo $twig->render('admin/pages/404.twig');
+        }
+      }
+    } else {
+      http_response_code(401);
+
+      echo '<style>body { overflow: hidden; height: 100svh; background: black; display: flex; justify-content: center; align-items: center; }</style><img src="https://http.cat/401" alt="401 Unauthorized" />';
     }
   });
 

@@ -1,0 +1,30 @@
+<table class="table">
+  <thead>
+  <tr>
+    <th scope="col">id</th>
+    <th scope="col">username</th>
+    <th scope="col">display_name</th>
+    <th scope="col">is_admin</th>
+    <th scope="col">date</th>
+    <th scope="col">actions</th>
+  </tr>
+  </thead>
+  <tbody>
+  {% for user in users %}
+    <tr>
+      <th scope="row">{{ user.id }}</th>
+      <td>{{ user.username }}</td>
+      <td>{{ user.display_name }}</td>
+      <td>{{ user.is_admin == 1 ? "true" : "false" }}</td>
+      <td>{{ user.date }}</td>
+      <td>
+        {% if user.is_admin == 1 %}
+          <button type="button" class="btn btn-success" data-bs-toggle="modal" data-bs-target="#confirmModal">Revoke Admin</button>
+        {% else %}
+          <button type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#confirmModal">Make Admin</button>
+        {% endif %}
+      </td>
+    </tr>
+  {% endfor %}
+  </tbody>
+</table>

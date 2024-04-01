@@ -21,17 +21,22 @@
         $guildIds[] = $guild['id'];
       }
       
-      if(!in_array('1127731341283307520', $guildIds)) {
+      if(!in_array('1127731341283307520', $guildIds) || !in_array('1195393418151596032', $guildIds)) {
         echo json_encode(array(
           'error' => true,
-          'error_description' => 'You are not in the CRSS guild.'
+          'error_description' => 'You are not in any of CRSS\'s guilds.'
         ));
       } else {
         $_SESSION['user'] = $discord->getUser($res['access_token']);
         
         $mysql->createUserRecord($_SESSION['user']);
-        
-        header('Location: /');
+
+
+        if (isset($_GET['state'])) {
+          header('Location: ' . $_GET['state']);
+        } else {
+          header('Location: /');
+        }
       }
     } else {
       echo json_encode($res);

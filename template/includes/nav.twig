@@ -16,14 +16,19 @@
       <a class="{% if page == 'map.js' %} active {% endif %}" href="/map">
         Map & Rails
       </a>
+      {% if user.is_admin == 1 %}
+        <a href="/admin">
+          Admin Panel
+        </a>
+      {% endif %}
     </div>
     <div class="navRight">
       {% if user %}
-        <a class="userButton {% if page == 'profile' %}active{% endif %}" href="{% if page == 'profile' %}#{% else %}/profile{% endif %}">
+        <a class="transitionEnabled userButton {% if page == 'profile' %}active{% endif %}" href="{% if page == 'profile' %}#{% else %}/profile{% endif %}">
           {{ user.global_name }}
         </a>
       {% else %}
-        <a class="buttonPrimary" href="{{ discord_auth }}">
+        <a class="buttonPrimary" href="{{ dc_uri }}">
           Login
         </a>
       {% endif %}
