@@ -20,13 +20,13 @@ export function enableTransition( hyperlinkElement ) {
   });
 }
 
-function loadURL( targettedURL, updateURL, hyperlinkElement ) {
+function loadURL( targetedURL, updateURL, hyperlinkElement ) {
   const activeHyperlink = $(".pageNav .active");
 
   mainElement.classList.add("buffering");
   window.dispatchEvent(transitionBufferingEvent);
 
-  fetch(targettedURL + "?reduced")
+  fetch(targetedURL + "?reduced")
     .catch(error => {
       console.log(error);
       alert(error);
@@ -42,7 +42,7 @@ function loadURL( targettedURL, updateURL, hyperlinkElement ) {
       if (activeHyperlink) activeHyperlink.classList.remove("active");
       if (hyperlinkElement) hyperlinkElement.classList.add("active");
 
-      if (updateURL) history.pushState({}, fetchedPage.title, targettedURL);
+      if (updateURL) history.pushState({}, fetchedPage.title, targetedURL);
       $("title").innerHTML = fetchedPage.title;
 
       mainElement.classList.remove("buffering");
