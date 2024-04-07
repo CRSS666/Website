@@ -10,7 +10,7 @@
     {% for nation in nations %}
       <a class="card transitionEnabled" href="/nation/{{ nation.short }}">
         <h1>{{ nation.name }}</h1>
-        <p>{{ nation.description }}</p>
+        <p>{{ nation.short_description }}</p>
         <img class="icon" src="{{ nation.flag }}">
       </a>
     {% endfor %}

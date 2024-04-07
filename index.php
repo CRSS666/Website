@@ -16,18 +16,21 @@
       'name' => 'Panorama Socialist Federation',
       'flag' => 'https://raw.theclashfruit.me/CRSS/CRSS/main/Nations/Republic%20of%20Panorama/Flag.svg',
       'short' => 'psf',
+      'short_description' => 'The first nation, prev. known as ROP.',
       'description' => 'The first nation on CRSS, previously known as ROP.',
     ),
     'drr' => array(
       'name' => 'Democratic Republic of Rayland',
       'flag' => 'https://raw.theclashfruit.me/CRSS/CRSS/main/Nations/Democratic%20Republic%20of%20Rayland/bannre.png',
       'short' => 'drr',
-      'description' => 'Short description of D.R.R.',
+      'short_description' => 'Short description of D.R.R.',
+      'description' => 'Full description of D.R.R', //does this support html and line breaks
     ),
     'cnk' => array(
       'name' => 'Chunkia',
       'flag' => 'https://raw.theclashfruit.me/CRSS/CRSS/main/Nations/Chunkia/chunkia512.png',
       'short' => 'cnk',
+      'short_description', => 'Chunkia is based in a chaotic landscape',
       'description' => 'In the chaos of Minecraft, chunk errors are inevitable. Chunkia is based in one.',
     )
   );
