@@ -38,7 +38,7 @@
       'flag' => 'https://raw.theclashfruit.me/CRSS/CRSS/main/Nations/The%20Toaster-K%C3%B6nigreich/The%20Toaster-K%C3%B6nigreich%20Flag.png',
       'short' => 'ttk',
       'short_description' => 'The Toaster-Königreich is the Industrialized Nation of CRSS',
-      'description' => 'In the vast landsacpe of CRSS, The Toaster-Königreich is one of the most industrialized Marxist district of CRSS. With Charge Industries as one of the main government controled company in the nation.',
+      'description' => 'In the vast landsacpe of CRSS, The Toaster-Königreich is one of the most industrialized Marxist district of CRSS. With Charge Industries as one of the main government controlled company in the nation.',
     )
   );
   
