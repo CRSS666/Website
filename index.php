@@ -32,7 +32,7 @@
       'short' => 'cnk',
       'short_description' => 'Chunkia is based in a chaotic landscape',
       'description' => 'In the chaos of Minecraft, chunk errors are inevitable. Chunkia is based in one.',
-    )
+    ),
     'ttk' => array(
       'name' => 'The Toaster-Königreich',
       'flag' => 'https://raw.theclashfruit.me/Lupancham/CRSS/main/Nations/The%20Toaster-K%C3%B6nigreich/The%20Toaster-K%C3%B6nigreich%20Flag.png',
