@@ -1,6 +1,9 @@
-name: ️Upload Website
+name: Upload Website
 
-on: [ push ]
+on:
+  push:
+    branches:
+      - main
 
 jobs:
   sftp:
