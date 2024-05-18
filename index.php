@@ -85,6 +85,14 @@
     echo $twig->render('nations.twig');
   });
 
+  $router->get('/companies', function() {
+    global $twig;
+
+    $twig->addGlobal('pageUri', '/companies');
+    
+    echo $twig->render('companies.twig');
+  });
+
   $router->get('/gallery', function() {
     global $twig;
 
