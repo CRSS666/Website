@@ -151,6 +151,21 @@
     }
   });
 
+  $router->get('/company/([a-z]+)', function ($company) {
+    global $twig, $mysql, $companies;
+
+    $twig->addGlobal('pageUri', '/company/' . $company);
+
+    if(!$companies[$company]) {
+      http_response_code(404);
+
+      echo $twig->render('404.twig');
+    } else {
+      echo $twig->render('nation.twig', array('nation' => $companies[$company]));
+    }
+  });
+
+
   $router->get('/u/([a-z0-9_\.]+)', function($name) {
     global $twig, $mysql, $discord;
 
