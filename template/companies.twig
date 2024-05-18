@@ -8,7 +8,7 @@
   <h1>Companies</h1>
   <div class="cards">
     {% for company in companies %}
-      <a class="card transitionEnabled" href="/nation/{{ company.short }}">
+      <a class="card transitionEnabled" href="/company/{{ company.short }}">
         <h1>{{ company.name }}</h1>
         <p>{{ company.short_description }}</p>
         <img class="icon" src="{{ company.logo }}">
