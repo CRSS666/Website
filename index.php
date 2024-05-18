@@ -19,13 +19,6 @@
       'short_description' => 'The first nation, prev. known as ROP.',
       'description' => 'The first nation on CRSS, previously known as ROP.',
     ),
-    'drr' => array(
-      'name' => 'Democratic Republic of Rayland',
-      'flag' => 'https://raw.theclashfruit.me/CRSS/CRSS/main/Nations/Democratic%20Republic%20of%20Rayland/bannre.png',
-      'short' => 'drr',
-      'short_description' => 'Short description of D.R.R.',
-      'description' => 'Full description of D.R.R', //does this support html and line breaks
-    ),
     'cnk' => array(
       'name' => 'Chunkia',
       'flag' => 'https://raw.theclashfruit.me/CRSS/CRSS/main/Nations/Chunkia/chunkia512.png',
@@ -39,6 +32,16 @@
       'short' => 'ttk',
       'short_description' => 'The Toaster-Königreich is the Industrialized Nation of CRSS',
       'description' => 'In the vast landsacpe of CRSS, The Toaster-Königreich is one of the most industrialized Marxist district of CRSS. With Charge Industries as one of the main government controlled company in the nation.',
+    )
+  );
+
+  $companies = array(
+    'fbk' => array(
+      'name' => 'FedBank',
+      'logo' => 'https://raw.theclashfruit.me/CRSS/CRSS/main/Nations/Republic%20of%20Panorama/Flag.svg',
+      'short' => 'fbk',
+      'short_description' => 'An International Bank, owned by the PSF government',
+      'description' => 'FedBank is an International bank owned and controlled by the Panorama Socialist Federation\'s Government. The main building is in PSF, but there is a FedBank in TTK too.'
     )
   );
   

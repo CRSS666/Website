@@ -1,0 +1,25 @@
+{% include 'includes/head.twig' with {'pageTitle': company.name} %}
+
+{% include 'includes/hero.twig' %}
+
+{% include 'includes/nav.twig' with {'page': 'company'} %}
+    
+<main class="pageContent container">
+  <ul>
+    <li>
+      code: {{ company.short }}
+    </li>
+    <li>
+      name: {{ company.name }}
+    </li>
+    <li>
+      flag: <img height="32px" src="{{ company.logo }}"  alt="{{ company.name }}'s flag." />
+    </li>
+    <li>
+      description: {{company.description}}
+    </li>
+  </ul>
+</main>
+
+{% include 'includes/footer.twig' %}
+{% include 'includes/foot.twig' %}
