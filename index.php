@@ -65,6 +65,7 @@
     $twig->addGlobal('playerCount', $json);
 
   $twig->addGlobal('nations', $nations);
+  $twig->addGlobal('companies', $companies);
   $twig->addGlobal('dc_uri', 'https://discord.com/api/oauth2/authorize?client_id=1144248396467683338&redirect_uri=' . urlencode($_ENV['DISCORD_REDIRECT']) . '&response_type=code&scope=identify%20guilds&state=' . urlencode($_SERVER['REQUEST_URI']));
 
   $twig->addGlobal('reduced', isset($_GET['reduced']));
