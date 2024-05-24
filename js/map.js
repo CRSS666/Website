@@ -50,21 +50,21 @@ markers.forEach(marker => {
       ropMarkers
         .addLayer(
           L.marker([
-            parseInt(coords[0]), parseInt(coords[1])
+            parseFloat(coords[0]), parseFloat(coords[1])
           ]).bindPopup(marker.name)
         );
       break;
     case 'drr':
       drrMarkers.addLayer(
         L.marker([
-          parseInt(coords[0]), parseInt(coords[1])
+          parseFloat(coords[0]), parseFloat(coords[1])
         ]).bindPopup(marker.name)
       );
       break;
     default:
       miscMarkers.addLayer(
         L.marker([
-          parseInt(coords[0]), parseInt(coords[1])
+          parseFloat(coords[0]), parseFloat(coords[1])
         ]).bindPopup(marker.name)
       );
       break;
@@ -94,8 +94,8 @@ let map = L.map('map', {
     projection: L.Projection.LonLat
   }),
 }).setView([ 
-  parseInt(center.split(';')[1]),
-  parseInt(center.split(';')[0]) 
+  parseFloat(center.split(';')[1]),
+  parseFloat(center.split(';')[0]) 
 ], 2);
 
 let baseMaps = {
