@@ -35,7 +35,7 @@
     ),
     'rob' => array(
       'name' => 'Republic of Budapest',
-      'flag' => 'https://raw.theclashfruit.me/CRSS/CRSS/main/Nations/The%20Toaster-K%C3%B6nigreich/The%20Toaster-K%C3%B6nigreich%20Flag.png',
+      'flag' => 'https://raw.theclashfruit.me/CRSS/CRSS/main/Nations/Republic%20of%20Budapest/Assets/Flag.svg',
       'short' => 'ttk',
       'short_description' => 'Republic of Budapest is a country located to the west of the map.',
       'description' => 'Republic of Budapest is a country located to the west of the map.',
