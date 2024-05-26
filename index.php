@@ -36,7 +36,7 @@
     'rob' => array(
       'name' => 'Republic of Budapest',
       'flag' => 'https://raw.theclashfruit.me/CRSS/CRSS/main/Nations/Republic%20of%20Budapest/Assets/Flag.svg',
-      'short' => 'ttk',
+      'short' => 'rob',
       'short_description' => 'Republic of Budapest is a country located to the west of the map.',
       'description' => 'Republic of Budapest is a country located to the west of the map.',
     )
