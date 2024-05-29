@@ -19,26 +19,43 @@
       'short_description' => 'The first nation, prev. known as ROP.',
       'description' => 'The first nation on CRSS, previously known as ROP.',
     ),
-    'drr' => array(
-      'name' => 'Democratic Republic of Rayland',
-      'flag' => 'https://raw.theclashfruit.me/CRSS/CRSS/main/Nations/Democratic%20Republic%20of%20Rayland/bannre.png',
-      'short' => 'drr',
-      'short_description' => 'Short description of D.R.R.',
-      'description' => 'Full description of D.R.R', //does this support html and line breaks
-    ),
     'cnk' => array(
       'name' => 'Chunkia',
       'flag' => 'https://raw.theclashfruit.me/CRSS/CRSS/main/Nations/Chunkia/chunkia512.png',
       'short' => 'cnk',
       'short_description' => 'Chunkia is based in a chaotic landscape',
       'description' => 'In the chaos of Minecraft, chunk errors are inevitable. Chunkia is based in one.',
-    )
+    ),
     'ttk' => array(
       'name' => 'The Toaster-Königreich',
       'flag' => 'https://raw.theclashfruit.me/CRSS/CRSS/main/Nations/The%20Toaster-K%C3%B6nigreich/The%20Toaster-K%C3%B6nigreich%20Flag.png',
       'short' => 'ttk',
       'short_description' => 'The Toaster-Königreich is the Industrialized Nation of CRSS',
       'description' => 'In the vast landsacpe of CRSS, The Toaster-Königreich is one of the most industrialized Marxist district of CRSS. With Charge Industries as one of the main government controlled company in the nation.',
+    ),
+    'rob' => array(
+      'name' => 'Republic of Budapest',
+      'flag' => 'https://raw.theclashfruit.me/CRSS/CRSS/main/Nations/Republic%20of%20Budapest/Assets/Flag.svg',
+      'short' => 'rob',
+      'short_description' => 'Republic of Budapest is a country located to the west of the map.',
+      'description' => 'Republic of Budapest is a country located to the west of the map.',
+    )
+  );
+
+  $companies = array(
+    'fbk' => array(
+      'name' => 'FedBank',
+      'logo' => 'https://raw.theclashfruit.me/CRSS/CRSS/main/Nations/Republic%20of%20Panorama/Flag.svg',
+      'short' => 'fbk',
+      'short_description' => 'An International Bank, owned by the PSF government',
+      'description' => 'FedBank is an International bank owned and controlled by the Panorama Socialist Federation\'s Government. The main building is in PSF, but there is a FedBank in TTK too.'
+    ),
+    'ntn' => array(
+      'name' => 'Northern',
+      'logo' => 'https://raw.theclashfruit.me/CRSS/CRSS/main/Companies/Chunkia/northern.svg',
+      'short' => 'ntn',
+      'short_description' => 'The Northern Company.',
+      'description' => 'Creators of the H1 and the Northern Complex, Northern is dedicated to improving the CRSS experience.'
     )
   );
   
@@ -62,6 +79,7 @@
     $twig->addGlobal('playerCount', $json);
 
   $twig->addGlobal('nations', $nations);
+  $twig->addGlobal('companies', $companies);
   $twig->addGlobal('dc_uri', 'https://discord.com/api/oauth2/authorize?client_id=1144248396467683338&redirect_uri=' . urlencode($_ENV['DISCORD_REDIRECT']) . '&response_type=code&scope=identify%20guilds&state=' . urlencode($_SERVER['REQUEST_URI']));
 
   $twig->addGlobal('reduced', isset($_GET['reduced']));
@@ -80,6 +98,14 @@
     $twig->addGlobal('pageUri', '/nations');
     
     echo $twig->render('nations.twig');
+  });
+
+  $router->get('/companies', function() {
+    global $twig;
+
+    $twig->addGlobal('pageUri', '/companies');
+    
+    echo $twig->render('companies.twig');
   });
 
   $router->get('/gallery', function() {
@@ -139,6 +165,21 @@
       echo $twig->render('nation.twig', array('nation' => $nations[$nation]));
     }
   });
+
+  $router->get('/company/([a-z]+)', function ($company) {
+    global $twig, $mysql, $companies;
+
+    $twig->addGlobal('pageUri', '/company/' . $company);
+
+    if(!$companies[$company]) {
+      http_response_code(404);
+
+      echo $twig->render('404.twig');
+    } else {
+      echo $twig->render('nation.twig', array('nation' => $companies[$company]));
+    }
+  });
+
 
   $router->get('/u/([a-z0-9_\.]+)', function($name) {
     global $twig, $mysql, $discord;
