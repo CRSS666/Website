@@ -49,6 +49,13 @@
       'short' => 'fbk',
       'short_description' => 'An International Bank, owned by the PSF government',
       'description' => 'FedBank is an International bank owned and controlled by the Panorama Socialist Federation\'s Government. The main building is in PSF, but there is a FedBank in TTK too.'
+    ),
+    'ntn' => array(
+      'name' => 'Northern',
+      'logo' => 'https://raw.theclashfruit.me/CRSS/CRSS/main/Companies/Chunkia/northern.svg',
+      'short' => 'ntn',
+      'short_description' => 'The Northern Company.',
+      'description' => 'Creators of the H1 and the Northern Complex, Northern is dedicated to improving the CRSS experience.'
     )
   );
   
