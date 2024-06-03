@@ -19,43 +19,5 @@
   </div>
 </main>
 
-<style>
-/* TCF PLEASE MOVE THIS TO THE CORRECT CSS FILE, I AM TOO LAZY */
-  
-@media (max-width: 700px) {
-  .nationLayout {
-    display: flex;
-    flex-direction: column;
-    gap: 1rem;
-  }
-}
-
-@media (min-width: 701px) {
-  .nationLayout {
-    display: flex;
-    flex-direction: row;
-    gap: 3rem;
-  }
-}
-
-p, h1, h2, h3 {
-  margin: 0;
-}
-
-.nationFlag {
-  border-radius: 12px;
-}
-
-.nationCoreInfo {
-  flex-grow: 1;
-  flex-basis: 250px;
-  gap: 1rem;
-  display: flex;
-  flex-direction: column;
-  flex-wrap: wrap;
-}
-
-</style>
-
 {% include 'includes/footer.twig' %}
 {% include 'includes/foot.twig' %}
