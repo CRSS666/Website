@@ -23,7 +23,7 @@
     ),
     'cnk' => array(
       'name' => 'Chunkia',
-      'flag' => 'https://raw.theclashfruit.me/CRSS/CRSS/main/Nations/Chunkia/chunkia512.png',
+      'flag' => 'https://raw.theclashfruit.me/CRSS/CRSS/main/Nations/Chunkia/Chunkia.svg',
       'short' => 'cnk',
       'short_description' => 'Chunkia is based in a chaotic landscape',
       'description' => 'In the chaos of Minecraft, chunk errors are inevitable. Chunkia is based in one.',
