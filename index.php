@@ -176,7 +176,7 @@
 
       echo $twig->render('404.twig');
     } else {
-      echo $twig->render('nation.twig', array('nation' => $companies[$company]));
+      echo $twig->render('company.twig', array('company' => $companies[$company]));
     }
   });
 
