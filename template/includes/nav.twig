@@ -13,8 +13,11 @@
       <a class="transitionEnabled {% if page == 'nations' %} active {% endif %}" href="/nations">
         Nations
       </a>
+      <a class="transitionEnabled {% if page == 'companies' %} active {% endif %}" href="/companies">
+        Companies
+      </a>
       <a class="{% if page == 'map.js' %} active {% endif %}" href="/map">
-        Map & Rails
+        Map
       </a>
       {% if user.is_admin == 1 %}
         <a href="/admin">
