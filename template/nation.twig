@@ -7,12 +7,12 @@
 <main class="pageContent container">
   <div class="nationLayout">
     <div class="nationCoreInfo">
-      <h1> {{ nation.name }} </h1>
+      <h1 style="margin: 0"> {{ nation.name }} </h1>
       <p style="font-family:monospace"> {{ nation.short }} </p>
       <img class="nationFlag" src="{{ nation.flag }}" alt="{{ nation.name }}'s flag." />
     </div>
     <div class="nationCoreInfo">
-      <h3> Description </h3>
+      <h2 style="margin: 0"> Description </h2>
       <p> {{ nation.description }} </p>
     </div>
   </div>
@@ -32,7 +32,7 @@
   .nationLayout {
     display: flex;
     flex-direction: row;
-    gap: 1rem;
+    gap: 3rem;
   }
 }
 
@@ -43,6 +43,7 @@
 .nationCoreInfo {
   flex-grow: 1;
   flex-basis: 250px;
+  gap: 1rem;
   display: flex;
   flex-direction: column;
   flex-wrap: wrap;
