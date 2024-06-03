@@ -3,13 +3,20 @@
 {% include 'includes/hero.twig' %}
 
 {% include 'includes/nav.twig' with {'page': 'nation'} %}
-    
+
 <main class="pageContent container">
-  <h1> {{ nation.name }} </h1>
-  <p style="font-family:monospace"> {{ nation.short }} </p>
-  <hr>
-  <img style="border-radius: 12px" height="128px" src="{{ nation.flag }}"  alt="{{ nation.name }}'s flag." />
-  <p> {{ nation.description }} </p>
+  <div class="nationLayout">
+    <div class="nationCoreInfo">
+      <h1> {{ nation.name }} </h1>
+      <p style="font-family:monospace"> {{ nation.short }} </p>
+      <hr>
+      <img class="nationFlag" src="{{ nation.flag }}" alt="{{ nation.name }}'s flag." />
+    </div>
+    <div class="nationCoreInfo">
+      <h3> Description </h3>
+      <p> {{ nation.description }} </p>
+    </div>
+  </div>
 </main>
 
 {% include 'includes/footer.twig' %}
