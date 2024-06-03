@@ -18,6 +18,7 @@
       'short' => 'psf',
       'short_description' => 'The first nation, prev. known as ROP.',
       'description' => 'The first nation on CRSS, previously known as ROP.',
+      'leader' => 'iforgotaname',
     ),
     'cnk' => array(
       'name' => 'Chunkia',
@@ -25,6 +26,7 @@
       'short' => 'cnk',
       'short_description' => 'Chunkia is based in a chaotic landscape',
       'description' => 'In the chaos of Minecraft, chunk errors are inevitable. Chunkia is based in one.',
+      'leader' => 'WorldWidePixel',
     ),
     'ttk' => array(
       'name' => 'The Toaster-Königreich',
@@ -32,6 +34,7 @@
       'short' => 'ttk',
       'short_description' => 'The Toaster-Königreich is the Industrialized Nation of CRSS',
       'description' => 'In the vast landsacpe of CRSS, The Toaster-Königreich is one of the most industrialized Marxist district of CRSS. With Charge Industries as one of the main government controlled company in the nation.',
+      'leader' => 'Lupancham',
     ),
     'rob' => array(
       'name' => 'Republic of Budapest',
@@ -39,6 +42,7 @@
       'short' => 'rob',
       'short_description' => 'Republic of Budapest is a country located to the west of the map.',
       'description' => 'Republic of Budapest is a country located to the west of the map.',
+      'leader' => 'TheClashFruit',
     )
   );
 
