@@ -5,11 +5,11 @@
 {% include 'includes/nav.twig' with {'page': 'nation'} %}
     
 <main class="pageContent container">
-  <h1> {{ nation.name }}}} </h1>
-  <p> {{ nation.short }}}} </p>
+  <h1> {{ nation.name }} </h1>
+  <p style="font-family:monospace"> {{ nation.short }} </p>
   <hr>
-  <img height="128px" src="{{ nation.flag }}"  alt="{{ nation.name }}'s flag." />
-  <p> {{ nation.description }}}} </p>
+  <img style="border-radius: 12px" height="128px" src="{{ nation.flag }}"  alt="{{ nation.name }}'s flag." />
+  <p> {{ nation.description }} </p>
 </main>
 
 {% include 'includes/footer.twig' %}
