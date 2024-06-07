@@ -47,6 +47,16 @@
       'description' => 'Republic of Budapest is a country located to the west of the map.',
       'leader' => 'TheClashFruit',
       'leader_term' => 'Leader',
+    ),
+    'rfm' => array(
+      'name' => 'Romanian Federation of Minecraft',
+      'flag' => 'nothing',
+      'short' => 'rfm',
+      'short_description' => 'Helping modernise CRSS',
+      'description' => 'RFM is a nation helping in the modernisation of CRSS, not only by practices but by livelihood.',
+      'leader' => 'polycord'
+      'leader_term' => 'President'
+    )
     )
   );
 
