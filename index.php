@@ -54,8 +54,8 @@
       'short' => 'rfm',
       'short_description' => 'Helping modernise CRSS',
       'description' => 'RFM is a nation helping in the modernisation of CRSS, not only by practices but by livelihood.',
-      'leader' => 'polycord'
-      'leader_term' => 'President'
+      'leader' => 'polycord',
+      'leader_term' => 'President',
     )
   );
 
