@@ -50,7 +50,7 @@
     ),
     'rfm' => array(
       'name' => 'Romanian Federation of Minecraft',
-      'flag' => 'nothing',
+      'flag' => 'https://raw.theclashfruit.me/CRSS/CRSS/main/Nations/Romanian%20Federation%20of%20Minecraft/FMC%20flag.svg$0',
       'short' => 'rfm',
       'short_description' => 'Helping modernise CRSS',
       'description' => 'RFM is a nation helping in the modernisation of CRSS, not only by practices but by livelihood.',
