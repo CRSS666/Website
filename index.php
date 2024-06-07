@@ -57,7 +57,6 @@
       'leader' => 'polycord'
       'leader_term' => 'President'
     )
-    )
   );
 
   $companies = array(
