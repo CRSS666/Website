@@ -12,6 +12,7 @@
   session_start();
 
   $nations = array(
+
     'psf' => array(
       'name' => 'Panorama Socialist Federation',
       'flag' => 'https://raw.theclashfruit.me/CRSS/CRSS/main/Nations/Republic%20of%20Panorama/Flag.svg',
@@ -56,7 +57,16 @@
       'description' => 'RFM is a nation helping in the modernisation of CRSS, not only by practices but by livelihood.',
       'leader' => 'polycord',
       'leader_term' => 'President',
-    )
+    ),
+      'tcg' => array(
+      'name' => 'Toasteric Colony of Grapetopia',
+      'flag' => 'https://raw.theclashfruit.me/CRSS/CRSS/main/Nations/Grapetopia/TCG.svg',
+      'short' => 'tcg',
+      'short_description' => 'A colony of TTK, ~10K blocks out of 0,0',
+      'description' => 'This is a colony of TTK, an island with an area of ~382m², located at ~7.5k X and -2.8k Z',
+      'leader' => 'MrLagSwitcha',
+      'leader_term' => 'Leader in charge',
+    ),
   );
 
   $companies = array(
