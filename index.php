@@ -83,6 +83,13 @@
       'short' => 'ntn',
       'short_description' => 'The Northern Company.',
       'description' => 'Creators of the H1 and the Northern Complex, Northern is dedicated to improving the CRSS experience.'
+    ),
+    'ci' => array(
+    'name' => 'Charge Industries',
+    'logo' => 'https://raw.theclashfruit.me/CRSS/CRSS/main/Companies/The%20Toaster-Königreich/Charge%20Industries.png',
+    'short' => 'ci',
+    'short_description' => 'Charge Industries™.',
+    'description' => 'Endermen farm, brought to you by Charge Industries.'
     )
   );
   
