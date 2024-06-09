@@ -12,26 +12,33 @@
   session_start();
 
   $nations = array(
+
     'psf' => array(
       'name' => 'Panorama Socialist Federation',
       'flag' => 'https://raw.theclashfruit.me/CRSS/CRSS/main/Nations/Republic%20of%20Panorama/Flag.svg',
       'short' => 'psf',
       'short_description' => 'The first nation, prev. known as ROP.',
       'description' => 'The first nation on CRSS, previously known as ROP.',
+      'leader' => 'iforgotaname',
+      'leader_term' => 'Prime Minister',
     ),
     'cnk' => array(
       'name' => 'Chunkia',
-      'flag' => 'https://raw.theclashfruit.me/CRSS/CRSS/main/Nations/Chunkia/chunkia512.png',
+      'flag' => 'https://raw.theclashfruit.me/CRSS/CRSS/main/Nations/Chunkia/Chunkia.svg',
       'short' => 'cnk',
       'short_description' => 'Chunkia is based in a chaotic landscape',
       'description' => 'In the chaos of Minecraft, chunk errors are inevitable. Chunkia is based in one.',
+      'leader' => 'WorldWidePixel',
+      'leader_term' => 'Leader',
     ),
     'ttk' => array(
       'name' => 'The Toaster-Königreich',
-      'flag' => 'https://raw.theclashfruit.me/CRSS/CRSS/main/Nations/The%20Toaster-K%C3%B6nigreich/The%20Toaster-K%C3%B6nigreich%20Flag.png',
+      'flag' => 'https://raw.theclashfruit.me/CRSS/CRSS/main/Nations/The%20Toaster-K%C3%B6nigreich/The%20Toaster-K%C3%B6nigreich%20Flag.svg',
       'short' => 'ttk',
       'short_description' => 'The Toaster-Königreich is the Industrialized Nation of CRSS',
       'description' => 'In the vast landsacpe of CRSS, The Toaster-Königreich is one of the most industrialized Marxist district of CRSS. With Charge Industries as one of the main government controlled company in the nation.',
+      'leader' => 'Lupancham',
+      'leader_term' => 'Chancellor',
     ),
     'rob' => array(
       'name' => 'Republic of Budapest',
@@ -39,7 +46,27 @@
       'short' => 'rob',
       'short_description' => 'Republic of Budapest is a country located to the west of the map.',
       'description' => 'Republic of Budapest is a country located to the west of the map.',
-    )
+      'leader' => 'TheClashFruit',
+      'leader_term' => 'Leader',
+    ),
+    'rfm' => array(
+      'name' => 'Romanian Federation of Minecraft',
+      'flag' => 'https://raw.theclashfruit.me/CRSS/CRSS/main/Nations/Romanian%20Federation%20of%20Minecraft/FMC%20flag.svg',
+      'short' => 'rfm',
+      'short_description' => 'Helping modernise CRSS',
+      'description' => 'RFM is a nation helping in the modernisation of CRSS, not only by practices but by livelihood.',
+      'leader' => 'polycord',
+      'leader_term' => 'President',
+    ),
+      'tcg' => array(
+      'name' => 'Toasteric Colony of Grapetopia',
+      'flag' => 'https://raw.theclashfruit.me/CRSS/CRSS/main/Nations/Grapetopia/TCG.svg',
+      'short' => 'tcg',
+      'short_description' => 'A colony of TTK, ~10K blocks out of 0,0',
+      'description' => 'This is a colony of TTK, an island with an area of ~382m², located at ~7.5k X and -2.8k Z',
+      'leader' => 'MrLagSwitcha',
+      'leader_term' => 'Leader in charge',
+    ),
   );
 
   $companies = array(
@@ -176,7 +203,7 @@
 
       echo $twig->render('404.twig');
     } else {
-      echo $twig->render('nation.twig', array('nation' => $companies[$company]));
+      echo $twig->render('company.twig', array('company' => $companies[$company]));
     }
   });
 

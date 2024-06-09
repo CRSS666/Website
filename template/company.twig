@@ -5,20 +5,18 @@
 {% include 'includes/nav.twig' with {'page': 'company'} %}
     
 <main class="pageContent container">
-  <ul>
-    <li>
-      code: {{ company.short }}
-    </li>
-    <li>
-      name: {{ company.name }}
-    </li>
-    <li>
-      flag: <img height="32px" src="{{ company.logo }}"  alt="{{ company.name }}'s flag." />
-    </li>
-    <li>
-      description: {{company.description}}
-    </li>
-  </ul>
+  <div class="nationLayout">
+    <div class="nationCoreInfo">
+      <h1 style="margin: 0"> {{ company.name }} </h1>
+      <p style="font-family:monospace"> {{ company.short }} </p>
+      <h2> Logo </h2>
+      <img class="nationFlag" src="{{ company.logo }}" alt="{{ company.name }}'s logo." />
+    </div>
+    <div class="nationCoreInfo">
+      <h2 style="margin: 0"> Description </h2>
+      <p> {{ company.description }} </p>
+    </div>
+  </div>
 </main>
 
 {% include 'includes/footer.twig' %}

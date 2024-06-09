@@ -6,7 +6,8 @@
   -webkit-tap-highlight-color: transparent; // fuck you (L)
 }
 
-html, body {
+html,
+body {
   overflow-x: hidden;
 }
 
@@ -51,7 +52,8 @@ main {
   box-sizing: border-box;
 }
 
-ul, ol {
+ul,
+ol {
   list-style-position: inside;
 }
 
@@ -146,6 +148,7 @@ img {
     object-fit: cover;
 
     mask-image: linear-gradient(to right, transparent, rgba(red, 0.3));
+
     @media (prefers-color-scheme: dark) {
       mask-image: linear-gradient(to right, transparent, rgba(red, 0.1));
     }
@@ -172,11 +175,11 @@ a {
 
 .pageHero {
   background-image: linear-gradient(rgba(light.$headerOverlay, 0.9), rgba(light.$headerOverlay, 0.9)), // white overlay. yeah that's a bit of an ugly hack?
-  url('/img/Panorama-Lens-Blur.png');
+    url('/img/Panorama-Lens-Blur.png');
 
   @media (prefers-color-scheme: dark) {
     background-image: linear-gradient(rgba(dark.$headerOverlay, 0.9), rgba(dark.$headerOverlay, 0.9)),
-    url('/img/Panorama-Lens-Blur.png');
+      url('/img/Panorama-Lens-Blur.png');
   }
 
   background-position: center;
@@ -184,7 +187,7 @@ a {
 
   height: 220px;
 
-  > .container {
+  >.container {
     height: 100%;
 
     display: flex;
@@ -197,7 +200,7 @@ a {
       justify-content: center;
     }
 
-    > div {
+    >div {
       display: flex;
       flex-direction: column;
 
@@ -249,6 +252,7 @@ a {
   @media (min-width: 601px) {
     display: none;
   }
+
   z-index: 10;
 
   position: fixed;
@@ -287,7 +291,7 @@ a {
     background: dark.$navBG;
   }
 
-  > .container {
+  >.container {
     padding: 16px 24px;
 
     display: flex;
@@ -306,6 +310,7 @@ a {
 
       backdrop-filter: blur(15px);
       background: rgba(light.$navBG, 0.86);
+
       @media (prefers-color-scheme: dark) {
         background: rgba(dark.$navBG, 0.9);
       }
@@ -314,7 +319,8 @@ a {
       flex-direction: column;
       gap: 64px;
 
-      &, > * {
+      &,
+      >* {
         transition: 0.16s
       }
 
@@ -323,13 +329,13 @@ a {
         pointer-events: none;
 
         //&, > * { transition: 0.12s }
-        > * {
+        >* {
           transform: translateX(32px);
         }
       }
     }
 
-    > div {
+    >div {
       margin: 0;
 
       display: flex;
@@ -343,13 +349,14 @@ a {
         flex-direction: column;
       }
 
-      > a {
+      >a {
         font-family: Outfit;
         user-select: none;
 
         font-size: 16px;
         box-sizing: border-box;
         color: light.$navLinkNormalColor;
+
         @media (prefers-color-scheme: dark) {
           color: dark.$navLinkNormalColor;
         }
@@ -380,7 +387,8 @@ a {
           pointer-events: none;
         }
 
-        &:hover, &.active {
+        &:hover,
+        &.active {
           //background: rgba(15, 23, 42, 0.1);
           color: light.$navLinkActiveColor;
           outline-color: light.$navLinkOutlineColor;
@@ -416,15 +424,16 @@ a {
   //
 }
 
+
 .pageFooter {
   opacity: 0.8;
 
-  > .SNS-Links {
+  >.SNS-Links {
     display: flex;
     flex-wrap: wrap;
     gap: 16px;
 
-    > a {
+    >a {
       display: flex;
       gap: 8px;
 
