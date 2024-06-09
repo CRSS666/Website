@@ -1,48 +1,261 @@
-{% include 'includes/head.twig' with {'pageTitle': 'Home'} %}
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
 
-{% include 'includes/hero.twig' %}
+    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0" />
 
-{% include 'includes/nav.twig' with {'page': 'home',} %}
-    
-<main class="pageContent container">
-  <h1>Welcome to Clyde's Real Survival SMP (CRSS)!</h1>
-  <p>This is a server made by Blurryface, hosted by TheClashFruit, played by Devin, and sponsored by TheClashFruit's Real Hosting Company Limited Liability Company (TCFRHCLLC) and Pridecraft Studios!</p>
-  
+    <title>Clyde's Real Survival SMP &bull; {{ page.title }}</title>
 
-  <h2 id="info">Information</h2>
-  <ol>
+    <meta name="name" content="Clyde's Real Survival SMP &bull; {{ page.title }}" />
+    <meta name="description" content="A very cool minecraft SMP that updates to every version starting from b1.0." />
+    <meta name="keywords" content="crss, minecraft, beta, alpha, release, new, 1.0, version, {{ page.title }}" />
+    <meta name="theme-color" content="#537F53" />
 
-    This is CRSS, a server hosted by Blurryface which updates every 1st of the month, ever since beta 1.0.<br />
-    
-    We've been doing this for a good while, and our server has many structures and has had many players.<br />
-    
-    It currently has 3 nations, PSF, DRR and CNK, each one with unique builds and terrain.<br />
-    
-    We have an Youtube channel where we post some bits of our server, you can stay tuned to it to get to know more about us.<br />
-    
-    The seed used in the world is the same seed the first Main Menu Panorama used, and a pack with a panorama from the area which we built over, on the original coordinates, is due to be released soon™.<br />
-    Stay tuned to our Modrinth to download it!
+    <meta property="og:site_name" content="Clyde's Real Survival SMP" />
+    <meta property="og:title" content="{{ page.title }}" />
+    <meta property="og:type" content="website" />
+    <meta property="og:locale" content="en_GB" />
+    <meta property="og:url" content="https://crss.cc{{ page.path }}" />
+    <meta property="og:image" content="https://crss.cc/_internal/card?page={{ page.path }}" />
+    <meta property="og:description" content="A very cool minecraft SMP that updates to every version starting from b1.0." />
 
-  </ol>
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta property="twitter:domain" content="crss.cc" />
+    <meta property="twitter:url" content="https://crss.cc{{ page.path }}" />
+    <meta name="twitter:title" content="Clyde's Real Survival SMP &bull; {{ page.title }}" />
+    <meta name="twitter:description" content="A very cool minecraft SMP that updates to every version starting from b1.0." />
+    <meta name="twitter:image" content="https://crss.cc/_internal/card?page={{ page.path }}" />
 
+    <script type="importmap">
+      {
+        "imports": {
+          "@crss/": "/js/"
+        }
+      }
+    </script>
 
+    <link rel="icon"       href="/favicon.ico" />
+    <link rel="stylesheet" href="/css/style.min.css" />
+  </head>
+  <body>
+  <header class="pageHero">
+    <div class="heroOverlay">
+      <div class="container">
+        <div>
+          {{ icon('logo') | raw }}
 
-  <h2 id="rules">Rules</h2>
-  <ol>
-    <li>
-      The usage of modified clients that gives unfair advantage to players (i.e. cheat clients) is not permitted. Even if you only use these clients for legit functions, such as FullBright, you'll still get banned. <b>TL;DR Do not cheat.</b><br />
-    </li>
-    <li>
-      Do not modify (or destroy) other players' constructions, or take their items, without their permission. <b>TL;DR Do not grief or steal.</b><br />
-    </li>
-    <!-- <li>
-      Attempting to scam people, from IRL or in-game negotiations, will lead to a ban. It's only permitted to "scam" if it fits the lore. <b>TL;DR: Don't scam</b>
-    </li> -->
-    <li>
-      The only exceptions to the second rule is if you're taking over something, such as a government.<br /> This has happened, for example, to the Panorama Socialist Federation, previously known as "Republic of Panorama".<br /> You're free to do any modifications to whatever, if it fits your government, and the other players approve of that take over.<br /> If they don't approve of it, your government may get re-taken over, and any changes may be undone by players.<br /> <b>TL;DR You "can" grief if you take a government over and need to do changes</b><br />
-  </ol>
-  <b>Failing to follow these rules will result in a ban.</b>
-</main>
+          <h1>Clyde's Real Survival SMP!</h1>
+        </div>
 
-{% include 'includes/footer.twig' %}
-{% include 'includes/foot.twig' %}
+        <div>
+          <label for="ip">
+            Server Address:
+          </label>
+
+          <input type="text" value="play.crss.cc" id="ip" readonly size="8" />
+
+          <label for="ip">
+            Version: {{ server.version }}
+          </label>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <nav class="navBar">
+    <div class="container">
+      <div class="navMobileContainer">
+        <button class="navToggle">
+          {{ icon('lucide.menu', { 'class': 'icon' }) | raw }}
+        </button>
+      </div>
+
+      <div class="navCollapse">
+        <ul>
+          <li>
+            <a href="#" class="active">
+              {{ icon('lucide.home', { 'class': 'icon' }) | raw }}
+
+              Home
+            </a>
+          </li>
+          <li>
+            <a href="/about">
+              {{ icon('lucide.at-sign', { 'class': 'icon' }) | raw }}
+
+              About
+            </a>
+          </li>
+          <li>
+            <a href="/gallery">
+              {{ icon('lucide.images', { 'class': 'icon' }) | raw }}
+
+              Gallery
+            </a>
+          </li>
+          <li>
+            <a href="/map">
+              {{ icon('lucide.map', { 'class': 'icon' }) | raw }}
+
+              Map
+            </a>
+          </li>
+          <li>
+            <a href="/game">
+              {{ icon('lucide.gamepad', { 'class': 'icon' }) | raw }}
+
+              In-Game
+            </a>
+          </li>
+        </ul>
+
+        <ul>
+          {% if user %}
+            <li>
+              <div class="dropDown">
+                <label>
+                  {{ icon('lucide.user', { 'class': 'icon' }) | raw }}
+
+                  {{ user.name }}
+                </label>
+
+                <div class="dropDownMenu">
+                  <ul>
+                    <li>
+                      <a href="/u/user">
+                        {{ icon('lucide.user', { 'class': 'icon' }) | raw }}
+
+                        Profile
+                      </a>
+                    </li>
+                    <li>
+                      <a href="/settings">
+                        {{ icon('lucide.settings', { 'class': 'icon' }) | raw }}
+
+                        Settings
+                      </a>
+                    </li>
+
+                    <li>
+                      <div class="divider"></div>
+                    </li>
+
+                    <li>
+                      <a href="/admin">
+                        {{ icon('lucide.layout-dashboard', { 'class': 'icon' }) | raw }}
+
+                        Admin
+                      </a>
+                    </li>
+
+                    <li>
+                      <div class="divider"></div>
+                    </li>
+
+                    <li>
+                      <a href="/logout">
+                        {{ icon('lucide.log-out', { 'class': 'icon' }) | raw }}
+
+                        Logout
+                      </a>
+                    </li>
+                  </ul>
+                </div>
+              </div>
+            </li>
+          {% else %}
+            <li>
+              <a href="/auth">
+                {{ icon('lucide.log-in', { 'class': 'icon' }) | raw }}
+
+                Login
+              </a>
+            </li>
+          {% endif %}
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+  <main class="pageContent">
+    <div class="container">
+      <h1>Home</h1>
+
+      <p>
+        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Asperiores beatae cum dicta dolor fugit hic inventore nostrum placeat provident saepe. At est ex excepturi exercitationem iure natus nisi soluta totam voluptatem voluptatum? Adipisci aliquid consectetur corporis delectus dolores, ea eius et hic inventore nesciunt nobis recusandae repellat sed! Delectus eaque excepturi inventore numquam quaerat? Ad alias aliquid aperiam cupiditate eos esse fugit illum iure laudantium modi molestiae numquam, odit officia quae quasi, quibusdam recusandae rem repellendus sapiente sint veniam vero vitae! Blanditiis dicta maiores nemo nesciunt rerum. Accusamus dolorum, eligendi itaque laborum magni modi obcaecati, officiis pariatur perspiciatis, tenetur unde.
+      </p>
+
+      <p>
+        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Asperiores beatae cum dicta dolor fugit hic inventore nostrum placeat provident saepe. At est ex excepturi exercitationem iure natus nisi soluta totam voluptatem voluptatum? Adipisci aliquid consectetur corporis delectus dolores, ea eius et hic inventore nesciunt nobis recusandae repellat sed! Delectus eaque excepturi inventore numquam quaerat? Ad alias aliquid aperiam cupiditate eos esse fugit illum iure laudantium modi molestiae numquam, odit officia quae quasi, quibusdam recusandae rem repellendus sapiente sint veniam vero vitae! Blanditiis dicta maiores nemo nesciunt rerum. Accusamus dolorum, eligendi itaque laborum magni modi obcaecati, officiis pariatur perspiciatis, tenetur unde.
+      </p>
+
+      <p>
+        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Asperiores beatae cum dicta dolor fugit hic inventore nostrum placeat provident saepe. At est ex excepturi exercitationem iure natus nisi soluta totam voluptatem voluptatum? Adipisci aliquid consectetur corporis delectus dolores, ea eius et hic inventore nesciunt nobis recusandae repellat sed! Delectus eaque excepturi inventore numquam quaerat? Ad alias aliquid aperiam cupiditate eos esse fugit illum iure laudantium modi molestiae numquam, odit officia quae quasi, quibusdam recusandae rem repellendus sapiente sint veniam vero vitae! Blanditiis dicta maiores nemo nesciunt rerum. Accusamus dolorum, eligendi itaque laborum magni modi obcaecati, officiis pariatur perspiciatis, tenetur unde.
+      </p>
+
+      <p>
+        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Asperiores beatae cum dicta dolor fugit hic inventore nostrum placeat provident saepe. At est ex excepturi exercitationem iure natus nisi soluta totam voluptatem voluptatum? Adipisci aliquid consectetur corporis delectus dolores, ea eius et hic inventore nesciunt nobis recusandae repellat sed! Delectus eaque excepturi inventore numquam quaerat? Ad alias aliquid aperiam cupiditate eos esse fugit illum iure laudantium modi molestiae numquam, odit officia quae quasi, quibusdam recusandae rem repellendus sapiente sint veniam vero vitae! Blanditiis dicta maiores nemo nesciunt rerum. Accusamus dolorum, eligendi itaque laborum magni modi obcaecati, officiis pariatur perspiciatis, tenetur unde.
+      </p>
+
+      <h2 id="rules">Rules</h2>
+
+      <ol>
+        <li>
+          Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nihil, sit.
+        </li>
+        <li>
+          Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nihil, sit.
+        </li>
+      </ol>
+    </div>
+  </main>
+
+  <footer class="pageFooter">
+    <div class="container">
+      <div>
+        <p>
+          Copyright &copy; 2024 CRSS
+        </p>
+
+        <p>
+          Website originally designed by Myadeleines, heavily modified and rewritten by TheClashFruit.
+        </p>
+      </div>
+
+      <div>
+        <ul>
+          <li>
+            <a href="https://modrinth.com/organization/crss">
+              {{ icon('simpleicons.modrinth', { 'width': '24', 'height': '24', 'fill': 'currentColor' }) | raw }}
+            </a>
+          </li>
+          <li>
+            <a href="https://git.theclashfruit.me/crss">
+              {{ icon('simpleicons.forgejo', { 'width': '24', 'height': '24', 'fill': 'currentColor' }) | raw }}
+            </a>
+          </li>
+          <li>
+            <a href="https://youtube.com/@CRSS666">
+              {{ icon('simpleicons.youtube', { 'width': '24', 'height': '24', 'fill': 'currentColor' }) | raw }}
+            </a>
+          </li>
+          <li>
+            <a href="https://discord.gg/rGjCKawPkS">
+              {{ icon('simpleicons.discord', { 'width': '24', 'height': '24', 'fill': 'currentColor' }) | raw }}
+            </a>
+          </li>
+        </ul>
+
+        <p>
+          CRSS/Website
+          <br />
+          {{ git.branch }}@<a href="https://git.theclashfruit.me/CRSS/Website/commit/{{ git.commit.sha }}">{{ git.commit.sha | slice(0, 7) }}</a>
+        </p>
+      </div>
+    </div>
+  </footer>
+
+  <script type="module" src="/js/main.js"></script>
+  </body>
+</html>

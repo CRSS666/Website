@@ -1,301 +1,84 @@
 <?php
-  global $twig, $mysql;
+  global $twig;
 
   require_once '_config.php';
 
   use Bramus\Router\Router;
+  use anlutro\cURL\cURL;
+  use Twig\TwigFunction;
 
-  $curl = new anlutro\cURL\cURL;
-
+  $curl   = new cURL();
   $router = new Router();
 
-  session_start();
+  session_start([
+    'cookie_lifetime' => 86400,
+  ]);
 
-  $nations = array(
+  $buildData = json_decode(file_get_contents('.build.json'));
 
-    'psf' => array(
-      'name' => 'Panorama Socialist Federation',
-      'flag' => 'https://raw.theclashfruit.me/CRSS/CRSS/main/Nations/Republic%20of%20Panorama/Flag.svg',
-      'short' => 'psf',
-      'short_description' => 'The first nation, prev. known as ROP.',
-      'description' => 'The first nation on CRSS, previously known as ROP.',
-      'leader' => 'iforgotaname',
-      'leader_term' => 'Prime Minister',
-    ),
-    'cnk' => array(
-      'name' => 'Chunkia',
-      'flag' => 'https://raw.theclashfruit.me/CRSS/CRSS/main/Nations/Chunkia/Chunkia.svg',
-      'short' => 'cnk',
-      'short_description' => 'Chunkia is based in a chaotic landscape',
-      'description' => 'In the chaos of Minecraft, chunk errors are inevitable. Chunkia is based in one.',
-      'leader' => 'WorldWidePixel',
-      'leader_term' => 'Leader',
-    ),
-    'ttk' => array(
-      'name' => 'The Toaster-Königreich',
-      'flag' => 'https://raw.theclashfruit.me/CRSS/CRSS/main/Nations/The%20Toaster-K%C3%B6nigreich/The%20Toaster-K%C3%B6nigreich%20Flag.svg',
-      'short' => 'ttk',
-      'short_description' => 'The Toaster-Königreich is the Industrialized Nation of CRSS',
-      'description' => 'In the vast landsacpe of CRSS, The Toaster-Königreich is one of the most industrialized Marxist district of CRSS. With Charge Industries as one of the main government controlled company in the nation.',
-      'leader' => 'Lupancham',
-      'leader_term' => 'Chancellor',
-    ),
-    'rob' => array(
-      'name' => 'Republic of Budapest',
-      'flag' => 'https://raw.theclashfruit.me/CRSS/CRSS/main/Nations/Republic%20of%20Budapest/Assets/Flag.svg',
-      'short' => 'rob',
-      'short_description' => 'Republic of Budapest is a country located to the west of the map.',
-      'description' => 'Republic of Budapest is a country located to the west of the map.',
-      'leader' => 'TheClashFruit',
-      'leader_term' => 'Leader',
-    ),
-    'rfm' => array(
-      'name' => 'Romanian Federation of Minecraft',
-      'flag' => 'https://raw.theclashfruit.me/CRSS/CRSS/main/Nations/Romanian%20Federation%20of%20Minecraft/FMC%20flag.svg',
-      'short' => 'rfm',
-      'short_description' => 'Helping modernise CRSS',
-      'description' => 'RFM is a nation helping in the modernisation of CRSS, not only by practices but by livelihood.',
-      'leader' => 'polycord',
-      'leader_term' => 'President',
-    ),
-      'tcg' => array(
-      'name' => 'Toasteric Colony of Grapetopia',
-      'flag' => 'https://raw.theclashfruit.me/CRSS/CRSS/main/Nations/Grapetopia/TCG.svg',
-      'short' => 'tcg',
-      'short_description' => 'A colony of TTK, ~10K blocks out of 0,0',
-      'description' => 'This is a colony of TTK, an island with an area of ~382m², located at ~7.5k X and -2.8k Z',
-      'leader' => 'MrLagSwitcha',
-      'leader_term' => 'Leader in charge',
-    ),
-  );
+  $iconsFun = new TwigFunction('icon', function($icon, $attributes = []) {
+    $iconName = str_replace('/', '', $icon);
 
-  $companies = array(
-    'fbk' => array(
-      'name' => 'FedBank',
-      'logo' => 'https://raw.theclashfruit.me/CRSS/CRSS/main/Nations/Republic%20of%20Panorama/Flag.svg',
-      'short' => 'fbk',
-      'short_description' => 'An International Bank, owned by the PSF government',
-      'description' => 'FedBank is an International bank owned and controlled by the Panorama Socialist Federation\'s Government. The main building is in PSF, but there is a FedBank in TTK too.'
-    ),
-    'ntn' => array(
-      'name' => 'Northern',
-      'logo' => 'https://raw.theclashfruit.me/CRSS/CRSS/main/Companies/Chunkia/northern.svg',
-      'short' => 'ntn',
-      'short_description' => 'The Northern Company.',
-      'description' => 'Creators of the H1 and the Northern Complex, Northern is dedicated to improving the CRSS experience.'
-    )
-  );
-  
-  if(isset($_SESSION['user'])) {
-    $dbUser = $mysql->getUserRecordFromId($_SESSION['user']['id']);
+    if (str_starts_with($iconName, 'simpleicons')) {
+      $iconName = str_replace('simpleicons.', '', $iconName);
 
-    $user = $_SESSION['user'];
+      $iconData = file_get_contents("./vendor/simple-icons/simple-icons/icons/$iconName.svg");
+    } else if (str_starts_with($iconName, 'lucide')) {
+      $iconName = str_replace('lucide.', '', $iconName);
 
-    $user['is_admin'] = $dbUser['is_admin'];
+      $iconData = file_get_contents("./vendor/theclashfruit/lucide-static-php/icons/$iconName.svg");
+    } else {
+      $iconName = str_replace('.', '/', $iconName);
 
-    $twig->addGlobal('user', $user);
-  }
+      $iconData = file_get_contents("./icons/$iconName.svg");
+    }
 
-  $res = $curl->get('https://crss.blurryface.xyz/api/v1/players');
+    foreach ($attributes as $key => $value) {
+      if ($key == 'class') {
+        $iconData = preg_replace('/(class="\b[^"]*)"/i', '$1 ' . $value . '"', $iconData);
 
-  $json = json_decode($res->body, true);
+        $dom = new DOMDocument("1.0");
+        $dom->preserveWhiteSpace = false;
+        $dom->formatOutput       = false;
+        $dom->loadXML($iconData);
 
-  if($json != null)
-    $twig->addGlobal('playerCount', count($json));
-  else
-    $twig->addGlobal('playerCount', $json);
+        $iconData = $dom->saveHTML();
+        $iconData = preg_replace('/(<!--\s.*)-->/i', '', $iconData);
+        $iconData = preg_replace('/\n/', ' ', $iconData);
+      } else {
+        $iconData = preg_replace('/(<svg\b[^><]*)>/i', '$1 ' . $key . '="' . $value . '">', $iconData);
+      }
+    }
 
-  $twig->addGlobal('nations', $nations);
-  $twig->addGlobal('companies', $companies);
-  $twig->addGlobal('dc_uri', 'https://discord.com/api/oauth2/authorize?client_id=1144248396467683338&redirect_uri=' . urlencode($_ENV['DISCORD_REDIRECT']) . '&response_type=code&scope=identify%20guilds&state=' . urlencode($_SERVER['REQUEST_URI']));
+    return $iconData;
+  });
 
-  $twig->addGlobal('reduced', isset($_GET['reduced']));
+  $twig->addFunction($iconsFun);
+
+  $twig->addGlobal('git', $buildData->git);
+
+  $twig->addGlobal('server', [
+    'version' => '1.11.2',
+  ]);
+
+  $twig->addGlobal('user', [
+    'name' => 'John Doe'
+  ]);
 
   $router->get('/', function() {
     global $twig;
 
-    $twig->addGlobal('pageUri', '/');
-    
-    echo $twig->render('index.twig');
+    echo $twig->render('index.twig', [
+      'page' => [
+        'title' => 'Home',
+        'path'  => '/',
+      ]
+    ]);
   });
 
-  $router->get('/nations', function() {
-    global $twig;
-
-    $twig->addGlobal('pageUri', '/nations');
-    
-    echo $twig->render('nations.twig');
-  });
-
-  $router->get('/companies', function() {
-    global $twig;
-
-    $twig->addGlobal('pageUri', '/companies');
-    
-    echo $twig->render('companies.twig');
-  });
-
-  $router->get('/gallery', function() {
-    global $twig;
-
-    $twig->addGlobal('pageUri', '/gallery');
-  
-    echo $twig->render('gallery.twig');
-  });
-
-  $router->get('/map', function() {
-    global $twig, $mysql;
-
-    $twig->addGlobal('pageUri', '/map');
-    $twig->addGlobal('markers', json_encode($mysql->getMarkers()));
-
-    if(isset($_GET['center']))
-      $twig->addGlobal('center', $_GET['center']);
-    else
-      $twig->addGlobal('center', '0;0');
-  
-    echo $twig->render('map.twig');
-  });
-
-  $router->get('/profile', function() {
-    global $twig, $mysql;
-
-    $twig->addGlobal('pageUri', '/profile');
-
-    if (isset($_SESSION['user'])) {
-      $user = $mysql->getUserRecordFromId($_SESSION['user']['id']);
-
-      if ($user == null && $user['admin'] == 0) {
-        http_response_code(404);
-
-        echo $twig->render('404.twig');
-      } else {
-        echo $twig->render('profile.twig', array('db_data' => $user));
-      }
-    } else {
-      http_response_code(404);
-
-      echo $twig->render('404.twig');
-    }
-  });
-
-  $router->get('/nation/([a-z]+)', function ($nation) {
-    global $twig, $mysql, $nations;
-
-    $twig->addGlobal('pageUri', '/nation/' . $nation);
-
-    if(!$nations[$nation]) {
-      http_response_code(404);
-
-      echo $twig->render('404.twig');
-    } else {
-      echo $twig->render('nation.twig', array('nation' => $nations[$nation]));
-    }
-  });
-
-  $router->get('/company/([a-z]+)', function ($company) {
-    global $twig, $mysql, $companies;
-
-    $twig->addGlobal('pageUri', '/company/' . $company);
-
-    if(!$companies[$company]) {
-      http_response_code(404);
-
-      echo $twig->render('404.twig');
-    } else {
-      echo $twig->render('company.twig', array('company' => $companies[$company]));
-    }
-  });
-
-
-  $router->get('/u/([a-z0-9_\.]+)', function($name) {
-    global $twig, $mysql, $discord;
-
-    $twig->addGlobal('pageUri', '/u/' . $name);
-
-    $user = $mysql->getUserRecordFromUsername($name);
-
-    if($user == null) {
-      http_response_code(404);
-
-      echo $twig->render('404.twig');
-    } else {
-      echo $twig->render('user.twig', array('db_user' => $user));
-    }
-  });
-
-  // ---------------- Admin ---------------- //
-
-  $router->get('/admin', function() {
-    global $twig, $mysql;
-
-    $twig->addGlobal('pageUri', '/admin');
-
-    if (isset($_SESSION['user'])) {
-      $user  = $mysql->getUserRecordFromId($_SESSION['user']['id']);
-
-      $users   = $mysql->getUsers();
-      $markers = $mysql->getMarkers();
-
-      if ($user == null && $user['admin'] == 0) {
-        http_response_code(401);
-
-        echo '<style>body { overflow: hidden; height: 100svh; background: black; display: flex; justify-content: center; align-items: center; }</style><img src="https://http.cat/401" alt="401 Unauthorized" />';
-      } else {
-        echo $twig->render('admin/index.twig', array('users' => $users, 'markers' => $markers));
-      }
-    } else {
-      http_response_code(401);
-
-      echo '<style>body { overflow: hidden; height: 100svh; background: black; display: flex; justify-content: center; align-items: center; }</style><img src="https://http.cat/401" alt="401 Unauthorized" />';
-    }
-  });
-
-  $router->get('/admin/__data/page/([a-z]+)', function($page) {
-    global $twig, $mysql;
-
-    if (isset($_SESSION['user'])) {
-      $user  = $mysql->getUserRecordFromId($_SESSION['user']['id']);
-
-      $users   = $mysql->getUsers();
-      $markers = $mysql->getMarkers();
-
-      if ($user == null && $user['admin'] == 0) {
-        http_response_code(401);
-
-        echo '<style>body { overflow: hidden; height: 100svh; background: black; display: flex; justify-content: center; align-items: center; }</style><img src="https://http.cat/401" alt="401 Unauthorized" />';
-      } else {
-        try {
-          echo $twig->render('admin/pages/' . urlencode($page) . '.twig', array('users' => $users, 'markers' => $markers));
-        } catch (Exception $e) {
-          http_response_code(404);
-
-          echo $twig->render('admin/pages/404.twig');
-        }
-      }
-    } else {
-      http_response_code(401);
-
-      echo '<style>body { overflow: hidden; height: 100svh; background: black; display: flex; justify-content: center; align-items: center; }</style><img src="https://http.cat/401" alt="401 Unauthorized" />';
-    }
-  });
-
-  // ---------------- Admin API ---------------- //
-
-  $adminApi = new Admin($router);
-
-  $adminApi->registerApiRoutes();
-
-  // ----------------- 404 ----------------- //
-
-  $router->set404(function() {
-    global $twig;
-
-    $twig->addGlobal('pageUri', '404');
-    
-    http_response_code(404);
-    
-    echo $twig->render('404.twig');
+  $router->get('/helloworld', function() {
+    echo '<!DOCTYPE html>';
+    echo '<h1>Hello World!!</h1>';
   });
 
   $router->run();
