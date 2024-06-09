@@ -1,0 +1,23 @@
+<header class="pageHero">
+  <div class="heroOverlay">
+    <div class="container">
+      <div>
+        {{ icon('logo') | raw }}
+
+        <h1>Clyde's Real Survival SMP!</h1>
+      </div>
+
+      <div>
+        <label for="ip">
+          Server Address:
+        </label>
+
+        <input type="text" value="play.crss.cc" id="ip" readonly size="8" />
+
+        <label for="ip">
+          Version: {{ server.version }}
+        </label>
+      </div>
+    </div>
+  </div>
+</header>

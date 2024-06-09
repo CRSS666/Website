@@ -12,11 +12,6 @@
   @media (prefers-color-scheme: dark) {
     scrollbar-color: $colorPrimary $colorSurfaceDark1;
   }
-
-  transition:
-    300ms color,
-    300ms background,
-    300ms border;
 }
 
 body {

@@ -1,0 +1,44 @@
+<footer class="pageFooter">
+  <div class="container">
+    <div>
+      <p>
+        Copyright &copy; {{ 'now' | date('Y') }} CRSS
+      </p>
+
+      <p>
+        Website originally designed by Myadeleines, heavily modified and rewritten by TheClashFruit.
+      </p>
+    </div>
+
+    <div>
+      <ul>
+        <li>
+          <a href="https://modrinth.com/organization/crss">
+            {{ icon('simpleicons.modrinth', { 'width': '24', 'height': '24', 'fill': 'currentColor' }) | raw }}
+          </a>
+        </li>
+        <li>
+          <a href="https://git.theclashfruit.me/crss">
+            {{ icon('simpleicons.forgejo', { 'width': '24', 'height': '24', 'fill': 'currentColor' }) | raw }}
+          </a>
+        </li>
+        <li>
+          <a href="https://youtube.com/@CRSS666">
+            {{ icon('simpleicons.youtube', { 'width': '24', 'height': '24', 'fill': 'currentColor' }) | raw }}
+          </a>
+        </li>
+        <li>
+          <a href="https://discord.gg/rGjCKawPkS">
+            {{ icon('simpleicons.discord', { 'width': '24', 'height': '24', 'fill': 'currentColor' }) | raw }}
+          </a>
+        </li>
+      </ul>
+
+      <p>
+        CRSS/Website
+        <br />
+        {{ git.branch }}@<a href="https://git.theclashfruit.me/CRSS/Website/commit/{{ git.commit.sha }}">{{ git.commit.sha | slice(0, 7) }}</a>
+      </p>
+    </div>
+  </div>
+</footer>

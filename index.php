@@ -34,20 +34,19 @@
     }
 
     foreach ($attributes as $key => $value) {
-      if ($key == 'class') {
+      if ($key == 'class')
         $iconData = preg_replace('/(class="\b[^"]*)"/i', '$1 ' . $value . '"', $iconData);
-
-        $dom = new DOMDocument("1.0");
-        $dom->preserveWhiteSpace = false;
-        $dom->formatOutput       = false;
-        $dom->loadXML($iconData);
-
-        $iconData = $dom->saveHTML();
-        $iconData = preg_replace('/(<!--\s.*)-->/i', '', $iconData);
-        $iconData = preg_replace('/\n/', ' ', $iconData);
-      } else {
+      else
         $iconData = preg_replace('/(<svg\b[^><]*)>/i', '$1 ' . $key . '="' . $value . '">', $iconData);
-      }
+
+      $dom = new DOMDocument('1.0');
+      $dom->preserveWhiteSpace = false;
+      $dom->formatOutput       = false;
+      $dom->loadXML($iconData);
+
+      $iconData = $dom->saveHTML();
+      $iconData = preg_replace('/(<!--\s.*)-->/i', '', $iconData);
+      $iconData = preg_replace('/\n/', ' ', $iconData);
     }
 
     return $iconData;

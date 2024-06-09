@@ -1,0 +1,114 @@
+<nav class="navBar">
+  <div class="container">
+    <div class="navMobileContainer">
+      <button class="navToggle">
+        {{ icon('lucide.menu', { 'class': 'icon' }) | raw }}
+      </button>
+    </div>
+
+    <div class="navCollapse">
+      <ul>
+        <li>
+          <a href="#" class="active">
+            {{ icon('lucide.home', { 'class': 'icon' }) | raw }}
+
+            Home
+          </a>
+        </li>
+        <li>
+          <a href="/about">
+            {{ icon('lucide.at-sign', { 'class': 'icon' }) | raw }}
+
+            About
+          </a>
+        </li>
+        <li>
+          <a href="/gallery">
+            {{ icon('lucide.images', { 'class': 'icon' }) | raw }}
+
+            Gallery
+          </a>
+        </li>
+        <li>
+          <a href="/map">
+            {{ icon('lucide.map', { 'class': 'icon' }) | raw }}
+
+            Map
+          </a>
+        </li>
+        <li>
+          <a href="/game">
+            {{ icon('lucide.gamepad', { 'class': 'icon' }) | raw }}
+
+            In-Game
+          </a>
+        </li>
+      </ul>
+
+      <ul>
+        {% if user %}
+          <li>
+            <div class="dropDown">
+              <label>
+                {{ icon('lucide.user', { 'class': 'icon' }) | raw }}
+
+                {{ user.name }}
+              </label>
+
+              <div class="dropDownMenu">
+                <ul>
+                  <li>
+                    <a href="/u/user">
+                      {{ icon('lucide.user', { 'class': 'icon' }) | raw }}
+
+                      Profile
+                    </a>
+                  </li>
+                  <li>
+                    <a href="/settings">
+                      {{ icon('lucide.settings', { 'class': 'icon' }) | raw }}
+
+                      Settings
+                    </a>
+                  </li>
+
+                  <li>
+                    <div class="divider"></div>
+                  </li>
+
+                  <li>
+                    <a href="/admin">
+                      {{ icon('lucide.layout-dashboard', { 'class': 'icon' }) | raw }}
+
+                      Admin
+                    </a>
+                  </li>
+
+                  <li>
+                    <div class="divider"></div>
+                  </li>
+
+                  <li>
+                    <a href="/logout">
+                      {{ icon('lucide.log-out', { 'class': 'icon' }) | raw }}
+
+                      Logout
+                    </a>
+                  </li>
+                </ul>
+              </div>
+            </div>
+          </li>
+        {% else %}
+          <li>
+            <a href="/auth">
+              {{ icon('lucide.log-in', { 'class': 'icon' }) | raw }}
+
+              Login
+            </a>
+          </li>
+        {% endif %}
+      </ul>
+    </div>
+  </div>
+</nav>
