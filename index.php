@@ -83,6 +83,13 @@
       'short' => 'ntn',
       'short_description' => 'The Northern Company.',
       'description' => 'Creators of the H1 and the Northern Complex, Northern is dedicated to improving the CRSS experience.'
+    ),
+    'cin' => array(
+    'name' => 'Charge Industries',
+    'logo' => 'https://raw.theclashfruit.me/CRSS/CRSS/main/Companies/The%20Toaster-Königreich/ChargeIndustries.svg',
+    'short' => 'cin',
+    'short_description' => 'A multipurpose company owned and operated by The Toaster-Königreich',
+    'description' => 'Charge Industries helped bring a new endermen farm to the end, available for public use regardless of nationality. Currently Charge is looking forward to build a artificial village for villagers on Blurry Island (East of Portal Island), this area will allow anyone to come and trade with the residents. Charge Industries™.'
     )
   );
   
