@@ -38,7 +38,7 @@ p, ol, ul, label, a {
   line-height: 1.7;
 }
 
-p, ol, ul {
+p:not(:last-child), ol:not(li > ol, li > ul, :last-child), ul:not(li > ol, li > ul, :last-child) {
   margin-bottom: 1rem;
 }
 
