@@ -90,6 +90,13 @@
     'short' => 'cin',
     'short_description' => 'A multipurpose company owned and operated by The Toaster-Königreich',
     'description' => 'Charge Industries helped bring a new endermen farm to the end, available for public use regardless of nationality. Currently Charge is looking forward to build a artificial village for villagers on Blurry Island (East of Portal Island), this area will allow anyone to come and trade with the residents. Charge Industries™.'
+    ),
+    'def' => array(
+    'name' => 'Deforest'
+    'logo' => 'https://raw.theclashfruit.me/CRSS/CRSS/main/Companies/The%20Romanian%20Federation%20of%20Minecraft/deforest%20white%20svg.svg',
+    'short' => 'def',
+    'short_description' => 'Helping clear out forests',
+    'description' => 'Helping clear out forests for emerging nations or for new projects.'
     )
   );
   
