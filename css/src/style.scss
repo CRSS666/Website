@@ -264,7 +264,7 @@ pre {
 
         transition: 150ms;
 
-        &:hover {
+        &:hover, &:focus {
           background: rgba($colorPrimary, 0.5);
         }
 
@@ -325,7 +325,7 @@ pre {
               height: 20px;
             }
 
-            &:hover, &.active {
+            &:hover, &:focus, &.active {
               outline: 2px solid rgba($colorPrimary, 0.65);
 
               color: $colorPrimary;
@@ -334,7 +334,7 @@ pre {
             @media (prefers-color-scheme: dark) {
               color: $colorTextDark2;
 
-              &:hover, &.active {
+              &:hover, &:focus, &.active {
                 outline-color: rgba($colorPrimary, 0.65);
               }
             }
@@ -643,7 +643,7 @@ pre {
     }
 
     > .memberContent {
-      padding: 0 1rem 1rem;
+      padding: 1rem;
 
       > h3 {
         margin: 0;
@@ -659,7 +659,7 @@ pre {
 
         list-style: none;
 
-        margin: 1rem 0 .5rem;
+        margin: 0 0 .5rem;
 
         > li > a {
           display: flex;
@@ -686,5 +686,13 @@ pre {
 
       background: $colorSurfaceDark2;
     }
+  }
+
+  @media (max-width: 992px) {
+    grid-template-columns: repeat(2, minmax(200px, 1fr));
+  }
+
+  @media (max-width: 768px) {
+    grid-template-columns: 1fr;
   }
 }
