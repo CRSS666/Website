@@ -49,5 +49,9 @@
 
     <link rel="icon"       href="/favicon.ico" />
     <link rel="stylesheet" href="/css/style.min.css" />
+
+    {% if is_dev %}
+      <script async data-id="five-server" src="http://localhost:5500/fiveserver.js"></script>
+    {% endif %}
   </head>
   <body>

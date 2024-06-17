@@ -14,6 +14,14 @@
   }
 }
 
+*::selection {
+  background: rgba($colorPrimary, 0.75);
+
+  @media (prefers-color-scheme: dark) {
+    background: rgba($colorPrimary, 0.65);
+  }
+}
+
 body {
   display: flex;
   flex-direction: column;
@@ -53,6 +61,26 @@ ol, ul {
   list-style-position: inside;
 
   margin-left: 1rem;
+}
+
+pre {
+  overflow-x: scroll;
+
+  max-width: 100%;
+
+  display: block;
+
+  padding: 1rem;
+
+  background: $colorSurfaceLight2;
+
+  border: 1px solid $colorBorderLight1;
+  border-radius: .5rem;
+
+  @media (prefers-color-scheme: dark) {
+    background: $colorSurfaceDark2;
+    border-color: $colorBorderDark1;
+  }
 }
 
 .container {
@@ -196,6 +224,8 @@ ol, ul {
   background: $colorSurfaceLight3;
 
   border-bottom: 1px solid $colorBorderLight1;
+
+  z-index: 999999999;
 
   > .container {
     display: flex;
@@ -567,5 +597,94 @@ ol, ul {
     background: $colorSurfaceDark3;
 
     border-color: $colorBorderDark1;
+  }
+}
+
+.teamList {
+  display: grid;
+
+  gap: 1rem;
+
+  grid-template-columns: repeat(3, minmax(200px, 1fr));
+
+  > .teamCard {
+    border: 1px solid $colorBorderLight1;
+    border-radius: 1rem;
+
+    background: $colorSurfaceLight2;
+
+    > .memberBanner {
+      height: 150px;
+
+      position: relative;
+
+      background: $colorPrimary;
+
+      border-top-left-radius: calc(1rem - 1px);
+      border-top-right-radius: calc(1rem - 1px);
+
+      > img {
+        position: absolute;
+
+        bottom: -52px;
+        left: 16px;
+
+        border-radius: 1rem;
+        border: 4px solid $colorSurfaceLight2;
+
+        @media (prefers-color-scheme: dark) {
+          border-color: $colorSurfaceDark2;
+        }
+      }
+
+      &[data-has-background] {
+        background: var(--background);
+      }
+    }
+
+    > .memberContent {
+      padding: 0 1rem 1rem;
+
+      > h3 {
+        margin: 0;
+      }
+
+      > .memberLinks {
+        display: flex;
+
+        justify-content: end;
+        align-items: end;
+
+        gap: .5rem;
+
+        list-style: none;
+
+        margin: 1rem 0 .5rem;
+
+        > li > a {
+          display: flex;
+
+          align-items: center;
+
+          padding: 4px;
+
+          color: $colorBorderLight3;
+
+          &:hover {
+            color: $colorPrimary;
+          }
+
+          @media (prefers-color-scheme: dark) {
+            color: $colorBorderDark3;
+          }
+        }
+      }
+    }
+
+    @media (prefers-color-scheme: dark) {
+      border-color: $colorBorderDark1;
+
+      background: $colorSurfaceDark2;
+    }
   }
 }

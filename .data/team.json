@@ -1,0 +1,43 @@
+[
+  {
+    "role": 0,
+    "name": "Blurryface (aka Clyde)",
+    "picture": "https://crss.fra1.cdn.digitaloceanspaces.com/avatars/786634586452787201.png",
+    "banner": "linear-gradient(40deg, #a657fa, #7447e4)",
+    "links": [
+      {
+        "icon": {
+          "id": "lucide.globe"
+        },
+        "name": "Website",
+        "url": "https://blurryface.xyz/"
+      }
+    ]
+  },
+  {
+    "role": 1,
+    "name": "TheClashFruit",
+    "picture": "https://crss.fra1.cdn.digitaloceanspaces.com/avatars/394888268446957569.png",
+    "links": [
+      {
+        "icon": {
+          "id": "lucide.globe"
+        },
+        "name": "Website",
+        "url": "https://theclashfruit.me/"
+      },
+      {
+        "icon": {
+          "id": "simpleicons.mastodon",
+          "extra": {
+            "width": "24",
+            "height": "24",
+            "fill": "currentColor"
+          }
+        },
+        "name": "Mastodon",
+        "url": "https://wetdry.world/@TheClashFruit"
+      }
+    ]
+  }
+]

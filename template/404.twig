@@ -1,0 +1,21 @@
+{% include 'includes/head.twig' %}
+
+{% include 'includes/hero.twig' %}
+{% include 'includes/nav.twig' %}
+
+<main class="pageContent">
+  <div class="container">
+    <h1 id="404-not-found">404 Not Found</h1>
+
+    <p>
+      We couldn't find this page :(
+    </p>
+
+    <h2 id="debug-info">Debug Info</h2>
+
+    <pre><code class="language-json">{{ { 'page': page, 'git': git, 'server': server, 'user': user } | json_encode(constant('JSON_PRETTY_PRINT')) | format }}</code></pre>
+  </div>
+</main>
+
+{% include 'includes/footer.twig' %}
+{% include 'includes/foot.twig' %}

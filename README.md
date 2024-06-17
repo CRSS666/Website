@@ -1,5 +1,17 @@
-# Website
+# CRSS Server's Website
 
-> Newer version of the CRSS site written with PHP!
+This is the official website for the CRSS Server.
 
-# why did I choose php help me
+## Documentation
+
+### Contributing
+
+tba
+
+## License
+
+```
+This work is licensed under CC BY 4.0.
+```
+
+See the [LICENSE](LICENSE) file for more information.

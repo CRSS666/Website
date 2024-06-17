@@ -9,21 +9,21 @@
     <div class="navCollapse">
       <ul>
         <li>
-          <a href="#" class="active">
+          <a {% if page.id == 'home' %} href="#" class="active" {% else %} href="/" {% endif %}>
             {{ icon('lucide.home', { 'class': 'icon' }) | raw }}
 
             Home
           </a>
         </li>
         <li>
-          <a href="/about">
+          <a {% if page.id == 'about' %} href="#" class="active" {% else %} href="/about" {% endif %}>
             {{ icon('lucide.at-sign', { 'class': 'icon' }) | raw }}
 
             About
           </a>
         </li>
         <li>
-          <a href="/gallery">
+          <a {% if page.id == 'gallery' %} href="#" class="active" {% else %} href="/gallery" {% endif %}>
             {{ icon('lucide.images', { 'class': 'icon' }) | raw }}
 
             Gallery
