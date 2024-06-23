@@ -33,7 +33,7 @@
     'toa' => array(
       'name' => 'Toasteria',
       'flag' => 'https://raw.theclashfruit.me/CRSS/CRSS/main/Nations/Toasteria/toasteriaflag.svg',
-      'short' => 'TOA',
+      'short' => 'toa',
       'short_description' => 'Toasteria is the Industrialized Nation of CRSS',
       'description' => 'In the vast landsacpe of CRSS, Toasteria is one of the most industrialized Marxist district of CRSS. With Charge Industries as one of the main government controlled company in the nation. Alias: The 2nd Toasterian Empire, Toaster Socialist Federation',
       'leader' => 'Lupancham',
