@@ -30,12 +30,12 @@
       'leader' => 'WorldWidePixel',
       'leader_term' => 'Leader',
     ),
-    'ttk' => array(
-      'name' => 'The Toaster-Königreich',
-      'flag' => 'https://raw.theclashfruit.me/CRSS/CRSS/main/Nations/The%20Toaster-K%C3%B6nigreich/The%20Toaster-K%C3%B6nigreich%20Flag.svg',
-      'short' => 'ttk',
-      'short_description' => 'The Toaster-Königreich is the Industrialized Nation of CRSS',
-      'description' => 'In the vast landsacpe of CRSS, The Toaster-Königreich is one of the most industrialized Marxist district of CRSS. With Charge Industries as one of the main government controlled company in the nation.',
+    'toa' => array(
+      'name' => 'Toasteria',
+      'flag' => 'https://raw.theclashfruit.me/CRSS/CRSS/main/Nations/Toasteria/toasteriaflag.svg',
+      'short' => 'TOA',
+      'short_description' => 'Toasteria is the Industrialized Nation of CRSS',
+      'description' => 'In the vast landsacpe of CRSS, Toasteria is one of the most industrialized Marxist district of CRSS. With Charge Industries as one of the main government controlled company in the nation. Alias: The 2nd Toasterian Empire, Toaster Socialist Federation',
       'leader' => 'Lupancham',
       'leader_term' => 'Chancellor',
     ),
@@ -85,9 +85,9 @@
     ),
     'cin' => array(
       'name' => 'Charge Industries',
-      'logo' => 'https://raw.theclashfruit.me/CRSS/CRSS/main/Companies/The%20Toaster-Königreich/ChargeIndustries.svg',
+      'logo' => 'https://raw.theclashfruit.me/CRSS/CRSS/main/Companies/Toasteria/ChargeIndustries.svg',
       'short' => 'cin',
-      'short_description' => 'A multipurpose company owned and operated by The Toaster-Königreich',
+      'short_description' => 'A multipurpose company owned and operated by Toasteria',
       'description' => 'Charge Industries helped bring a new endermen farm to the end, available for public use regardless of nationality. Currently Charge is looking forward to build a artificial village for villagers on Blurry Island (East of Portal Island), this area will allow anyone to come and trade with the residents. Charge Industries™.'
     ),
     'def' => array(
