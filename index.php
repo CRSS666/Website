@@ -37,7 +37,7 @@
       'short_description' => 'Toasteria is the Industrialized Nation of CRSS',
       'description' => 'In the vast landsacpe of CRSS, Toasteria is one of the most industrialized Marxist district of CRSS. With Charge Industries as one of the main government controlled company in the nation. Alias: The 2nd Toasterian Empire, Toaster Socialist Federation',
       'leader' => 'Lupancham',
-      'leader_term' => 'Chancellor/Dictator',
+      'leader_term' => 'Chancellor',
     ),
     'rob' => array(
       'name' => 'Republic of Budapest',
