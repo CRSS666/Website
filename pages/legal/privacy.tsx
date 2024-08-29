@@ -14,7 +14,7 @@ export default function PrivacyPolicy() {
         <h1>Privacy Policy</h1>
 
         <p>
-          <strong>Effective Date</strong>: {new Date('2024-08-29T02:00:00.000Z').toLocaleDateString()}
+          <strong>Effective Date</strong>: {new Date('2024-08-29T02:00:00.000Z').toLocaleDateString('en-GB')}
         </p>
 
         <h2 id="introduction">1. Introduction</h2>
