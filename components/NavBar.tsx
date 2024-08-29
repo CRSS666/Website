@@ -67,7 +67,7 @@ export default function NavBar({ currentPage }: { currentPage: string }) {
             <div>
               <Logo />
 
-              <h1>Clyde&apos;s Real Survival SMP!</h1>
+              <h1>Clyde&apos;s Real Survival SMP</h1>
             </div>
 
             <div>
