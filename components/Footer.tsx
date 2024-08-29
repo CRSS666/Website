@@ -10,13 +10,12 @@ import Link from 'next/link';
 import styles from '@/styles/Footer.module.scss';
 import AdBanner from './AdBanner';
 
+import getConfig from 'next/config';
+
 export default function Footer() {
-  const git = {
-    branch: 'dev/nextjs',
-    commit: {
-      sha: 'aa1ece3db89e03e169c0031e9319e50bd4626ffb',
-    },
-  };
+  const { publicRuntimeConfig } = getConfig(); 
+
+  const git = publicRuntimeConfig.git;
 
   return (
     <>

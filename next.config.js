@@ -1,6 +1,10 @@
 const path = require('path');
 const childProcess = require('child_process');
 
+const gitBranch     = childProcess.execSync('git rev-parse --abbrev-ref HEAD').toString().trim();
+const gitCommit     = childProcess.execSync('git rev-parse HEAD').toString().trim();
+const gitCommitTime = childProcess.execSync('git show -s --format=%cI').toString().trim();
+
 /** @type {import('next').NextConfig} */
 const nextConfig = {
   reactStrictMode: true,
@@ -29,6 +33,13 @@ const nextConfig = {
         'email',
         'openid'
       ]
+    },
+    git: {
+      branch: gitBranch,
+      commit: {
+        sha: gitCommit,
+        created: new Date(gitCommitTime)
+      }
     }
   },
   generateBuildId: async () => {
