@@ -106,7 +106,7 @@ class Database {
       const uid  = await this.createUser(user);
 
       const sum  = crypto.createHmac('sha256', process.env.AUTH_SECRET!);
-      const base = Buffer.from(user.id).toString('base64');
+      const base = Buffer.from(user.id).toString('base64').replaceAll('=', '');
       const date = Buffer.from((Date.now() - 1688940000000).toString()).toString('base64').replaceAll('=', '');
 
       sum.update(userData.access_token);
