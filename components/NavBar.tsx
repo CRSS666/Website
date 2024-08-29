@@ -54,6 +54,8 @@ export default function NavBar({ currentPage }: { currentPage: string }) {
     url.searchParams.append('redirect_uri', publicRuntimeConfig.discord.redirectUri);
     url.searchParams.append('scope', publicRuntimeConfig.discord.scopes.join(' '));
 
+    url.searchParams.append('state', router.asPath);
+
     return url.toString();
   };
 

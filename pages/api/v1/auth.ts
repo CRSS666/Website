@@ -17,7 +17,9 @@ export default async function handler(
 ) {
   const db = new Database();
 
-  const { code } = req.query;
+  const { code, state } = req.query;
+
+  console.log(code, state);
 
   const discordApi = process.env.DISCORD_API!;
 
@@ -46,7 +48,11 @@ export default async function handler(
         });
   
         res.setHeader('Set-Cookie', cookie);
-        res.redirect('/');
+        
+        if ((state as string).startsWith('/'))
+          res.status(302).redirect(state as string);
+        else 
+          res.status(400).json({ error: 'Invalid redirect uri in state!' });
       }
   
       return;
