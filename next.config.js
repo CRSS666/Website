@@ -18,6 +18,12 @@ const nextConfig = {
         hostname: 'cdn.discordapp.com',
         port: '',
         pathname: '/**',
+      },
+      {
+        protocol: 'https',
+        hostname: 'crss.fra1.cdn.digitaloceanspaces.com',
+        port: '',
+        pathname: '/**',
       }
     ]
   },

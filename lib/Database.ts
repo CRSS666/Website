@@ -178,6 +178,12 @@ class Database {
       };
     });
   }
+
+  async getNations(): Promise<any> {
+    const [ rows ] = await this.mysqlPool!.execute('SELECT * FROM nations');
+
+    return rows;
+  }
 }
 
 export default Database;

@@ -1,0 +1,98 @@
+@import 'variables.module';
+@import 'global.module';
+
+.nationGrid {
+  display: grid;
+
+  grid-template-columns: repeat(3, minmax(200px, 1fr));
+
+  gap: 1rem;
+
+  > .nationCard {
+    position: relative;
+
+    display: flex;
+
+    flex-direction: column;
+
+    width: 100%;
+    height: 150px;
+
+    text-decoration: none;
+
+    padding: 1rem;
+
+    cursor: pointer;
+
+    overflow: hidden;
+
+    outline: 1px solid $colorBorderLight1;
+    border-radius: 1rem;
+
+    background: $colorSurfaceLight2;
+    color: $colorTextLight1;
+
+    transition: 0.24s;
+
+    > h2 {
+      margin: 0;
+      margin-bottom: .1rem;
+
+      font-size: 1.2em;
+      font-weight: 400;
+    }
+
+    > p {
+      margin: 0;
+    }
+
+    > .icon {
+      position: absolute;
+
+      top: 0;
+      right: 0;
+
+      height: 100%;
+
+      object-fit: cover;
+
+      mask-image: linear-gradient(to right, transparent, rgba(red, 0.3));
+
+      aspect-ratio: 1/1;
+
+      transition: 0.64s;
+
+      @media (prefers-color-scheme: dark) {
+        mask-image: linear-gradient(to right, transparent, rgba(red, 0.1));
+      }
+    }
+
+    &:hover {
+      outline-width: 2px;
+      outline-color: $colorPrimary;
+
+      transition: 0.08s;
+
+      > .icon {
+        transition: 0.48s;
+
+        transform: scale(1.2);
+      }
+    }
+
+    @media (prefers-color-scheme: dark) {
+      outline-color: $colorBorderDark1;
+
+      background: $colorSurfaceDark2;
+      color: $colorTextDark1;
+    }
+  }
+
+  @media (max-width: 992px) {
+    grid-template-columns: repeat(2, minmax(200px, 1fr));
+  }
+
+  @media (max-width: 768px) {
+    grid-template-columns: 1fr;
+  }
+}
