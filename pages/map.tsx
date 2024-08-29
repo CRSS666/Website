@@ -15,6 +15,10 @@ export default function Map() {
       <PageContent>
         <h1>Map</h1>
 
+        <p>
+          The orginal map&apos;s v2 version will be coming eventually. Till then enjoy the BlueMap:
+        </p>
+
         <iframe src="https://map.crss.cc" width="100%" style={{ aspectRatio: '16/9' }} />
 
         <p>
