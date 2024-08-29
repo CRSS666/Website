@@ -103,6 +103,20 @@ iframe {
   }
 }
 
+hr {
+  border: none;
+
+  height: 1px;
+
+  background: $colorBorderLight1;
+
+  margin: 1rem 0;
+
+  @media (prefers-color-scheme: dark) {
+    background: $colorBorderDark1;
+  }
+}
+
 // inputs
 
 input {
