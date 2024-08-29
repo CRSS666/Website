@@ -1,0 +1,17 @@
+@import 'variables.module';
+@import 'global.module';
+
+.card {
+  background: $colorSurfaceLight2;
+  
+  border: 1px solid $colorBorderLight1;
+  border-radius: 1rem;
+
+  padding: 1rem;
+
+  @media (prefers-color-scheme: dark) {
+    background: $colorSurfaceDark2;
+
+    border-color: $colorBorderDark1;
+  }
+}

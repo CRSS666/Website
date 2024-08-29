@@ -1,0 +1,71 @@
+import {
+  SiModrinth,
+  SiForgejo,
+  SiYoutube,
+  SiDiscord
+} from '@icons-pack/react-simple-icons';
+
+import Link from 'next/link';
+
+import styles from '@/styles/Footer.module.scss';
+import AdBanner from './AdBanner';
+
+export default function Footer() {
+  const git = {
+    branch: 'dev/nextjs',
+    commit: {
+      sha: 'aa1ece3db89e03e169c0031e9319e50bd4626ffb',
+    },
+  };
+
+  return (
+    <>
+      <AdBanner />
+
+      <footer className={styles.pageFooter}>
+        <div className={styles.container}>
+          <div>
+            <p>
+              Copyright &copy; {new Date().getFullYear()} CRSS
+            </p>
+
+            <p>
+              Website originally designed by Myadeleines, heavily modified and rewritten by TheClashFruit.
+            </p>
+          </div>
+
+          <div>
+            <ul>
+              <li>
+                <Link href="https://modrinth.com/organization/crss" target="_blank">
+                  <SiModrinth />
+                </Link>
+              </li>
+              <li>
+                <Link href="https://git.theclashfruit.me/crss" target="_blank">
+                  <SiForgejo />
+                </Link>
+              </li>
+              <li>
+                <Link href="https://youtube.com/@CRSS666" target="_blank">
+                  <SiYoutube />
+                </Link>
+              </li>
+              <li>
+                <Link href="https://discord.gg/rGjCKawPkS" target="_blank">
+                  <SiDiscord />
+                </Link>
+              </li>
+            </ul>
+
+            <p>
+              CRSS/Website
+              <br />
+              {git.branch}@<a href={`https://git.theclashfruit.me/CRSS/Website/commit/${git.commit.sha}`}>{git.commit.sha.slice(0, 7)}</a>
+            </p>
+          </div>
+        </div>
+      </footer>
+    </>
+  );
+}
