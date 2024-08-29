@@ -40,6 +40,8 @@ export default function NavBar({ currentPage }: { currentPage: string }) {
 
   const { publicRuntimeConfig } = getConfig();
 
+  const router = useRouter();
+
   const server = {
     version: '1.12.2'
   };
@@ -154,7 +156,15 @@ export default function NavBar({ currentPage }: { currentPage: string }) {
                       {
                         icon: LogOut,
                         label: 'Logout',
-                        href: '/logout'
+                        onClick: async (e) => {
+                          e.preventDefault();
+
+                          await fetch('/api/v1/session', {
+                            method: 'DELETE'
+                          });
+
+                          router.reload();
+                        }
                       }
                     ]} className={styles.dropDown}>
                       <User />
@@ -179,7 +189,15 @@ export default function NavBar({ currentPage }: { currentPage: string }) {
                       {
                         icon: LogOut,
                         label: 'Logout',
-                        href: '/logout'
+                        onClick: async (e) => {
+                          e.preventDefault();
+
+                          await fetch('/api/v1/session', {
+                            method: 'DELETE'
+                          });
+
+                          router.reload();
+                        }
                       }
                     ]} className={styles.dropDown}>
                       <User />

@@ -107,10 +107,11 @@ class Database {
 
       const sum  = crypto.createHmac('sha256', process.env.AUTH_SECRET!);
       const base = Buffer.from(user.id).toString('base64');
+      const date = Buffer.from((Date.now() - 1688940000000).toString()).toString('base64').replaceAll('=', '');
 
       sum.update(userData.access_token);
 
-      const sid = base + '.' + sum.digest('hex');
+      const sid = base + '.' + date + '.' + sum.digest('hex');
 
       const [ result ] = await this.mysqlPool!.execute('INSERT INTO sessions (sid, uid, access_token, refresh_token, id_token, user_agent, expires) VALUES (?, ?, ?, ?, ?, ?, ?)', [ 
         sid,
@@ -126,6 +127,10 @@ class Database {
     } else {
       throw new Error('Error Fetching Discord User Data');
     }
+  }
+
+  async deleteSession(sid: string): Promise<void> {
+    await this.mysqlPool!.execute('DELETE FROM sessions WHERE sid = ?', [ sid ]);
   }
 
   async getSession(sid: string): Promise<any> {

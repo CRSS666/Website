@@ -2,9 +2,9 @@ import styles from '@/styles/Dropdown.module.scss';
 
 import Link from 'next/link';
 
-import { useRef } from 'react';
+import { MouseEventHandler, useRef } from 'react';
 
-export default function Dropdown({ children, items, className }: { children: React.ReactNode, items: { divider?: boolean, icon?: any, label?: string, href?: string }[], className: string }) {
+export default function Dropdown({ children, items, className }: { children: React.ReactNode, items: { divider?: boolean, icon?: any, label?: string, href?: string, onClick?: MouseEventHandler<HTMLAnchorElement> }[], className: string }) {
   const dropDownRef = useRef<HTMLDivElement>(null);
 
   const handleClick = () => {
@@ -26,11 +26,19 @@ export default function Dropdown({ children, items, className }: { children: Rea
               </li>
             ) || (
               <li key={i}>
-                <Link href={item.href!}>
-                  {item.icon && <item.icon />}
+                {item.href ? (
+                  <Link href={item.href!}>
+                    {item.icon && <item.icon />}
 
-                  {item.label}
-                </Link>
+                    {item.label}
+                  </Link>
+                ) : (
+                  <a onClick={item.onClick}>
+                    {item.icon && <item.icon />}
+
+                    {item.label}
+                  </a>
+                )}
               </li>
             )
           ))}
