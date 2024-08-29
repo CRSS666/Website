@@ -20,15 +20,16 @@ export const UserProvider = ({ children }: { children: React.ReactNode }) => {
       const sessionCookie = getCookie('session');
       
       if (sessionCookie) {
-        setIsLoggedIn(true);
-
         try {
           const res = await fetch('/api/v1/user/@me');
 
           if (res.ok) {
             const userData = await res.json();
 
+            setIsLoggedIn(true);
             setUser(userData);
+          } else {
+            document.cookie = 'session=; path=/; expires=Thu, 01 Jan 1970 00:00:00 GMT';
           }
         } catch (error) {
           console.error('Error fetching user data:', error);

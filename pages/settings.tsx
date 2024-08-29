@@ -83,7 +83,7 @@ export default function Settings({ sessions }: { sessions: any[] }) {
                   {session.current ? (
                     <label>Current Session</label>
                   ) : (
-                    <button>Sign Out</button>
+                    <button disabled>Sign Out</button>
                   )}
                 </td>
               </tr>
