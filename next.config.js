@@ -35,7 +35,6 @@ const nextConfig = {
       api: process.env.DISCORD_API,
       scopes: [
         'identify',
-        'guilds',
         'email',
         'openid'
       ]
