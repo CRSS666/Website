@@ -5,8 +5,8 @@ import PageContent from '@/components/PageContent';
 import Database from '@/lib/Database';
 
 import {
-  Roles,
-  hasRole
+  Permission,
+  hasPermission
 } from '@/utils/permissions';
 
 import Image from 'next/image';
@@ -24,8 +24,7 @@ export default function User({ user }: { user: any }) {
           <Image src={`https://cdn.discordapp.com/avatars/${user.did}/a_${user.avatar}.png`} alt={user.global_name} width={128} height={128} />
 
           <ul>
-            <li>Admin: {hasRole(user.permissions, Roles.Admin) ? 'Yes' : 'No'}</li>
-            <li>Plus: {hasRole(user.permissions, Roles.Plus) ? 'Yes' : 'No'}</li>
+            <li>Admin: {hasPermission(user.permissions, Permission.Admin) ? 'Yes' : 'No'}</li>
           </ul>
 
           <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Deserunt perferendis exercitationem aliquid? Corrupti, veniam nam quis, quas, reprehenderit similique perspiciatis veritatis consectetur quidem omnis iste placeat quod! Dolore, labore est.</p>

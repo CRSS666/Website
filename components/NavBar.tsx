@@ -29,8 +29,8 @@ import Dropdown from './Dropdown';
 import { useUser } from '@/context/UserContext';
 
 import {
-  Roles,
-  hasRole
+  Permission,
+  hasPermission
 } from '@/utils/permissions';
 
 export default function NavBar({ currentPage }: { currentPage: string }) {
@@ -135,7 +135,7 @@ export default function NavBar({ currentPage }: { currentPage: string }) {
             <ul>
               {(isLoggedIn && user) && (
                 <li>
-                  {hasRole(user.permissions, Roles.Admin) && (
+                  {hasPermission(user.permissions, Permission.Admin) && (
                     <Dropdown items={[
                       {
                         icon: User,

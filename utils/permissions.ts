@@ -1,6 +1,5 @@
-export enum Roles {
-  Admin = 1 << 0,
-  Plus = 1 << 1
+export enum Permission {
+  Admin = 1 << 0
 }
 
 export enum Role {
@@ -8,6 +7,6 @@ export enum Role {
   Admin = 'admin',
 }
 
-export function hasRole(permissions: number, role: Roles): boolean {
-  return (permissions & role) === role;
+export function hasPermission(permissions: number, permission: Permission): boolean {
+  return (permissions & permission) === permission;
 }
