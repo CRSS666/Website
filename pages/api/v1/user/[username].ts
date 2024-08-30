@@ -1,4 +1,5 @@
 import Database from '@/lib/Database';
+import { isUserAdmin } from '@/utils/auth_util';
 import type { NextApiRequest, NextApiResponse } from 'next';
 
 type Data = {
@@ -8,9 +9,9 @@ type Data = {
     username: string;
     global_name: string;
   };
-  avatar: string;
-  banner: string;
-  accent_color: number;
+  avatar?: string;
+  banner?: string;
+  accent_color?: number;
   permissions: number;
 };
 
@@ -28,6 +29,29 @@ export default async function handler(
 
   if (!user) {
     return res.status(404).json({ error: 'Not Found' });
+  }
+
+  // hehe only admins update users :trolley:
+  // also validation yeah uh... didn't have budget for that
+  // tech debt for the win
+  if (req.method === 'PATCH') {
+    const sid = req.cookies.session;
+
+    const isAdmin = isUserAdmin(sid);
+
+    if (!isAdmin) {
+      return res.status(401).json({ error: 'Unauthorized' });
+    }
+
+    const { permissions } = req.body;
+
+    if (permissions) {
+      await db.updateUserPermissions(user.id, permissions);
+    }
+
+    res.status(204).end();
+
+    return;
   }
 
   res.status(200).json({

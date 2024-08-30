@@ -18,9 +18,20 @@ interface UserTable {
   username: string;
   global_name: string;
   email: string;
-  avatar: string;
-  banner: string;
-  accent_color: number;
+  avatar?: string;
+  banner?: string;
+  accent_color?: number;
+  permissions: number;
+}
+
+interface UserTableWithoutEmail {
+  id: number;
+  did: string;
+  username: string;
+  global_name: string;
+  avatar?: string;
+  banner?: string;
+  accent_color?: number;
   permissions: number;
 }
 
@@ -147,6 +158,12 @@ class Database {
     return (rows as UserTable[])[0];
   }
 
+  async getUsers(): Promise<UserTableWithoutEmail[]> {
+    const [ rows ] = await this.mysqlPool!.execute('SELECT id, did, username, global_name, avatar, banner, accent_color, permissions FROM users');
+
+    return rows as UserTableWithoutEmail[];
+  }
+
   async getUserUsername(username: string): Promise<UserTable> {
     const [ rows ] = await this.mysqlPool!.execute('SELECT * FROM users WHERE username = ?', [ username ]);
 
@@ -195,6 +212,12 @@ class Database {
     const [ rows ] = await this.mysqlPool!.execute('SELECT * FROM companies WHERE nid = ?', [ nid ]);
 
     return rows;
+  }
+
+  async updateUserPermissions(id: number, permissions: any) {
+    await this.mysqlPool!.execute('UPDATE users SET permissions = ? WHERE id = ?', [ permissions, id ]);
+
+    return;
   }
 }
 

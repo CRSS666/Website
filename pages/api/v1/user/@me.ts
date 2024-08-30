@@ -9,9 +9,9 @@ type Data = {
     global_name: string;
   };
   email: string;
-  avatar: string;
-  banner: string;
-  accent_color: number;
+  avatar?: string;
+  banner?: string;
+  accent_color?: number;
   permissions: number;
 };
 
