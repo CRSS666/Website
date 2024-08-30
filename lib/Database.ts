@@ -73,7 +73,7 @@ class Database {
     const [ res ] = await this.mysqlPool!.execute('INSERT INTO users (did, username, global_name, email, avatar, banner, accent_color) VALUES (?, ?, ?, ?, ?, ?, ?)', [ 
       user.id,
       user.username,
-      user.global_name,
+      (user.global_name || user.username),
       user.email,
       user.avatar,
       user.banner,
