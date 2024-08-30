@@ -1,0 +1,111 @@
+@import 'variables.module';
+@import 'global.module';
+
+.adBanner {
+  width: 100%;
+  height: 106px;
+
+  padding: 8px;
+
+  background: $colorSurfaceLight3;
+
+  border: 1px solid $colorBorderLight1;
+  border-radius: 1rem;
+
+  position: relative;
+
+  > .adContent {
+    display: flex;
+
+    flex-direction: column;
+
+    align-items: center;
+    justify-content: center;
+
+    width: 100%;
+    height: 100%;
+  }
+
+  > .adRevive {
+    position: absolute;
+
+    top: 8px;
+    bottom: 8px;
+
+    left: 8px;
+    right: 8px;
+
+    display: flex;
+
+    align-items: center;
+    justify-content: center;
+
+    scale: 1.3;
+
+    @media (max-width: 768px) {
+      scale: 1;
+
+      height: 60px;
+    }
+  }
+
+  > .adInfo {
+    position: absolute;
+
+    top: 8px;
+    right: 8px;
+
+    display: flex;
+
+    align-items: center;
+    justify-content: center;
+
+    gap: 8px;
+
+    padding: 8px;
+
+    background: transparent;
+
+    border: none;
+    border-radius: 100%;
+
+    color: $colorTextLight1;
+
+    transition: 150ms;
+
+    &:hover {
+      background: rgba($colorPrimary, 0.25);
+    }
+
+    @media (max-width: 768px) {
+      display: none;
+    }
+
+    @media (prefers-color-scheme: dark) {
+      color: $colorTextDark1;
+    }
+  }
+
+  @media (max-width: 768px) {
+    border-color: transparent !important;
+    background: transparent !important;
+
+    height: calc(60px);
+
+    padding: 0;
+
+    > .adContent {
+      display: none;
+    }
+
+    > .adRevive {
+      position: initial;
+    }
+  }
+
+  @media (prefers-color-scheme: dark) {
+    background: $colorSurfaceDark3;
+
+    border-color: $colorBorderDark1;
+  }
+}

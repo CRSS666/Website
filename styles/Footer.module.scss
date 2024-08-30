@@ -1,0 +1,102 @@
+@import 'variables.module';
+@import 'global.module';
+
+.pageFooter {
+  background: $colorSurfaceLight3;
+
+  border-top: 1px solid $colorBorderLight1;
+
+  > .container {
+    display: flex;
+
+    justify-content: space-between;
+
+    align-items: start;
+
+    padding: 1rem 0;
+
+    p {
+      margin-bottom: .5rem;
+    }
+
+    div:first-child {
+      width: 420px;
+    }
+
+    div:last-child {
+      text-align: right;
+
+      > ul {
+        display: flex;
+
+        gap: 1rem;
+
+        list-style: none;
+
+        > li {
+          > a {
+            display: flex;
+
+            align-items: center;
+            justify-content: center;
+
+            width: 31px;
+            height: 31px;
+
+            border-radius: 50%;
+
+            padding: 4px;
+
+            transition: 150ms;
+
+            color: $colorTextLight1;
+
+            &:hover {
+              color: $colorPrimary;
+            }
+
+            @media (prefers-color-scheme: dark) {
+              color: $colorTextDark1;
+            }
+          }
+        }
+      }
+    }
+
+    @media (max-width: 768px) {
+      flex-direction: column;
+
+      div:first-child {
+        width: 100%;
+
+        text-align: center;
+      }
+
+      div:last-child {
+        width: 100%;
+
+        display: flex;
+
+        flex-direction: column;
+
+        align-items: center;
+        justify-content: center;
+
+        text-align: center;
+
+        margin-top: 1rem;
+      }
+
+      ul {
+        margin: 0;
+        margin-bottom: 1.5rem;
+      }
+    }
+  }
+
+  @media (prefers-color-scheme: dark) {
+    background: $colorSurfaceDark3;
+
+    border-color: $colorBorderDark1;
+  }
+}

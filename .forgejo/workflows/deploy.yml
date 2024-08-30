@@ -1,0 +1,23 @@
+name: Deploy Website
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Deploy Over SSH
+        uses: https://github.com/nekiro/ssh-job@main
+        with:
+          host: ${{ secrets.HOST }}
+          user: crss
+          password: ${{ secrets.DEPLOY_PASSWORD }}
+          command: |
+            cd ~/crss
+            git pull
+            pnpm install
+            pnpm build
+            sudo systemctl restart crss.service
