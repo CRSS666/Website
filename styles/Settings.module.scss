@@ -1,0 +1,55 @@
+@import 'variables.module';
+@import 'global.module';
+
+.sessions {
+  display: flex;
+
+  flex-direction: column;
+
+  gap: .5rem;
+
+  > .sessionCard {
+    display: flex;
+
+    justify-content: space-between;
+    align-items: center;
+
+    width: 100%;
+
+    p {
+      margin: 0;
+    }
+
+    button {
+      display: flex;
+
+      justify-content: center;
+      align-items: center;
+
+      background: transparent;
+      color: $colorTextLight1;
+
+      border: none;
+      border-radius: 100%;
+
+      padding: 8px;
+
+      cursor: pointer;
+
+      transition: 150ms;
+
+      &:hover {
+        background: rgba($colorPrimary, 0.35);
+        color: $colorPrimary;
+      }
+
+      @media (prefers-color-scheme: dark) {
+        color: $colorTextDark1;
+      }
+    }
+  }
+
+  &:not(:last-child) {
+    margin-bottom: 1rem;
+  }
+}

@@ -20,13 +20,15 @@
     "next": "14.2.6",
     "react": "^18.3.1",
     "react-dom": "^18.3.1",
-    "showdown": "^2.1.0"
+    "showdown": "^2.1.0",
+    "ua-parser-js": "^1.0.38"
   },
   "devDependencies": {
     "@types/cookie": "^0.6.0",
     "@types/node": "^20.16.2",
     "@types/react": "^18.3.4",
     "@types/react-dom": "^18.3.0",
+    "@types/ua-parser-js": "^0.7.39",
     "eslint": "^8.57.0",
     "eslint-config-next": "14.2.6",
     "sass": "^1.77.8",
