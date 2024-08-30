@@ -18,6 +18,6 @@ jobs:
           command: |
             cd ~/crss
             git pull
-            pnpm install
-            pnpm build
+            ~/.local/share/pnpm/pnpm install
+            ~/.local/share/pnpm/pnpm build
             sudo systemctl restart crss.service
