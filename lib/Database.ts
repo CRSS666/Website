@@ -184,6 +184,18 @@ class Database {
 
     return rows;
   }
+
+  async getNationCode(code: string): Promise<any> {
+    const [ rows ] = await this.mysqlPool!.execute('SELECT * FROM nations WHERE code = ?', [ code ]);
+
+    return (rows as any)[0];
+  }
+
+  async getCompaies(nid: number): Promise<any> {
+    const [ rows ] = await this.mysqlPool!.execute('SELECT * FROM companies WHERE nid = ?', [ nid ]);
+
+    return rows;
+  }
 }
 
 export default Database;

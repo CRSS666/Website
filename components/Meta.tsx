@@ -38,6 +38,7 @@ export default function Meta({ page }: { page: { title: string, user?: any } }) 
 
       <meta property="og:site_name" content="Clyde's Real Survival SMP" />
       <meta property="og:title" content={page.title} />
+      <meta property="og:url" content={`https://crss.cc${router.asPath}`} />
       <meta property="og:type" content="website" />
       <meta property="og:locale" content="en_GB" />
       <meta property="og:image" content="https://crss.fra1.cdn.digitaloceanspaces.com/img/social_image.png" />
@@ -49,26 +50,12 @@ export default function Meta({ page }: { page: { title: string, user?: any } }) 
       <meta name="twitter:image" content="https://crss.fra1.cdn.digitaloceanspaces.com/img/social_image.png" />
 
       <meta property="twitter:domain" content="crss.cc" />
+      <meta property="twitter:url" content={`https://crss.cc${router.asPath}`} />
 
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(ldJson) }} />
-
-      {!page.user && (
-        <>
-          <meta property="og:url"      content={`https://crss.cc${router.pathname}`} />
-          <meta property="twitter:url" content={`https://crss.cc${router.pathname}`} />
-        
-          <link rel="canonical" href={`https://crss.cc${router.pathname}`} />
-        </>
-      ) || (
-        <>
-          <meta property="og:url"      content={`https://crss.cc/u/${page.user!.username}`} />
-          <meta property="twitter:url" content={`https://crss.cc/u/${page.user!.username}`} />
-        
-          <link rel="canonical" href={`https://crss.cc/u/${page.user!.username}`} />
-        </>
-      )}
-
-      <link rel="icon" href="/favicon.ico" />
+    
+      <link rel="canonical" href={`https://crss.cc${router.asPath}`} />
+      <link rel="icon"      href="/favicon.ico" />
     </Head>
   );
 }
