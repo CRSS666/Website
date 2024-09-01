@@ -8,3 +8,5 @@ export type * from './spacial_data';
 export type * from './minecraft';
 
 export type * from './settings';
+
+export type * from './responses';

@@ -1,5 +1,5 @@
-import { Badge } from '@/utils/badges';
-import { Permission } from '@/utils/permissions';
+import { BadgeNamed } from '@/utils/badges';
+import { PermissionNamed } from '@/utils/permissions';
 
 export interface User {
   id: BigInt;
@@ -16,9 +16,13 @@ export interface User {
 
   discordId: BigInt;
 
-  permissions: Permission[];
-  badges: Badge[];
+  permissions: PermissionNamed[];
+  badges: BadgeNamed[];
 
   createdAt: Date;
   updatedAt: Date;
+}
+
+export interface TeamMember extends User {
+  role: string;
 }

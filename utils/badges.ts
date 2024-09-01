@@ -9,15 +9,20 @@ export enum Badge {
   Supporter = 1 << 1, // "Donator"
 }
 
-export function getBadges(badges: number): Badge[] {
-  const result: Badge[] = [];
+export enum BadgeNamed {
+  Old = 'og',
+  Supporter = 'supporter',
+}
+
+export function getBadges(badges: number): BadgeNamed[] {
+  const result: BadgeNamed[] = [];
 
   if ((badges & Badge.Old) === Badge.Old) {
-    result.push(Badge.Old);
+    result.push(BadgeNamed.Old);
   }
 
   if ((badges & Badge.Supporter) === Badge.Supporter) {
-    result.push(Badge.Supporter);
+    result.push(BadgeNamed.Supporter);
   }
 
   return result;
