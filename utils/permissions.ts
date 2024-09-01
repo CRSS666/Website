@@ -1,5 +1,7 @@
 export enum Permission {
-  Admin = 1 << 0
+  SuperAdmin = 1 << 0,
+  Admin = 1 << 1,
+  ServerPlayer = 1 << 2
 }
 
 export enum Role {
