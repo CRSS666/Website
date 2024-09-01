@@ -7,7 +7,7 @@ import Database from '@/lib/Database';
 import Image from 'next/image';
 import Link from 'next/link';
 
-import { Role } from '@/utils/permissions';
+import { TeamRole } from '@/utils/badges';
 
 import styles from '@/styles/About.module.scss';
 import { Globe } from 'lucide-react';
@@ -47,8 +47,8 @@ export default function About({ teamMembers }: { teamMembers: any[] }) {
 
                 <h3>{member.global_name}</h3>
                 
-                {member.role === Role.Owner && <label>Owner</label>}
-                {member.role === Role.Admin && <label>Admin</label>}
+                {member.role === TeamRole.Owner && <label>Owner</label>}
+                {member.role === TeamRole.Admin && <label>Admin</label>}
               </div>
             </Card>
           ))}

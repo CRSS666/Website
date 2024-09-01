@@ -1,4 +1,4 @@
-import { Role } from '@/utils/permissions';
+import { TeamRole } from '@/utils/permissions';
 import mysql, { Pool, QueryResult } from 'mysql2/promise';
 
 import crypto from 'node:crypto';
@@ -46,7 +46,7 @@ interface TeamMember {
   banner: string;
   accent_color: number;
   permissions: number;
-  role: Role;
+  role: TeamRole;
 }
 
 class Database {
@@ -191,7 +191,7 @@ class Database {
         banner: row.banner,
         accent_color: row.accent_color,
         permissions: row.permissions,
-        role: (row.role as Role),
+        role: (row.role as TeamRole),
       };
     });
   }
