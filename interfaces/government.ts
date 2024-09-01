@@ -26,5 +26,5 @@ export interface Government {
   id: BigInt;
 
   parliament: GovernmentUser[];
-  parliamentBulding: Point2D;
+  // parliamentBulding: Point2D;
 }
