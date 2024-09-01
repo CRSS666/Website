@@ -4,7 +4,7 @@ import snowflake from './snowflake';
 
 import Discord from '@/lib/Discord';
 
-interface DiscordTokenData {
+export interface DiscordTokenData {
   token_type: string;
   access_token: string;
   expires_in: number;
@@ -20,18 +20,18 @@ interface DiscordTokenData {
  * 
  * @returns The session token.
  */
-export async function createSessionToken(oauthData: DiscordTokenData): Promise<string> {
+export async function createSessionToken(oauthData: DiscordTokenData): Promise<string | undefined> {
   const discord = new Discord(oauthData.access_token);
   const res     = await discord.user();
 
   if (!res.ok)
-    throw new Error('Failed to fetch user data from Discord.');
+    return undefined;
 
   const dcUser = res.data;
 
   const hmac = crypto
     .createHmac('sha256', process.env.AUTH_SECRET!)
-    .update(dcUser.access_token)
+    .update(oauthData.access_token)
     .digest('hex');
 
   const tuid = Buffer
