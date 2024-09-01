@@ -18,4 +18,7 @@ export interface Image {
 
   type: 'image/jpeg' | 'image/png';
   aspectRatio: AspectRatio;
+
+  createdAt: Date;
+  updatedAt: Date;
 }

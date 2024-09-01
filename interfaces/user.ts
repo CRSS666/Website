@@ -14,6 +14,11 @@ export interface User {
 
   accentColor?: number;
 
+  discordId: BigInt;
+
   permissions: Permission[];
   badges: Badge[];
+
+  createdAt: Date;
+  updatedAt: Date;
 }

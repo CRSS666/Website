@@ -9,4 +9,7 @@ export interface Company {
   slogan: string;
 
   logo: string;
+
+  createdAt: Date;
+  updatedAt: Date;
 }

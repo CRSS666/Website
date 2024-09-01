@@ -12,4 +12,7 @@ export interface Nation {
   companies: Company[];
 
   borderPoints: Point2D[];
+
+  createdAt: Date;
+  updatedAt: Date;
 }
