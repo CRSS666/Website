@@ -1,3 +1,6 @@
+import { Badge } from '@/utils/badges';
+import { Permission } from '@/utils/permissions';
+
 export interface User {
   id: BigInt;
 
@@ -11,6 +14,6 @@ export interface User {
 
   accentColor?: number;
 
-  permissions: number;
-  badges: number;
+  permissions: Permission[];
+  badges: Badge[];
 }
