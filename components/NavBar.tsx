@@ -1,6 +1,7 @@
 import {
   Menu,
   Home,
+  Scale,
   AtSign,
   Images,
   Map,
@@ -100,6 +101,13 @@ export default function NavBar({ currentPage }: { currentPage: string }) {
                   <Home />
 
                   Home
+                </Link>
+              </li>
+              <li>
+                <Link href={currentPage == 'rules' ? '#' : '/rules'} className={currentPage == 'rules' ? styles.active : ''}>
+                  <Scale />
+
+                  Rules
                 </Link>
               </li>
               <li>
