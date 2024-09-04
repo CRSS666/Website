@@ -12,7 +12,7 @@ import {
   LogOut,
   LogIn,
   Earth,
-  X
+  X,
 } from 'lucide-react';
 
 import Link from 'next/link';
@@ -29,22 +29,19 @@ import { useEffect, useRef, useState } from 'react';
 import Dropdown from './Dropdown';
 import { useUser } from '@/context/UserContext';
 
-import {
-  Permission,
-  hasPermission
-} from '@/utils/permissions';
+import { Permission, hasPermission } from '@/utils/permissions';
 
 export default function NavBar({ currentPage }: { currentPage: string }) {
-  const { user, isLoggedIn } = useUser(); 
+  const { user, isLoggedIn } = useUser();
 
-  const [ navOpen, setNavOpen ] = useState(false);
+  const [navOpen, setNavOpen] = useState(false);
 
   const { publicRuntimeConfig } = getConfig();
 
   const router = useRouter();
 
   const server = {
-    version: '1.15.2'
+    version: '1.15.2',
   };
 
   const buildDiscordUrl = (): string => {
@@ -52,8 +49,14 @@ export default function NavBar({ currentPage }: { currentPage: string }) {
 
     url.searchParams.append('client_id', publicRuntimeConfig.discord.clientId);
     url.searchParams.append('response_type', 'code');
-    url.searchParams.append('redirect_uri', publicRuntimeConfig.discord.redirectUri);
-    url.searchParams.append('scope', publicRuntimeConfig.discord.scopes.join(' '));
+    url.searchParams.append(
+      'redirect_uri',
+      publicRuntimeConfig.discord.redirectUri
+    );
+    url.searchParams.append(
+      'scope',
+      publicRuntimeConfig.discord.scopes.join(' ')
+    );
 
     url.searchParams.append('state', router.asPath);
 
@@ -72,15 +75,17 @@ export default function NavBar({ currentPage }: { currentPage: string }) {
             </div>
 
             <div>
-              <label htmlFor="ip">
-                Server Address:
-              </label>
+              <label htmlFor="ip">Server Address:</label>
 
-              <input type="text" value="play.crss.cc" id="ip" readOnly size={8} />
+              <input
+                type="text"
+                value="play.crss.cc"
+                id="ip"
+                readOnly
+                size={8}
+              />
 
-              <label htmlFor="ip">
-                Version: {server.version}
-              </label>
+              <label htmlFor="ip">Version: {server.version}</label>
             </div>
           </div>
         </div>
@@ -89,139 +94,165 @@ export default function NavBar({ currentPage }: { currentPage: string }) {
       <nav className={`${styles.navBar} ${navOpen ? styles.navOpen : ''}`}>
         <div className={styles.container}>
           <div className={styles.navMobileContainer}>
-            <button className={styles.navToggle} onClick={() => { setNavOpen(!navOpen); }}>
-              { !navOpen ? <Menu /> : <X /> }
+            <button
+              className={styles.navToggle}
+              onClick={() => {
+                setNavOpen(!navOpen);
+              }}
+            >
+              {!navOpen ? <Menu /> : <X />}
             </button>
           </div>
 
           <div className={styles.navCollapse}>
             <ul>
               <li>
-                <Link href={currentPage == 'home' ? '#' : '/'} className={currentPage == 'home' ? styles.active : ''}>
+                <Link
+                  href={currentPage == 'home' ? '#' : '/'}
+                  className={currentPage == 'home' ? styles.active : ''}
+                >
                   <Home />
-
                   Home
                 </Link>
               </li>
               <li>
-                <Link href={currentPage == 'rules' ? '#' : '/rules'} className={currentPage == 'rules' ? styles.active : ''}>
+                <Link
+                  href={currentPage == 'rules' ? '#' : '/rules'}
+                  className={currentPage == 'rules' ? styles.active : ''}
+                >
                   <Scale />
-
                   Rules
                 </Link>
               </li>
               <li>
-                <Link href={currentPage == 'about' ? '#' : '/about'} className={currentPage == 'about' ? styles.active : ''}>
+                <Link
+                  href={currentPage == 'about' ? '#' : '/about'}
+                  className={currentPage == 'about' ? styles.active : ''}
+                >
                   <AtSign />
-
                   About
                 </Link>
               </li>
               <li>
-                <Link href={currentPage == 'gallery' ? '#' : '/gallery'} className={currentPage == 'gallery' ? styles.active : ''}>
+                <Link
+                  href={currentPage == 'gallery' ? '#' : '/gallery'}
+                  className={currentPage == 'gallery' ? styles.active : ''}
+                >
                   <Images />
-
                   Gallery
                 </Link>
               </li>
               <li>
-                <Link href={currentPage == 'map' ? '#' : '/map'} className={currentPage == 'map' ? styles.active : ''}>
+                <Link
+                  href={currentPage == 'map' ? '#' : '/map'}
+                  className={currentPage == 'map' ? styles.active : ''}
+                >
                   <Map />
-
                   Map
                 </Link>
               </li>
               <li>
-                <Link href={currentPage == 'nations' ? '#' : '/nations'} className={currentPage == 'nations' ? styles.active : ''}>
+                <Link
+                  href={currentPage == 'nations' ? '#' : '/nations'}
+                  className={currentPage == 'nations' ? styles.active : ''}
+                >
                   <Earth />
-
                   Nations
                 </Link>
               </li>
             </ul>
 
             <ul>
-              {(isLoggedIn && user) && (
+              {isLoggedIn && user && (
                 <li>
-                  {hasPermission(user.permissions, Permission.Admin) && (
-                    <Dropdown items={[
-                      {
-                        icon: User,
-                        label: 'Profile',
-                        href: `/u/${user ? user.names.username : 'Loading...'}`
-                      },
-                      {
-                        icon: Settings,
-                        label: 'Settings',
-                        href: '/settings'
-                      },
-                      {
-                        divider: true
-                      },
-                      {
-                        icon: LayoutDashboard,
-                        label: 'Admin',
-                        href: '/admin'
-                      },
-                      {
-                        icon: LogOut,
-                        label: 'Logout',
-                        onClick: async (e) => {
-                          e.preventDefault();
+                  {(hasPermission(user.permissions, Permission.Admin) && (
+                    <Dropdown
+                      items={[
+                        {
+                          icon: User,
+                          label: 'Profile',
+                          href: `/u/${
+                            user ? user.names.username : 'Loading...'
+                          }`,
+                        },
+                        {
+                          icon: Settings,
+                          label: 'Settings',
+                          href: '/settings',
+                        },
+                        {
+                          divider: true,
+                        },
+                        {
+                          icon: LayoutDashboard,
+                          label: 'Admin',
+                          href: '/admin',
+                        },
+                        {
+                          icon: LogOut,
+                          label: 'Logout',
+                          onClick: async (e) => {
+                            e.preventDefault();
 
-                          await fetch('/api/v1/session', {
-                            method: 'DELETE'
-                          });
+                            await fetch('/api/v1/session', {
+                              method: 'DELETE',
+                            });
 
-                          router.reload();
-                        }
-                      }
-                    ]} className={styles.dropDown}>
+                            router.reload();
+                          },
+                        },
+                      ]}
+                      className={styles.dropDown}
+                    >
                       <User />
-  
+
                       {user ? user.names.global_name : 'Loading...'}
                     </Dropdown>
-                  ) || (
-                    <Dropdown items={[
-                      {
-                        icon: User,
-                        label: 'Profile',
-                        href: `/u/${user ? user.names.username : 'Loading...'}`
-                      },
-                      {
-                        icon: Settings,
-                        label: 'Settings',
-                        href: '/settings'
-                      },
-                      {
-                        divider: true
-                      },
-                      {
-                        icon: LogOut,
-                        label: 'Logout',
-                        onClick: async (e) => {
-                          e.preventDefault();
+                  )) || (
+                    <Dropdown
+                      items={[
+                        {
+                          icon: User,
+                          label: 'Profile',
+                          href: `/u/${
+                            user ? user.names.username : 'Loading...'
+                          }`,
+                        },
+                        {
+                          icon: Settings,
+                          label: 'Settings',
+                          href: '/settings',
+                        },
+                        {
+                          divider: true,
+                        },
+                        {
+                          icon: LogOut,
+                          label: 'Logout',
+                          onClick: async (e) => {
+                            e.preventDefault();
 
-                          await fetch('/api/v1/session', {
-                            method: 'DELETE'
-                          });
+                            await fetch('/api/v1/session', {
+                              method: 'DELETE',
+                            });
 
-                          router.reload();
-                        }
-                      }
-                    ]} className={styles.dropDown}>
+                            router.reload();
+                          },
+                        },
+                      ]}
+                      className={styles.dropDown}
+                    >
                       <User />
-  
+
                       {user ? user.names.global_name : 'Loading...'}
                     </Dropdown>
                   )}
                 </li>
               )}
-              {(!isLoggedIn && !user) && (
+              {!isLoggedIn && !user && (
                 <li>
                   <Link href={buildDiscordUrl()}>
                     <LogIn />
-
                     Login
                   </Link>
                 </li>
