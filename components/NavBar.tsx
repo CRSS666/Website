@@ -13,6 +13,8 @@ import {
   LogIn,
   Earth,
   X,
+  PlusIcon,
+  Plus,
 } from 'lucide-react';
 
 import Link from 'next/link';
@@ -179,6 +181,11 @@ export default function NavBar({ currentPage }: { currentPage: string }) {
                           icon: Settings,
                           label: 'Settings',
                           href: '/settings',
+                        },
+                        {
+                          icon: Plus,
+                          label: 'Premium+',
+                          href: '/pp',
                         },
                         {
                           divider: true,
