@@ -1,5 +1,5 @@
 import Database from '@/lib/Database';
-import { hasPermission, Permission } from './permissions';
+import { getPermission, hasPermission, Permission } from './permissions';
 import { User } from '@/interfaces';
 
 import type { NextApiRequest } from 'next';
@@ -27,7 +27,7 @@ export async function isUserAdmin(sid?: string): Promise<doas> {
 
   return {
     user,
-    hasPermission: hasPermission(user.permissions, Permission.Admin)
+    hasPermission: hasPermission(getPermission(user.permissions), Permission.Admin)
   };
 }
 

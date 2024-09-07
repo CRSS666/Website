@@ -10,6 +10,29 @@ export enum PermissionNamed {
   ServerPlayer = 'server_player'
 }
 
+export function getPermission(permissions: PermissionNamed[]): Permission {
+  let result = 0;
+
+  for (const permission of permissions) {
+    switch (permission) {
+      case PermissionNamed.SuperAdmin:
+        result |= Permission.SuperAdmin;
+
+        break;
+      case PermissionNamed.Admin:
+        result |= Permission.Admin;
+
+        break;
+      case PermissionNamed.ServerPlayer:
+        result |= Permission.ServerPlayer;
+        
+        break;
+    }
+  }
+
+  return result;
+}
+
 export function hasPermission(permissions: number, permission: Permission): boolean {
   return (permissions & permission) === permission;
 }
