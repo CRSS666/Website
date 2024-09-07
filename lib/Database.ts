@@ -231,6 +231,12 @@ class Database {
     return token;
   }
 
+  async deleteSession(id: string): Promise<boolean> {
+    const [ result ] = await this.mysqlPool!.query('DELETE FROM user_sessions WHERE id = ?', [ id ]);
+
+    return (result as any).affectedRows === 1;
+  }
+
   async getSession(token: string): Promise<any | undefined> {
     const [ rows ] = await this.mysqlPool!.query('SELECT * FROM user_sessions WHERE token = ?', [ token ]);
 
