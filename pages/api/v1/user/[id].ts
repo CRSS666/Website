@@ -1,6 +1,7 @@
 import { ErrorResponse, User } from '@/interfaces';
 
 import Database from '@/lib/Database';
+import { reqHasValidToken } from '@/utils/auth_util';
 
 import type { NextApiRequest, NextApiResponse } from 'next';
 
@@ -11,7 +12,8 @@ export default async function handler(
   const db = new Database();
 
   const { id } = req.query;
-  const { authorization } = req.headers;
+
+  const valid = await reqHasValidToken(req);
 
   if ((/^\d+$/).test(id as string)) {
     let user = await db.getUser((id as string));
@@ -26,8 +28,8 @@ export default async function handler(
     user = {
       ...user,
 
-      email: undefined,
-      discordId: undefined,
+      email: valid ? user.email : undefined,
+      discordId: valid ? user.discordId : undefined,
     };
 
     res.status(200).json(user);
@@ -39,13 +41,14 @@ export default async function handler(
         code: 404,
         message: 'User Not Found'
       });
+  
 
     // TODO: check if user is admin or itself and show email and discordId
     user = {
       ...user,
 
-      email: undefined,
-      discordId: undefined
+      email: valid ? user.email : undefined,
+      discordId: valid ? user.discordId : undefined,
     };
 
     res.status(200).json(user);
