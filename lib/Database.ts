@@ -245,6 +245,12 @@ class Database {
     return row;
   }
 
+  async getSessions(userId: BigInt): Promise<any[]> {
+    const [ rows ] = await this.mysqlPool!.query('SELECT * FROM user_sessions WHERE user_id = ?', [ userId ]);
+
+    return rows as any[];
+  }
+
   // Meta ----------------
 
   async getTeam(): Promise<(TeamMember | undefined)[]> {
