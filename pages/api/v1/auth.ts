@@ -1,4 +1,6 @@
 import Database from '@/lib/Database';
+import Discord from '@/lib/Discord';
+import S3Storage from '@/lib/Storage';
 import type { NextApiRequest, NextApiResponse } from 'next';
 
 export default async function handler(
@@ -6,6 +8,7 @@ export default async function handler(
   res: NextApiResponse<any>,
 ) {
   const db = new Database();
+  const s3 = new S3Storage();
 
   const { code, state } = req.query;
 
@@ -29,7 +32,7 @@ export default async function handler(
     });
   
     const json  = await data.json();
-    const token = await db.newSession(json, req.headers['user-agent']!, req.socket.remoteAddress!);
+    const token = await db.newSession(json, req.headers['user-agent']!, (req.headers['x-forwarded-for'] as string || req.socket.remoteAddress!));
 
     if (!token) {
       return res.status(500).json({
@@ -41,6 +44,29 @@ export default async function handler(
     res.status(200).json({
       token
     });
+
+    try {
+      const dc     = new Discord(json.access_token);
+      const dcUser = await dc.user();
+
+      const user = await db.getUser((await db.getSession(token)).user_id);
+
+      if (dcUser.data.avatar) {
+        const fetchData = await fetch(`https://cdn.discordapp.com/avatars/${dcUser.data.id}/${dcUser.data.avatar}.png?size=1024`);
+        const buffer    = await fetchData.arrayBuffer();
+
+        await s3.uploadFile(`users/${user?.id}/avatar/${dcUser.data.avatar}.png`, Buffer.from(buffer), 'image/png');
+      }
+
+      if (dcUser.data.banner) {
+        const fetchData = await fetch(`https://cdn.discordapp.com/banners/${dcUser.data.id}/${dcUser.data.banner}.png?size=1024`);
+        const buffer    = await fetchData.arrayBuffer();
+
+        await s3.uploadFile(`users/${user?.id}/banner/${dcUser.data.banner}.png`, Buffer.from(buffer), 'image/png');
+      }
+    } catch (e) {
+      console.error(e);
+    }
   } catch (e) {
     console.error(e);
 

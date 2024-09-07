@@ -58,6 +58,8 @@ class Database {
 
       discordId: row.discord_id as BigInt,
 
+      subscription: row.subscription,
+
       permissions: getPermissions(row.permissions),
       badges: getBadges(row.badges),
 
@@ -96,6 +98,8 @@ class Database {
 
       discordId: row.discord_id as BigInt,
 
+      subscription: row.subscription,
+
       permissions: getPermissions(row.permissions),
       badges: getBadges(row.badges),
 
@@ -126,6 +130,8 @@ class Database {
       accentColor: row.accent_color,
 
       discordId: row.discord_id as BigInt,
+
+      subscription: row.subscription,
 
       permissions: getPermissions(row.permissions),
       badges: getBadges(row.badges),
@@ -169,6 +175,8 @@ class Database {
       accentColor: user.accent_color,
 
       discordId: user.discord as BigInt,
+
+      subscription: user.subscription,
 
       permissions: getPermissions(user.permissions),
       badges: getBadges(user.badges),
@@ -221,6 +229,20 @@ class Database {
     }
 
     return token;
+  }
+
+  async getSession(token: string): Promise<any | undefined> {
+    const [ rows ] = await this.mysqlPool!.query('SELECT * FROM user_sessions WHERE token = ?', [ token ]);
+
+    if((rows as any[]).length === 0)
+      return undefined;
+
+    const row = (rows as any[])[0];
+
+    if(new Date(row.expires_at) < new Date())
+      return undefined;
+
+    return row;
   }
 
   // Meta ----------------
