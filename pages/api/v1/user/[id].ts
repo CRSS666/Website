@@ -1,7 +1,8 @@
 import { ErrorResponse, User } from '@/interfaces';
 
 import Database from '@/lib/Database';
-import { reqHasValidToken } from '@/utils/auth_util';
+import { getAuthenticatedUser, reqHasValidToken } from '@/utils/auth_util';
+import { getPermission, hasPermission, Permission, PermissionNamed } from '@/utils/permissions';
 
 import type { NextApiRequest, NextApiResponse } from 'next';
 
@@ -13,7 +14,22 @@ export default async function handler(
 
   const { id } = req.query;
 
-  const valid = await reqHasValidToken(req);
+  let shouldShowSensitive = false;
+
+  // tf was I on?
+  // const valid = await reqHasValidToken(req);
+
+  // thats better
+  const vUser = await getAuthenticatedUser(req);
+
+  if (!vUser)
+    shouldShowSensitive = false;
+
+  if (
+    hasPermission(getPermission(vUser!.permissions), Permission.SuperAdmin) ||
+    vUser!.id === BigInt(id as string)
+  )
+    shouldShowSensitive = true;
 
   if ((/^\d+$/).test(id as string)) {
     let user = await db.getUser((id as string));
@@ -24,12 +40,11 @@ export default async function handler(
         message: 'User Not Found'
       });
 
-    // TODO: check if user is admin or itself and show email and discordId
     user = {
       ...user,
 
-      email: valid ? user.email : undefined,
-      discordId: valid ? user.discordId : undefined,
+      email: shouldShowSensitive ? user.email : undefined,
+      discordId: shouldShowSensitive ? user.discordId : undefined,
     };
 
     res.status(200).json(user);
@@ -47,8 +62,8 @@ export default async function handler(
     user = {
       ...user,
 
-      email: valid ? user.email : undefined,
-      discordId: valid ? user.discordId : undefined,
+      email: shouldShowSensitive ? user.email : undefined,
+      discordId: shouldShowSensitive ? user.discordId : undefined,
     };
 
     res.status(200).json(user);
