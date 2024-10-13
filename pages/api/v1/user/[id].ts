@@ -24,8 +24,7 @@ export default async function handler(
 
   if (!vUser)
     shouldShowSensitive = false;
-
-  if (
+  else if (
     hasPermission(getPermission(vUser!.permissions), Permission.SuperAdmin) ||
     vUser!.id === BigInt(id as string)
   )

@@ -41,7 +41,8 @@ export default async function handler(
       });
     }
 
-    res.status(200).json({
+    res.redirect(302, state);
+    res.json({
       token
     });
 

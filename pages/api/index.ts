@@ -15,6 +15,7 @@ export default function handler(
             code: 1,
           },
           path: '/v1',
+          swagger: '/v1/swagger.json',
           deprecated: false,
         }
       ]
