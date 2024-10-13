@@ -141,6 +141,39 @@ class Database {
     } as User;
   }
 
+  async getUsers(): Promise<User[] | undefined> {
+    const [ rows ] = await this.mysqlPool!.query('SELECT * FROM users');
+
+    if((rows as any[]).length === 0)
+      return undefined;
+
+    const users = (rows as any[]);
+
+    return users.map(row => ({
+      id: row.id as BigInt,
+
+      username: row.username,
+      displayName: row.display_name,
+
+      email: row.email,
+
+      avatar: row.avatar,
+      banner: row.banner,
+
+      accentColor: row.accent_color,
+
+      discordId: row.discord_id as BigInt,
+
+      subscription: row.subscription,
+
+      permissions: getPermissions(row.permissions),
+      badges: getBadges(row.badges),
+
+      createdAt: row.created_at,
+      updatedAt: row.updated_at
+    } as User));
+  }
+
   async newUser(user: any): Promise<User> {
     const userExists = await this.getUserDiscord(user.id);
 
@@ -273,6 +306,17 @@ class Database {
         role: (rows as any[])[i].role
       } as TeamMember;
     });
+  }
+
+  // Nations -------------
+
+  async getNations(): Promise<any[] | undefined> {
+    const [ rows ] = await this.mysqlPool!.query('SELECT * FROM nations');
+
+    if((rows as any[]).length === 0)
+      return undefined;
+
+    return rows as any[];
   }
 }
 
