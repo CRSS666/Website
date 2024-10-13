@@ -1,0 +1,14 @@
+[
+  {
+    "relation": [
+      "delegate_permission/common.handle_all_urls"
+    ],
+    "target": {
+      "namespace": "app",
+      "package_name": "cc.crss",
+      "sha256_cert_fingerprints": [
+        ""
+      ]
+    }
+  }
+]
