@@ -24,7 +24,7 @@ export default function Nations({ nations }: { nations: any[] }) {
               <h2>{nation.name}</h2>
               <p>{nation.short_description}</p>
 
-              <Image src={`https://crss.fra1.cdn.digitaloceanspaces.com/nation/${nation.code}/flag.svg`} alt={nation.name} width={128} height={64} className={styles.icon} />
+              <Image src={`https://cdn.crss.cc/nation/${nation.code}/flag.svg`} alt={nation.name} width={128} height={64} className={styles.icon} />
             </Link>
           ))}
         </div>
