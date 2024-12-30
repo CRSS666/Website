@@ -1,6 +1,6 @@
 import {
   SiModrinth,
-  SiGitHub,
+  SiGithub,
   SiYoutube,
   SiDiscord
 } from '@icons-pack/react-simple-icons';
