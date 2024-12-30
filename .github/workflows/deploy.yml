@@ -25,6 +25,7 @@ jobs:
           pnpm lint
   deploy:
     runs-on: ubuntu-latest
+    needs: lint
     steps:
       - name: Deploy Over SSH
         uses: nekiro/ssh-job@main
