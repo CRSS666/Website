@@ -25,7 +25,7 @@ export default function Footer() {
         <div className={styles.container}>
           <div>
             <p>
-              Copyright &copy; {new Date().getFullYear()} CRSS
+              Copyright &copy; 2023 - {new Date().getFullYear()} CRSS
             </p>
 
             <p>
