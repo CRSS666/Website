@@ -41,8 +41,8 @@ export default function Footer() {
                 </Link>
               </li>
               <li>
-                <Link href="https://git.theclashfruit.me/crss" target="_blank">
-                  <SiForgejo />
+                <Link href="https://github.com/crss666" target="_blank">
+                  <SiGithub />
                 </Link>
               </li>
               <li>
@@ -60,7 +60,7 @@ export default function Footer() {
             <p>
               CRSS/Website
               <br />
-              {git.branch}@<a href={`https://git.theclashfruit.me/CRSS/Website/commit/${git.commit.sha}`}>{git.commit.sha.slice(0, 7)}</a>
+              {git.branch}@<a href={`https://github.com/CRSS666/website/commit/${git.commit.sha}`}>{git.commit.sha.slice(0, 7)}</a>
             </p>
           </div>
         </div>

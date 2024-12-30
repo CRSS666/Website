@@ -43,7 +43,7 @@ export default function NavBar({ currentPage }: { currentPage: string }) {
   const router = useRouter();
 
   const server = {
-    version: '1.20.6',
+    version: '1.21.4',
   };
 
   const buildDiscordUrl = (): string => {
