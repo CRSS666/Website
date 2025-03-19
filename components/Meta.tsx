@@ -41,13 +41,13 @@ export default function Meta({ page }: { page: { title: string, user?: any } }) 
       <meta property="og:url" content={`https://crss.cc${router.asPath}`} />
       <meta property="og:type" content="website" />
       <meta property="og:locale" content="en_GB" />
-      <meta property="og:image" content="https://crss.fra1.cdn.digitaloceanspaces.com/img/social_image.png" />
+      <meta property="og:image" content="https://raw.githubusercontent.com/CRSS666/Website/refs/heads/main/public/banner.png" />
       <meta property="og:description" content="A very cool minecraft SMP that updates to every version starting from b1.0." />
 
       <meta name="twitter:card" content="summary_large_image" />
       <meta name="twitter:title" content={`${page.title} &bull; Clyde's Real Survival SMP`} />
       <meta name="twitter:description" content="A very cool minecraft SMP that updates to every version starting from b1.0." />
-      <meta name="twitter:image" content="https://crss.fra1.cdn.digitaloceanspaces.com/img/social_image.png" />
+      <meta name="twitter:image" content="https://raw.githubusercontent.com/CRSS666/Website/refs/heads/main/public/banner.png" />
 
       <meta property="twitter:domain" content="crss.cc" />
       <meta property="twitter:url" content={`https://crss.cc${router.asPath}`} />
