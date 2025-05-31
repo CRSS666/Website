@@ -1,0 +1,32 @@
+import { dirname } from 'path';
+import { fileURLToPath } from 'url';
+import { FlatCompat } from '@eslint/eslintrc';
+
+import eslintConfigPrettier from 'eslint-config-prettier';
+import eslintPluginPrettier from 'eslint-plugin-prettier/recommended';
+
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = dirname(__filename);
+
+const compat = new FlatCompat({
+  baseDirectory: __dirname
+});
+
+const eslintConfig = [
+  ...compat.extends('next/core-web-vitals', 'next/typescript'),
+  eslintConfigPrettier,
+  eslintPluginPrettier,
+  {
+    files: ['**/*.{js,mjs,cjs,ts,jsx,tsx}'],
+    ignores: ['node_modules/*', 'node_modules/**/*', 'build/*', 'build/**/*'],
+    rules: {
+      indent: ['error', 2, { SwitchCase: 1 }],
+      quotes: ['error', 'single'],
+      semi: ['error', 'always'],
+      '@typescript-eslint/no-explicit-any': 'warn',
+      '@typescript-eslint/no-unused-vars': 'warn'
+    }
+  }
+];
+
+export default eslintConfig;

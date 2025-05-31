@@ -1,5 +1,5 @@
 {
-  "name": "crss-website",
+  "name": "website",
   "version": "0.1.0",
   "private": true,
   "scripts": {
@@ -9,29 +9,21 @@
     "lint": "next lint"
   },
   "dependencies": {
-    "@icons-pack/react-simple-icons": "^10.0.0",
-    "@svgr/webpack": "^8.1.0",
-    "bcrypt": "^5.1.1",
-    "cookie": "^0.6.0",
-    "framer-motion": "^11.3.31",
-    "jose": "^5.8.0",
-    "lucide-react": "^0.429.0",
-    "mysql2": "^3.11.0",
-    "next": "14.2.6",
-    "react": "^18.3.1",
-    "react-dom": "^18.3.1",
-    "showdown": "^2.1.0",
-    "ua-parser-js": "^1.0.38"
+    "next": "15.3.3",
+    "react": "^19.0.0",
+    "react-dom": "^19.0.0"
   },
   "devDependencies": {
-    "@types/cookie": "^0.6.0",
-    "@types/node": "^20.16.2",
-    "@types/react": "^18.3.4",
-    "@types/react-dom": "^18.3.0",
-    "@types/ua-parser-js": "^0.7.39",
-    "eslint": "^8.57.0",
-    "eslint-config-next": "14.2.6",
-    "sass": "^1.77.8",
-    "typescript": "^5.5.4"
+    "@eslint/eslintrc": "^3",
+    "@types/node": "^20",
+    "@types/react": "^19",
+    "@types/react-dom": "^19",
+    "eslint": "^9",
+    "eslint-config-next": "15.3.3",
+    "eslint-config-prettier": "^10.1.5",
+    "eslint-plugin-prettier": "^5.4.1",
+    "husky": "^9.1.7",
+    "lint-staged": "^16.1.0",
+    "typescript": "^5"
   }
 }
