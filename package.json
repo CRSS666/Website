@@ -9,6 +9,8 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "@svgr/webpack": "^8.1.0",
+    "lucide-react": "^0.511.0",
     "next": "15.3.3",
     "react": "^19.0.0",
     "react-dom": "^19.0.0"
@@ -24,6 +26,7 @@
     "eslint-plugin-prettier": "^5.4.1",
     "husky": "^9.1.7",
     "lint-staged": "^16.1.0",
+    "sass": "^1.89.1",
     "typescript": "^5"
   }
 }

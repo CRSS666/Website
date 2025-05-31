@@ -21,7 +21,7 @@ const eslintConfig = [
     ignores: ['node_modules/*', 'node_modules/**/*', 'build/*', 'build/**/*'],
     rules: {
       indent: ['error', 2, { SwitchCase: 1 }],
-      quotes: ['error', 'single'],
+      quotes: ['error', 'single', { avoidEscape: true }],
       semi: ['error', 'always'],
       '@typescript-eslint/no-explicit-any': 'warn',
       '@typescript-eslint/no-unused-vars': 'warn'
