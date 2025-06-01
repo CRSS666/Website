@@ -1,6 +1,6 @@
-import SocialConnection from '@/app/lib/types/social_connection';
-import Permission from '@/app/lib/types/permission';
-import Visibility from '@/app/lib/types/visibility';
+import SocialConnection from '@/lib/types/social_connection';
+import Permission from '@/lib/types/permission';
+import Visibility from '@/lib/types/visibility';
 
 interface WithSnowflake {
   id: bigint;

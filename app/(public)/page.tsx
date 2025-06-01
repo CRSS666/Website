@@ -6,7 +6,7 @@ export const metadata: Metadata = {
 
 export default function Home() {
   return (
-    <div style={{ maxWidth: '1100px', margin: '0 auto', padding: '16px' }}>
+    <>
       <h1>Home</h1>
 
       <p>
@@ -31,6 +31,6 @@ export default function Home() {
         can be sure to find a nation that fits your playstyle, if not you can
         just start your own!
       </p>
-    </div>
+    </>
   );
 }

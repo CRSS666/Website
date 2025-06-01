@@ -1,3 +1,5 @@
+'use client';
+
 import { Comic_Neue } from 'next/font/google';
 import Image from 'next/image';
 

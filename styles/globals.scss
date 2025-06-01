@@ -25,11 +25,11 @@ body {
 
 $headers: (
   h1: 200%,
-  h2: 180%,
-  h3: 160%,
-  h4: 140%,
-  h5: 130%,
-  h6: 120%
+  h2: 160%,
+  h3: 140%,
+  h4: 130%,
+  h5: 120%,
+  h6: 110%
 );
 
 h1, h2, h3, h4, h5, h6 {
@@ -52,6 +52,18 @@ p, ol, ul, label, a, button {
 
   font-size: 100%;
   line-height: 1.7;
+}
+
+a {
+  color: var(--primary);
+
+  text-decoration: none;
+
+  cursor: pointer
+}
+
+a:hover {
+  text-decoration: underline;
 }
 
 p:not(:last-child), ol:not(li > ol, li > ul, :last-child), ul:not(li > ol, li > ul, :last-child) {

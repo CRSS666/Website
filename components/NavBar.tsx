@@ -109,6 +109,13 @@ export default function NavBar({ user }: { user: any | null }) {
         },
         { type: 'separator' },
         {
+          type: 'page',
+          icon: LayoutDashboard,
+          title: 'Admin',
+          href: '/admin'
+        },
+        { type: 'separator' },
+        {
           type: 'action',
           icon: LogOut,
           title: 'Logout',

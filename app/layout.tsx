@@ -1,14 +1,8 @@
 import { Open_Sans } from 'next/font/google';
 
-import Script from 'next/script';
-
-import Header from '@/components/Header';
-import NavBar from '@/components/NavBar';
+import type { Metadata, Viewport } from 'next';
 
 import '@/styles/globals.scss';
-
-import type { Metadata, Viewport } from 'next';
-import api from '@/lib/api';
 
 const openSans = Open_Sans({
   subsets: ['latin'],
@@ -48,24 +42,9 @@ export default async function RootLayout({
 }: Readonly<{
   children: React.ReactNode;
 }>) {
-  const user = await api.getUser();
-
   return (
     <html lang="en">
-      <body className={openSans.variable}>
-        <Header />
-        <NavBar user={user} />
-
-        <main>{children}</main>
-
-        {/*
-        <Script
-          src="https://rybbit.theclashfruit.me/api/script.js"
-          data-site-id="3"
-          defer
-        />
-        */}
-      </body>
+      <body className={openSans.variable}>{children}</body>
     </html>
   );
 }

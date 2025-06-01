@@ -1,5 +1,7 @@
 import Link from 'next/link';
 
+import Layout from '@/components/Layout';
+
 import { Metadata } from 'next';
 
 export const metadata: Metadata = {
@@ -8,7 +10,7 @@ export const metadata: Metadata = {
 
 export default function NotFound() {
   return (
-    <div style={{ maxWidth: '1100px', margin: '0 auto', padding: '16px' }}>
+    <Layout>
       <h1>404 Not Found</h1>
 
       <p>
@@ -16,6 +18,6 @@ export default function NotFound() {
       </p>
 
       <Link href="/">&lt; Go Home</Link>
-    </div>
+    </Layout>
   );
 }
