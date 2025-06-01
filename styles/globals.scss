@@ -47,7 +47,9 @@ h1, h2, h3, h4, h5, h6 {
   }
 }
 
-p, ol, ul, label, a {
+p, ol, ul, label, a, button {
+  font-family: var(--fontOpenSans);
+
   font-size: 100%;
   line-height: 1.7;
 }

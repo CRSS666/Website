@@ -7,7 +7,6 @@ on:
 env:
   REGISTRY: ghcr.io
   IMAGE_NAME: ${{ github.repository }}
-  NEXT_PUBLIC_API_URL: https://api.crss.cc
 
 jobs:
   build-and-publish:
@@ -17,6 +16,13 @@ jobs:
       attestations: write
       id-token: write
     runs-on: ubuntu-latest
+    environment: 'Build'
+    env:
+      NEXT_PUBLIC_API_URL: ${{ vars.NEXT_PUBLIC_API_URL }}
+      NEXT_PUBLIC_DISCORD_CLIENT: ${{ vars.NEXT_PUBLIC_DISCORD_CLIENT }}
+      NEXT_PUBLIC_DISCORD_REDIRECT: ${{ vars.NEXT_PUBLIC_DISCORD_REDIRECT }}
+      NEXT_PUBLIC_GIT_BRANCH: ${{ github.ref_name }}
+      NEXT_PUBLIC_GIT_HASH: ${{ github.sha }}
     steps:
       - name: Log in to the Container registry
         uses: docker/login-action@v3

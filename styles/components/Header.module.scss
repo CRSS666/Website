@@ -6,6 +6,8 @@
 
   overflow: hidden;
 
+  border-bottom: 1px solid var(--outlineVariant);
+
   > .headerImage {
     width: 100%;
     height: 100%;
@@ -24,10 +26,12 @@
     right: 0;
     left: 0;
 
+    // background: linear-gradient(180deg, rgba(var(--surfaceContainer-rgb), 0.8) 0%, var(--surfaceContainerHigh) 90%);
     background: rgba(var(--surfaceContainer-rgb), 0.8);
     backdrop-filter: blur(8px);
 
     @media (prefers-color-scheme: dark) {
+      // background: linear-gradient(180deg, rgba(var(--surfaceContainer-rgb), 0.9) 0%, var(--surfaceContainerHigh) 90%);
       background: rgba(var(--surfaceContainer-rgb), 0.9);
     }
 
