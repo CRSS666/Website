@@ -19,7 +19,9 @@ export default function Footer() {
         <div className={styles.info}>
           <div>
             <p>
-              This website is <Link href="">open-soruce</Link>.
+              This website is{' '}
+              <Link href="https://github.com/CRSS666/Website">open-source</Link>
+              .
             </p>
           </div>
           <div>
@@ -50,7 +52,7 @@ export default function Footer() {
                 </Link>
               </li>
               <li>
-                <Link href="https://github.com/crss666">
+                <Link href="https://github.com/CRSS666">
                   <SiGithub />
                 </Link>
               </li>

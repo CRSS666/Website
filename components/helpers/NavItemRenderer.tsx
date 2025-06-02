@@ -5,13 +5,19 @@ import Link from 'next/link';
 import type { NavItem } from '@/lib/types/navitems';
 import Dropdown from '@/components/Dropdown';
 
-export const renderNavItem = (item: NavItem, i: number, path: string) => {
+export const renderNavItem = (
+  item: NavItem,
+  i: number,
+  path: string,
+  onNavigate?: (e: any) => void
+) => {
   switch (item.type) {
     case 'page':
       return (
         <li key={i}>
           <Link
             href={item.href === path ? '#' : item.href}
+            onNavigate={onNavigate}
             data-active={item.href === path}
           >
             {item.icon && <item.icon />}

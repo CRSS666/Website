@@ -27,9 +27,11 @@ import type { NavItem } from '@/lib/types/navitems';
 import styles from '@/styles/components/NavBar.module.scss';
 import { renderNavItem } from './helpers/NavItemRenderer';
 import { logout } from '@/app/actions';
+import { useState } from 'react';
 
 export default function NavBar({ user }: { user: any | null }) {
   const path = usePathname();
+  const [open, setOpen] = useState<boolean>(false);
 
   const discordUrl = (() => {
     const url = new URL('https://discord.com/api/oauth2/authorize');
@@ -136,27 +138,37 @@ export default function NavBar({ user }: { user: any | null }) {
   ];
 
   return (
-    <nav className={styles.navBar}>
+    <nav className={`${styles.navBar}${open ? ' ' + styles.open : ''}`}>
       <div className={styles.container}>
         <ul>
           {leftNavItems.map((item: NavItem, i: number) =>
-            renderNavItem(item, i, path)
+            renderNavItem(item, i, path, () => {
+              setOpen(false);
+            })
           )}
         </ul>
         {user ? (
           <ul>
             {loggedInLeft.map((item: NavItem, i: number) =>
-              renderNavItem(item, i, path)
+              renderNavItem(item, i, path, () => {
+                setOpen(false);
+              })
             )}
           </ul>
         ) : (
           <ul>
             {loggedOutLeft.map((item: NavItem, i: number) =>
-              renderNavItem(item, i, path)
+              renderNavItem(item, i, path, () => {
+                setOpen(false);
+              })
             )}
           </ul>
         )}
       </div>
+
+      <button className={styles.navOpen} onClick={() => setOpen(!open)}>
+        {!open ? <Menu /> : <X />}
+      </button>
     </nav>
   );
 }

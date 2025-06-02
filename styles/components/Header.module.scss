@@ -56,6 +56,16 @@
 
         &:last-child {
           align-items: center;
+
+          @media (max-width: 810px) {
+            display: none;
+          }
+        }
+
+        @media (max-width: 810px) {
+          align-items: center;
+
+          width: 100%;
         }
       }
 
