@@ -1,7 +1,10 @@
 import { Metadata } from 'next';
 
 export const metadata: Metadata = {
-  title: 'Servers'
+  title: 'Servers',
+  openGraph: {
+    title: 'Servers'
+  }
 };
 
 export default function Servers() {

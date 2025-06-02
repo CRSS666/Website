@@ -1,7 +1,10 @@
 import { Metadata } from 'next';
 
 export const metadata: Metadata = {
-  title: 'Home'
+  title: 'Home',
+  openGraph: {
+    title: 'Home'
+  }
 };
 
 export default function Home() {

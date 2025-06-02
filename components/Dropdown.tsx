@@ -1,6 +1,6 @@
 import { ChevronDown, ChevronUp } from 'lucide-react';
 
-import { renderNavItem } from '@/components/NavItemRenderer';
+import { renderNavItem } from '@/components/helpers/NavItemRenderer';
 
 import { usePathname } from 'next/navigation';
 

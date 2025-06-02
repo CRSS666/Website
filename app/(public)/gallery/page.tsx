@@ -5,7 +5,10 @@ import { Upload } from 'lucide-react';
 import { Metadata } from 'next';
 
 export const metadata: Metadata = {
-  title: 'Gallery'
+  title: 'Gallery',
+  openGraph: {
+    title: 'Gallery'
+  }
 };
 
 export default async function Gallery() {

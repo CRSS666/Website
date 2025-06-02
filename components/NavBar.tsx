@@ -25,7 +25,7 @@ import { usePathname } from 'next/navigation';
 import type { NavItem } from '@/lib/types/navitems';
 
 import styles from '@/styles/components/NavBar.module.scss';
-import { renderNavItem } from './NavItemRenderer';
+import { renderNavItem } from './helpers/NavItemRenderer';
 import { logout } from '@/app/actions';
 
 export default function NavBar({ user }: { user: any | null }) {

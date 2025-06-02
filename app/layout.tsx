@@ -29,12 +29,18 @@ export const metadata: Metadata = {
   ],
   category: 'gaming',
   openGraph: {
-    siteName: "Clyde's Real Survival SMP"
+    type: 'website',
+    siteName: "Clyde's Real Survival SMP",
+    url: 'https://crss.cc',
+    images: [{ url: 'https://cdn.crss.cc/assets/og.webp' }]
   }
 };
 
 export const viewport: Viewport = {
-  themeColor: '#537F53'
+  themeColor: [
+    { media: '(prefers-color-scheme: dark)', color: '#9FD49C' },
+    { media: '(prefers-color-scheme: light)', color: '#39693B' }
+  ]
 };
 
 export default async function RootLayout({

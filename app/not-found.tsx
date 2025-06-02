@@ -5,7 +5,10 @@ import Layout from '@/components/Layout';
 import { Metadata } from 'next';
 
 export const metadata: Metadata = {
-  title: '404'
+  title: '404',
+  openGraph: {
+    title: '404'
+  }
 };
 
 export default function NotFound() {
