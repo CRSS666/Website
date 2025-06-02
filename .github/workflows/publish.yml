@@ -1,4 +1,4 @@
-name: Build & Publish Docker Image
+name: Publish Docker Image
 
 on:
   push:
@@ -9,7 +9,10 @@ env:
   IMAGE_NAME: ${{ github.repository }}
 
 jobs:
+  lint:
+    uses: ./.github/workflows/lint.yml
   build-and-publish:
+    needs: lint
     permissions:
       contents: read
       packages: write
