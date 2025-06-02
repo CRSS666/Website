@@ -21,6 +21,16 @@ body {
 
   background: var(--surface);
   color: var(--onSurface);
+
+  min-height: 100svh;
+
+  display: flex;
+
+  flex-direction: column;
+
+  main {
+    flex: 1;
+  }
 }
 
 $headers: (

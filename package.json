@@ -10,6 +10,7 @@
     "prepare": "husky || true"
   },
   "dependencies": {
+    "@icons-pack/react-simple-icons": "^13.0.0",
     "@svgr/webpack": "^8.1.0",
     "lucide-react": "^0.511.0",
     "next": "15.3.3",

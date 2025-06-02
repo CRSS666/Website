@@ -1,5 +1,6 @@
-import NavBar from '@/components/NavBar';
 import Header from '@/components/Header';
+import NavBar from '@/components/NavBar';
+import Footer from '@/components/Footer';
 
 import api from '@/lib/api';
 
@@ -20,6 +21,8 @@ export default async function Layout({
           {children}
         </div>
       </main>
+
+      <Footer />
     </>
   );
 }

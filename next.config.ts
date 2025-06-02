@@ -18,6 +18,9 @@ const nextConfig: NextConfig = {
     });
 
     return config;
+  },
+  experimental: {
+    optimizePackageImports: ['@icons-pack/react-simple-icons']
   }
 };
 
