@@ -40,6 +40,18 @@ class Api {
     }
   });
 
+  public getUserFromUsername = cache(
+    async (username: string): Promise<User | null> => {
+      try {
+        const user = await this.fetch('/v1/user/' + username);
+        if (!user.ok) return null;
+        return await user.json();
+      } catch {
+        return null;
+      }
+    }
+  );
+
   public deleteSession = cache(async () => {
     if (!(await this.hasSessionCookie())) return false;
 

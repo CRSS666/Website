@@ -24,7 +24,7 @@ export default function Privacy() {
 
       <p>
         <strong>Effective Date</strong>:{' '}
-        {new Date('2024-08-29T02:00:00.000Z').toLocaleDateString('en-GB')}
+        {new Date('2025-06-11T02:00:00.000Z').toLocaleDateString('en-GB')}
       </p>
 
       <h2 id="introduction">1. Introduction</h2>
@@ -56,6 +56,10 @@ export default function Privacy() {
         <li>
           <strong>Discord Emails</strong>: The email address associated with
           your Discord account.
+        </li>
+        <li>
+          <strong>Minecraft UUIDs</strong>: The unique identifier of your
+          Minecraft account.
         </li>
         <li>
           <strong>User Agents</strong>: Information regarding the device,
