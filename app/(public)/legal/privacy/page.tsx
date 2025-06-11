@@ -1,13 +1,21 @@
-import { Metadata } from 'next';
+import { Metadata, ResolvingMetadata } from 'next';
 
 import Link from 'next/link';
 
-export const metadata: Metadata = {
-  title: 'Privacy Policy',
-  openGraph: {
-    title: 'Privacy Policy'
-  }
-};
+export async function generateMetadata(
+  _: unknown,
+  parent: ResolvingMetadata
+): Promise<Metadata> {
+  const base = await parent;
+  return {
+    title: 'Privacy Policy',
+    // @ts-expect-error This is to hack some nextjs jank!
+    openGraph: {
+      ...base.openGraph,
+      title: 'Privacy Policy'
+    }
+  };
+}
 
 export default function Privacy() {
   return (

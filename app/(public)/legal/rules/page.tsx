@@ -1,12 +1,20 @@
-import { Metadata } from 'next';
+import { Metadata, ResolvingMetadata } from 'next';
 import Link from 'next/link';
 
-export const metadata: Metadata = {
-  title: 'Rules',
-  openGraph: {
-    title: 'Rules'
-  }
-};
+export async function generateMetadata(
+  _: unknown,
+  parent: ResolvingMetadata
+): Promise<Metadata> {
+  const base = await parent;
+  return {
+    title: 'Rules',
+    // @ts-expect-error This is to hack some nextjs jank!
+    openGraph: {
+      ...base.openGraph,
+      title: 'Rules'
+    }
+  };
+}
 
 export default function Rules() {
   return (

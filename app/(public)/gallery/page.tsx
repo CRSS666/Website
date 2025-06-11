@@ -2,14 +2,22 @@ import api from '@/lib/api';
 
 import { Upload } from 'lucide-react';
 
-import { Metadata } from 'next';
+import { Metadata, ResolvingMetadata } from 'next';
 
-export const metadata: Metadata = {
-  title: 'Gallery',
-  openGraph: {
-    title: 'Gallery'
-  }
-};
+export async function generateMetadata(
+  _: unknown,
+  parent: ResolvingMetadata
+): Promise<Metadata> {
+  const base = await parent;
+  return {
+    title: 'Gallery',
+    // @ts-expect-error This is to hack some nextjs jank!
+    openGraph: {
+      ...base.openGraph,
+      title: 'Gallery'
+    }
+  };
+}
 
 export default async function Gallery() {
   const user = await api.getUser();
