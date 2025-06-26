@@ -6,7 +6,7 @@ import { notFound } from 'next/navigation';
 
 import styles from '@/styles/pages/User.module.scss';
 import Link from 'next/link';
-import { Globe2 } from 'lucide-react';
+import { Badge, Braces, Dog, Globe2, Hand, Handshake } from 'lucide-react';
 
 export async function generateMetadata(
   {
@@ -42,6 +42,8 @@ export default async function Servers({
   const { username } = await params;
   const user = await api.getUserFromUsername(username);
   if (!user) notFound();
+  const userConnections = await api.getUserConnectionsFromUsername(username);
+  if (!userConnections) notFound();
 
   const colour = `#${user?.accent_color.toString(16).padStart(6, '0')}`;
 
@@ -80,10 +82,14 @@ export default async function Servers({
         <div className={styles.userNames}>
           <div className={styles.displayName}>
             <h1>{user?.display_name}</h1>
-            <span style={{ fontSize: '130%' }}>&middot;</span>
-            <span data-tooltip={true} data-tooltip-value="Pronouns">
-              she/her
-            </span>
+            {user?.pronouns && (
+              <>
+                <span style={{ fontSize: '130%' }}>&middot;</span>
+                <span data-tooltip={true} data-tooltip-value="Pronouns">
+                  {user?.pronouns}
+                </span>
+              </>
+            )}
           </div>
           <span>@{user?.username}</span>
         </div>
@@ -93,21 +99,13 @@ export default async function Servers({
         <div className={styles.tabs}>
           <div>
             <ul>
-              <li>Feed</li>
-              <li>Gallery</li>
-              <li>Raw</li>
+              <li>Tab 1</li>
+              <li>Tab 2</li>
+              <li>Tab 3</li>
             </ul>
           </div>
 
           <div className={styles.tabsPages} data-current="feed">
-            <div data-tab="feed">
-              <ol>
-                <li>Hello, World!</li>
-              </ol>
-            </div>
-            <div data-tab="gallery">
-              <p>pwetty pwease</p>
-            </div>
             <div data-tab="raw">
               <pre>{JSON.stringify(user, null, 2)}</pre>
             </div>
@@ -154,17 +152,90 @@ export default async function Servers({
             </ul>
           </div>
 
-          <hr />
+          {userConnections.length > 0 && (
+            <>
+              <hr />
+              <div className={styles.linkList}>
+                <h6>Links</h6>
+                <ul>
+                  <li>
+                    <span data-tooltip={true} data-tooltip-value="Website">
+                      <Globe2 />
+                    </span>
+                    <Link
+                      href="https://theclashfruit.me/?utm_source=crss&utm_medium=social"
+                      target="_new"
+                    >
+                      theclashfruit.me
+                    </Link>
+                  </li>
+                </ul>
+              </div>
+            </>
+          )}
 
-          <div className={styles.linkList}>
-            <h6>Links</h6>
-            <ul>
-              <li>
-                <Globe2 />
-                <Link href="https://theclashfruit.me">theclashfruit.me</Link>
-              </li>
-            </ul>
-          </div>
+          {user?.badges.length > 0 && (
+            <>
+              <hr />
+              <div className={styles.badgesList}>
+                <h6>Badges</h6>
+
+                <ul>
+                  {user?.badges.map((badge) => (
+                    <li key={badge}>
+                      {badge === 'hello_world' && (
+                        <span
+                          data-tooltip={true}
+                          data-tooltip-value="Hello, World!"
+                          data-badge={badge}
+                        >
+                          <Hand size={26} />
+                        </span>
+                      )}
+                      {badge === 'community' && (
+                        <span
+                          data-tooltip={true}
+                          data-tooltip-value="Community"
+                          data-badge={badge}
+                        >
+                          <Handshake size={26} />
+                        </span>
+                      )}
+                      {badge === 'code_contributor' && (
+                        <span
+                          data-tooltip={true}
+                          data-tooltip-value="Code Contributor"
+                          data-badge={badge}
+                        >
+                          <Braces size={26} />
+                        </span>
+                      )}
+
+                      {badge === 'nothing_to_see' && (
+                        <span
+                          data-tooltip={true}
+                          data-tooltip-value="???"
+                          data-badge={badge}
+                        >
+                          <Dog size={26} />
+                        </span>
+                      )}
+
+                      {badge.startsWith('placeholder') && (
+                        <span
+                          data-tooltip={true}
+                          data-tooltip-value="Placeholder Badge"
+                          data-badge="placeholder"
+                        >
+                          <Badge size={26} />
+                        </span>
+                      )}
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            </>
+          )}
         </div>
       </div>
 

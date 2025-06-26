@@ -3,7 +3,8 @@ import 'server-only';
 import { cookies } from 'next/headers';
 import { cache } from 'react';
 
-import { User } from './types/database';
+import { Connection, User } from './types/database';
+import Badges from './types/badges';
 
 class Api {
   private async fetch(url: string, settings?: RequestInit) {
@@ -11,7 +12,8 @@ class Api {
       ...settings,
       headers: {
         Authorization: `Bearer ${await this.getSessionToken()}`,
-        'User-Agent': 'CRSSWebsite/4.0.0 (https://crss.cc)'
+        'User-Agent': 'CRSSWebsite/4.0.0 (https://crss.cc)',
+        'X-RateLimit-BypassKey': process.env.RATELIMIT_BYPASS_KEY!
       }
     });
   }
@@ -45,8 +47,50 @@ class Api {
       try {
         const user = await this.fetch('/v1/user/' + username);
         if (!user.ok) return null;
-        return await user.json();
-      } catch {
+        const json = await user.json();
+        return {
+          id: json.id,
+          discord_id: json.discord_id,
+          minecraft_id: json.minecraft_id,
+          username: json.username,
+          display_name: json.display_name,
+          email: json.email,
+          pronouns: json.pronouns,
+          avatar: json.avatar,
+          banner: json.banner,
+          accent_color: json.accent_color,
+          role: json.role,
+          badges: (() => {
+            const result: string[] = [];
+            const named = [
+              ['hello_world', Badges.HelloWorld],
+              ['community', Badges.Community],
+              ['placeholder_1', Badges.Placeholder1],
+              ['placeholder_2', Badges.Placeholder2],
+              ['placeholder_3', Badges.Placeholder3],
+              ['placeholder_4', Badges.Placeholder4],
+              ['placeholder_5', Badges.Placeholder5],
+              ['placeholder_6', Badges.Placeholder6],
+              ['placeholder_7', Badges.Placeholder7],
+              ['placeholder_8', Badges.Placeholder8],
+              ['code_contributor', Badges.CodeContributor],
+              ['nothing_to_see', Badges.NothingToSee]
+            ] as const;
+
+            for (const [name, value] of named) {
+              const bit = BigInt(value);
+              if ((BigInt(json.badges) & bit) !== 0n) {
+                result.push(name); // or push value if you prefer the enum number
+              }
+            }
+
+            return result;
+          })(),
+          created: json.created,
+          updated: json.updated
+        };
+      } catch (e: any) {
+        console.error(e);
         return null;
       }
     }
@@ -64,6 +108,18 @@ class Api {
       return false;
     }
   });
+
+  public getUserConnectionsFromUsername = cache(
+    async (username: string): Promise<Omit<Connection, 'user_id'>[] | null> => {
+      try {
+        const connections = await this.fetch(`/v1/user/${username}/connection`);
+        if (!connections.ok) return null;
+        return await connections.json();
+      } catch {
+        return null;
+      }
+    }
+  );
 }
 
 const api = new Api();

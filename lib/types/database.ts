@@ -1,6 +1,7 @@
 import SocialConnection from '@/lib/types/social_connection';
 import Permission from '@/lib/types/permission';
 import Visibility from '@/lib/types/visibility';
+import Badges from './badges';
 
 interface WithSnowflake {
   id: bigint;
@@ -27,14 +28,16 @@ export interface Role extends WithAll {
 
 export interface User extends WithAll {
   discord_id: bigint;
-  minecraft_id: string;
+  minecraft_id: string | null;
   username: string;
   display_name: string;
-  email: string;
-  avatar: string;
-  banner: string;
+  email?: string;
+  pronouns: string | null;
+  avatar: string | null;
+  banner: string | null;
   accent_color: number;
-  role: bigint;
+  role: bigint | null;
+  badges: string[];
 }
 
 export interface Connection extends WithAll {
