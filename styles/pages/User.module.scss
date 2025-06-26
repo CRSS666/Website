@@ -1,0 +1,121 @@
+.userHeader {
+  position: relative;
+
+  > .userBanner {
+    width: 100%;
+    height: 220px;
+
+    overflow: hidden;
+
+    border-radius: 24px;
+  }
+
+  > .userAvatar {
+    position: absolute;
+
+    top: calc(220px - 64px - 6px);
+    left: 64px;
+
+    border: 6px solid var(--surface);
+    border-radius: 24px;
+  }
+
+  > .userNames {
+    position: absolute;
+
+    bottom: calc(-1 * (64px + 4px));
+    left: calc(64px + 128px + (2 * 6px) + 16px);
+
+    > .displayName {
+      display: flex;
+
+      align-items: center;
+      
+      gap: 6px;
+
+      > h1 {
+        margin: 0;
+
+        font-size: 130%;
+      }
+    }
+
+    > span {
+      color: rgba(var(--onSurface-rgb), 0.75);
+    }
+
+    > * {
+      line-height: 1.1;
+    }
+  }
+
+  margin-bottom: 8px;
+}
+
+.content {
+  display: flex;
+
+  gap: 16px;
+
+  > .tabs {
+    margin-top: calc(64px + 8px);
+
+    flex: 1;
+  }
+
+  > .sideBar {
+    max-width: 250px;
+    width: 100%;
+
+    display: flex;
+
+    flex-direction: column;
+
+    gap: 12px;
+
+    > hr {
+      margin-bottom: 0;
+    }
+
+    > div {
+      > h6 {
+        margin-bottom: 8px;
+      }
+
+      &.infoList {
+        > ul {
+          list-style: none;
+
+          margin: 0;
+
+          > li {
+            display: flex;
+
+            align-items: center;
+            justify-content: space-between;
+
+            > span:first-child {
+              font-weight: 500;
+            }
+          }
+        }
+      }
+
+      &.linkList {
+        > ul {
+          list-style: none;
+
+          margin: 0;
+
+          > li {
+            display: flex;
+
+            align-items: center;
+
+            gap: 8px;
+          }
+        }
+      }
+    }
+  }
+}

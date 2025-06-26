@@ -94,3 +94,50 @@ hr {
   border: none;
   border-bottom: 1px solid var(--outlineVariant);
 }
+
+// tooltip time
+
+[data-tooltip] {
+  position: relative;
+
+  &::before {
+    content: attr(data-tooltip-value);
+
+    opacity: 0;
+
+    position: absolute;
+
+    bottom: 125%;
+    left: 50%;
+
+    transform: translateX(-50%);
+
+    background: var(--surfaceContainerHighest);
+    color: var(--onSurfaceContainer);
+
+    padding: 4px 12px;
+
+    border: 1px solid var(--outlineVariant);
+    border-radius: 10px;
+
+    font-size: 90%;
+    font-style: normal;
+    
+    line-height: 1.7;
+
+    pointer-events: none;
+
+    transition: opacity 250ms;
+
+    z-index: 9999;
+
+    max-width: 300px;
+    width: max-content;
+  }
+
+  &:hover {
+    &::before {
+      opacity: 1;
+    }
+  }
+}
