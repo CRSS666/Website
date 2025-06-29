@@ -6,7 +6,16 @@ import { notFound } from 'next/navigation';
 
 import styles from '@/styles/pages/User.module.scss';
 import Link from 'next/link';
-import { Badge, Braces, Dog, Globe2, Hand, Handshake } from 'lucide-react';
+import {
+  Badge,
+  Braces,
+  Building2,
+  Dna,
+  Dog,
+  Globe2,
+  Hand,
+  Handshake
+} from 'lucide-react';
 
 export async function generateMetadata(
   {
@@ -186,10 +195,10 @@ export default async function Servers({
                       {badge === 'hello_world' && (
                         <span
                           data-tooltip={true}
-                          data-tooltip-value="Hello, World!"
+                          data-tooltip-value="I Was There &middot; A badge for everyone who joined CRSS in it's early days."
                           data-badge={badge}
                         >
-                          <Hand size={26} />
+                          <Dna size={26} />
                         </span>
                       )}
                       {badge === 'community' && (
@@ -199,6 +208,15 @@ export default async function Servers({
                           data-badge={badge}
                         >
                           <Handshake size={26} />
+                        </span>
+                      )}
+                      {badge === 'dedicated_builder' && (
+                        <span
+                          data-tooltip={true}
+                          data-tooltip-value="Dedicated Builder"
+                          data-badge={badge}
+                        >
+                          <Building2 size={26} />
                         </span>
                       )}
                       {badge === 'code_contributor' && (

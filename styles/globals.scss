@@ -149,6 +149,9 @@ hr {
   &[data-badge='community'] > svg {
     color: var(--primary);
   }
+  &[data-badge='dedicated_builder'] > svg {
+    color: var(--error);
+  }
   &[data-badge='code_contributor'] > svg {
     color: var(--badgeCodeContributor);
   }
