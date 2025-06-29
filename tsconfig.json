@@ -22,6 +22,6 @@
       "@/*": ["./*"]
     }
   },
-  "include": ["next-env.d.ts", "global.d.ts", "**/*.ts", "**/*.tsx", ".next/types/**/*.ts"],
+  "include": ["next-env.d.ts", "global.d.ts", "**/*.ts", "**/*.tsx", ".next/types/**/*.ts", "app/(public)/page.mdx", "app/(public)/legal/rules/page.mdx", "app/(public)/legal/privacy/page.mdx", "app/(public)/legal/tos/page.mdx"],
   "exclude": ["node_modules"]
 }

@@ -88,6 +88,10 @@ p:not(:last-child), ol:not(li > ol, li > ul, :last-child), ul:not(li > ol, li > 
   margin-bottom: 16px;
 }
 
+li > p {
+  margin-bottom: 0 !important;
+}
+
 hr {
   margin-bottom: 16px;
 
