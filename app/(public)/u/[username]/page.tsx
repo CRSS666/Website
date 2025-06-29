@@ -16,6 +16,9 @@ import {
   Hand,
   Handshake
 } from 'lucide-react';
+import TabContainer from '@/components/TabContainer';
+import FeedTab from '@/components/tabs/FeedTab';
+import GalleryTab from '@/components/tabs/GalleryTab';
 
 export async function generateMetadata(
   {
@@ -105,21 +108,17 @@ export default async function Servers({
       </div>
 
       <div className={styles.content}>
-        <div className={styles.tabs}>
-          <div>
-            <ul>
-              <li>Tab 1</li>
-              <li>Tab 2</li>
-              <li>Tab 3</li>
-            </ul>
-          </div>
-
-          <div className={styles.tabsPages} data-current="feed">
-            <div data-tab="raw">
-              <pre>{JSON.stringify(user, null, 2)}</pre>
-            </div>
-          </div>
-        </div>
+        <TabContainer
+          className={styles.tabs}
+          tabs={[
+            { title: 'Feed', children: <FeedTab /> },
+            { title: 'Gallery', children: <GalleryTab /> },
+            {
+              title: 'Raw',
+              children: <pre>{JSON.stringify(user, null, 2)}</pre>
+            }
+          ]}
+        />
 
         <div className={styles.sideBar}>
           <div className={styles.infoList}>

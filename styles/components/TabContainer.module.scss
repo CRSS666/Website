@@ -1,0 +1,33 @@
+.tabContainer {
+  > .tabs {
+    display: flex;
+
+    align-items: center;
+    justify-content: center;
+
+    gap: 6px;
+
+    margin-bottom: 8px;
+
+    > button {
+      cursor: pointer;
+
+      color: inherit;
+      background: transparent;
+
+      padding: 8px 16px;
+
+      border: none;
+      border-radius: 12px;
+
+      transition: 250ms;
+
+      flex: 1;
+
+      &:hover, &[data-current='true'] {
+        color: var(--primary);
+        background: rgba(var(--primary-rgb), 0.25);
+      }
+    }
+  }
+}

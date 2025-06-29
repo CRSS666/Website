@@ -13,6 +13,11 @@ export default async function Layout({
 
   return (
     <>
+      {/*
+      <div style={{ background: 'var(--errorContainer)', color: 'var(--error)', padding: '16px', textAlign: 'center' }}>
+        WARNING: This is a testing instance of the CRSS website, the database and thus the user generated content can and will be wiped at times.
+      </div>
+      */}
       <Header />
       <NavBar user={user} />
 
