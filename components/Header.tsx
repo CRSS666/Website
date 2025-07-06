@@ -24,11 +24,11 @@ export default function Header() {
     <header className={styles.pageHero}>
       <Image
         className={styles.headerImage}
-        src="https://cdn.crss.cc/img/2024-06-08_14.19.52.webp"
+        src="https://cdn.crss.cc/img/2025-07-06_23.35.17.png"
         alt="A arial photo of the sever's spawn in the first nation, Republic of Panorama."
         width={3440}
         height={1440}
-        quality={100}
+        quality={50}
       />
 
       <div className={styles.content}>
